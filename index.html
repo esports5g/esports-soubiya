@@ -1,32 +1,91 @@
+
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>eスポーツ装備屋</title>
-  <link rel="stylesheet" href="style.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eスポーツ装備屋</title>
+    <link rel="stylesheet" href="style.css">
+
+<!-- Font & Animation Libs -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<style>
+html {
+  scroll-behavior: smooth;
+}
+#topBtn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0f0f0f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 99;
+  cursor: pointer;
+}
+footer {
+  text-align: center;
+  margin-top: 80px;
+  font-size: 14px;
+  color: #888;
+}
+</style>
+
 </head>
 <body>
-  <div id="loader">Loading...</div>
-  <div id="particles-js"></div>
-  <header>
-    <img src="assets/logo.png" class="logo" alt="eスポーツ装備屋"/>
-    <h1 class="glow-text">最高峰のゲーミング体験を、あなたに。</h1>
-  </header>
-  <section class="carousel">
-    <img src="assets/product-1.jpg" class="carousel-img active" />
-    <img src="assets/product-2.jpg" class="carousel-img" />
-  </section>
-  <section class="about">
-    <h2>私たちについて</h2>
-    <p>東京都新宿区百人町2-4-2 ヤマキビル502（新大久保駅徒歩1分 / 4F ESPORTSCAFE 5G運営）</p>
-  </section>
-  <section class="contact">
-    <h2>お問い合わせ</h2>
-    <p>営業時間：9:00～19:00｜定休日：毎週金・土</p>
-  </section>
-  <footer>© 2025 eスポーツ装備屋</footer>
-  <script src="particles.min.js"></script>
-  <script src="script.js"></script>
+    <div id="particles-js"></div>
+    <header>
+        <img src="assets/logo.png" alt="eスポーツ装備屋" class="logo">
+        <h1>最高峰のゲーミング体験を、あなたに。</h1>
+    </header>
+    <section id="about">
+        <h2>私たちについて</h2>
+        <p>東京都新宿区百人町2-4-2 ヤマキビル502<br>（新大久保駅徒歩1分 / 4F ESPORTSCAFE 5G運営会社）</p>
+    </section>
+    <section id="products">
+        <h2>おすすめ商品</h2>
+        <div class="product-card">商品1</div>
+        <div class="product-card">商品2</div>
+    </section>
+    <section id="contact">
+        <h2>お問い合わせ</h2>
+        <p>営業時間：9:00～19:00<br>電話番号・メールアドレス・定休日：後日追加</p>
+    </section>
+    <footer>© 2025 eスポーツ装備屋</footer>
+    <script src="particles.min.js"></script>
+    <script src="script.js"></script>
+
+<!-- 返回顶部按钮 -->
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+<!-- AOS 动画库 -->
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({ once: true });
+</script>
+
+<!-- 滚动返回顶部按钮显示控制 -->
+<script>
+window.onscroll = function() {
+  document.getElementById("topBtn").style.display = window.scrollY > 300 ? "flex" : "none";
+};
+</script>
+
+<!-- 页脚 -->
+<footer>
+  <p>&copy; <span id="year"></span> eスポーツ装備屋</p>
+</footer>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+
 </body>
 </html>
