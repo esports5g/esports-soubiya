@@ -1,91 +1,180 @@
-
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>eスポーツ装備屋</title>
-    <link rel="stylesheet" href="style.css">
-
-<!-- Font & Animation Libs -->
-<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
-
-<style>
-html {
-  scroll-behavior: smooth;
-}
-#topBtn {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #0f0f0f;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  width: 44px;
-  height: 44px;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 99;
-  cursor: pointer;
-}
-footer {
-  text-align: center;
-  margin-top: 80px;
-  font-size: 14px;
-  color: #888;
-}
-</style>
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eスポーツ装備屋</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 </head>
 <body>
-    <div id="particles-js"></div>
-    <header>
-        <img src="assets/logo.png" alt="eスポーツ装備屋" class="logo">
-        <h1>最高峰のゲーミング体験を、あなたに。</h1>
-    </header>
-    <section id="about">
-        <h2>私たちについて</h2>
-        <p>東京都新宿区百人町2-4-2 ヤマキビル502<br>（新大久保駅徒歩1分 / 4F ESPORTSCAFE 5G運営会社）</p>
-    </section>
-    <section id="products">
-        <h2>おすすめ商品</h2>
-        <div class="product-card">商品1</div>
-        <div class="product-card">商品2</div>
-    </section>
-    <section id="contact">
-        <h2>お問い合わせ</h2>
-        <p>営業時間：9:00～19:00<br>電話番号・メールアドレス・定休日：後日追加</p>
-    </section>
-    <footer>© 2025 eスポーツ装備屋</footer>
-    <script src="particles.min.js"></script>
-    <script src="script.js"></script>
+  <div class="valorant-bg"></div>
 
-<!-- 返回顶部按钮 -->
-<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-  <i class="fas fa-arrow-up"></i>
-</button>
+  <!-- 页面加载动画 -->
+<div id="preloader">
+  <div class="preloader-content">
+    <img src="assets/logo.png" alt="ロゴ" />
+    <div class="loader-text">Loading...</div>
+  </div>
+</div>
 
-<!-- AOS 动画库 -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-<script>
-  AOS.init({ once: true });
-</script>
+  <div id="particles-js"></div>
 
-<!-- 滚动返回顶部按钮显示控制 -->
-<script>
-window.onscroll = function() {
-  document.getElementById("topBtn").style.display = window.scrollY > 300 ? "flex" : "none";
-};
-</script>
+  <!-- 吸顶导航 + 集成语言切换按钮 -->
+  <nav class="main-nav">
+    <div class="nav-left">
+      <img src="assets/logo.png" alt="Logo" class="nav-logo" />
+      <span>eスポーツ装備屋</span>
+    </div>
+    <div class="nav-links">
+      <a href="#products" data-lang-ja="商品" data-lang-zh="商品" data-lang-en="Products">商品</a>
+      <a href="#contact" data-lang-ja="お問い合わせ" data-lang-zh="联系方式" data-lang-en="Contact">お問い合わせ</a>
+      <a href="#" onclick="window.scrollTo({top: 0, behavior:'smooth'})" data-lang-ja="トップへ" data-lang-zh="返回顶部" data-lang-en="Top">トップへ</a>
+      <span class="nav-lang">
+        <button onclick="setLang('ja')">日</button>
+        <button onclick="setLang('zh')">中</button>
+        <button onclick="setLang('en')">EN</button>
+      </span>
+    </div>
+  </nav>
 
-<!-- 页脚 -->
-<footer>
-  <p>&copy; <span id="year"></span> eスポーツ装備屋</p>
-</footer>
-<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <header class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1 class="hero-title neon-scan">eスポーツ装備屋へようこそ。</h1>
+      
+      <p class="hero-sub">最高峰のゲーミング体験を、あなたに。</p>
+    </div>
+  </header>
+  
+<!-- 私たちについて -->
+<section id="about-shop" data-aos="fade-up">
+  <h2>eスポーツ装備屋とは</h2>
+  <p>
+    新宿・百人町に位置する「eスポーツ装備屋」は、プロレベルのゲーミングPCを専門に取り扱う販売・体験ショップです。<br>
+    同ビル4Fには、直営の「ESPORTSCAFE 5G」を運営し、店内展示機での体験や即日購入も可能です。
+  </p>
+  <a href="https://www.esportscafe5g.com/" target="_blank" class="btn-glow" style="margin-top: 12px; display: inline-block;">
+    ▶ ESPORTSCAFE 5G を見る
+  </a>
+</section>
 
+<!-- 整機おすすめ -->
+<section id="recommended" data-aos="fade-up">
+  <h2>おすすめゲーミングPC</h2>
+
+  <div class="product-scroll">
+    <div class="product-card">
+      <img src="assets/product-1.jpg" alt="ゲーミングPC1" class="product-img">
+      <p>i9-14900K + RTX4080S<br>32GB DDR5 / 1TB SSD</p>
+      <a href="product1.html" class="btn-glow">詳しく見る</a>
+    </div>
+    <div class="product-card">
+      <img src="assets/product-2.jpg" alt="ゲーミングPC2" class="product-img">
+      <p>i7-12700 + RTX3070<br>32GB DDR4 / 1TB SSD</p>
+      <a href="product2.html" class="btn-glow">詳しく見る</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- 店内体験ゾーン -->
+<section id="experience" data-aos="fade-up">
+  <h2>店内で実機体験</h2>
+  <p>
+     240Hz / 540Hz モニターにて最新FPSゲームをプレイ可能。<br>
+    購入前に実機を「試す・見る・感じる」ことができるのは当店だけ。
+  </p>
+  <a href="https://www.esportscafe5g.com/" target="_blank" class="btn-glow" style="margin-top: 12px; display: inline-block;">
+    ▶ ESPORTSCAFE 5G を見る
+  </a>
+</section>
+
+
+
+  <section id="contact" data-aos="fade-up">
+    <h2>お問い合わせ</h2>
+    <p>
+      営業時間：9:00～19:00<br>
+      電話番号・メールアドレス・定休日：後日追加<br>
+      <strong>所在地：</strong> 東京都新宿区百人町2-4-2 ヤマキビル502（新大久保駅徒歩1分 / 4F ESPORTSCAFE 5G運営会社）
+    </p>
+    <div class="map-box" style="margin-top: 20px;">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.901592576279!2d139.7005793152584!3d35.7013069801889!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd5b2f7e0a1%3A0x2b1f3a3c8d1f8e0!2z44CSMTY5LTAwNzMg5p2x5Lqs6YO95paw5a6_5Yy65Lit5aSu5Yy65LqU5Yy65LiK5LqU77yR5LiB55uu77yR77yX4oiS77yR77yX!5e0!3m2!1sja!2sjp!4v1610000000000!5m2!1sja!2sjp"
+        width="100%" height="300" style="border:0; border-radius:12px;" allowfullscreen="" loading="lazy">
+      </iframe>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 eスポーツ装備屋</p>
+    <div class="socials">
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-weixin"></i></a>
+    </div>
+  </footer>
+
+  <!-- 浮动联系按钮 -->
+  <div class="floating-buttons">
+    <button onclick="toggleWechat()" title="WeChat"><i class="fab fa-weixin"></i></button>
+    <a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    <a href="tel:0000000000" title="電話"><i class="fas fa-phone"></i></a>
+  </div>
+
+  <!-- 微信二维码弹窗 -->
+  <div id="wechat-popup" class="wechat-popup" onclick="toggleWechat()">
+    <div class="wechat-box">
+      <p>微信でお問い合わせ</p>
+      <img src="assets/wechat-qrcode.png" alt="WeChat QR" />
+    </div>
+  </div>
+
+  <!-- 返回顶部按钮 -->
+  <button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="particles.min.js"></script>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ once: true });</script>
+  <script>
+    window.addEventListener("load", () => {
+      const preloader = document.getElementById("preloader");
+      if (preloader) preloader.style.display = "none";
+    });
+    </script>
+<!-- お客様の声 -->
+<section id="reviews" data-aos="fade-up">
+  <h2>導入事例・お客様の声</h2>
+  <p>
+    地元のゲーマーや配信者から信頼される「装備屋」。<br>
+    最新構成を使ったセットアップ例など、今後も紹介していきます。
+  </p>
+  <div class="review-list">
+    <div class="review-card">
+      <p class="comment">「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」</p>
+      <p class="author">– 東京在住・A様</p>
+    </div>
+    <div class="review-card">
+      <p class="comment">「スタッフが構成の相談に乗ってくれて安心して購入できました。」</p>
+      <p class="author">– 神奈川・高校生プレイヤー</p>
+    </div>
+    <div class="review-card">
+      <p class="comment">「そのまま上のカフェで実際にプレイできるのが最高。」</p>
+      <p class="author">– 大久保・常連ゲーマー</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- 問い合わせボタン -->
+<section id="contact-button" data-aos="zoom-in">
+  <a href="https://lin.ee/xxxxxxx" target="_blank" class="btn-contact">📩 LINEで今すぐ相談する</a>
+</section>
+
+    
 </body>
 </html>

@@ -1,8 +1,740 @@
 
-body { margin: 0; font-family: sans-serif; background: #0D0D0D; color: white; }
-header { text-align: center; padding: 50px 20px; }
-.logo { width: 150px; }
-section { padding: 50px 20px; text-align: center; }
-.product-card { background: #222; margin: 10px; padding: 20px; display: inline-block; border-radius: 8px; }
-footer { text-align: center; padding: 20px; font-size: 12px; background: #111; }
-#particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #0D0D0D;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Hero Banner */
+.hero {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+  padding: 0 20px;
+}
+.hero-logo {
+  max-width: 120px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-size: 42px;
+  color: #0ff;
+  margin: 0;
+}
+.hero p {
+  font-size: 18px;
+  color: #ccc;
+  margin-top: 10px;
+}
+
+/* Section */
+section {
+  padding: 60px 20px;
+  text-align: center;
+}
+h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #0ff;
+}
+
+/* Products */
+.product-list {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.product-card {
+  background: #111;
+  padding: 20px 30px;
+  border-radius: 10px;
+  transition: 0.3s;
+  font-weight: bold;
+  color: #0ff;
+  border: 1px solid #0ff;
+}
+.product-card:hover {
+  transform: scale(1.05);
+  background: #0ff;
+  color: #000;
+}
+
+/* Map Embed */
+.map-box {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Footer */
+footer {
+  padding: 30px 20px;
+  text-align: center;
+  background: #111;
+  margin-top: 60px;
+  font-size: 14px;
+  color: #888;
+}
+.socials {
+  margin-top: 10px;
+}
+.socials a {
+  margin: 0 10px;
+  font-size: 20px;
+  color: #0ff;
+  transition: 0.3s;
+}
+.socials a:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+/* Particle container */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 0;
+}
+#topBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #0ff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    cursor: pointer;
+    transition: 0.3s ease;
+  }
+  #topBtn:hover {
+    transform: scale(1.1);
+    background: #08f;
+    color: white;
+  }
+  .ripple-button {
+    position: relative;
+    overflow: hidden;
+    z-index: 0;
+  }
+  
+  .ripple-button::after {
+    content: "";
+    position: absolute;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+    transform: scale(1);
+    opacity: 1;
+    transition: width 0.6s ease-out, height 0.6s ease-out, opacity 1s;
+  }
+  
+  .ripple-button:active::after {
+    width: 200px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+  }
+  .floating-buttons {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 999;
+  }
+  .floating-buttons button,
+  .floating-buttons a {
+    background: #0ff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 255, 255, 0.2);
+    transition: 0.3s ease;
+  }
+  .floating-buttons button:hover,
+  .floating-buttons a:hover {
+    transform: scale(1.1);
+    background: #08f;
+    color: white;
+  }
+  
+  .wechat-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+  }
+  .wechat-box {
+    background: #111;
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 280px;
+    margin: 100px auto;
+    text-align: center;
+    color: white;
+  }
+  .wechat-box img {
+    width: 100%;
+    border-radius: 8px;
+    margin-top: 10px;
+  }
+  .product-scroll {
+    display: flex;
+    overflow-x: auto;
+    gap: 16px;
+    padding-bottom: 10px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .product-scroll::-webkit-scrollbar {
+    height: 6px;
+  }
+  .product-scroll::-webkit-scrollbar-thumb {
+    background: rgba(0, 255, 255, 0.3);
+    border-radius: 3px;
+  }
+  
+  .product-card {
+    flex: 0 0 auto;
+    min-width: 220px;
+    scroll-snap-align: start;
+    text-align: center;
+  }
+  .lang-switcher {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 1001;
+  }
+  .lang-switcher button {
+    background: #0ff;
+    border: none;
+    color: #000;
+    font-weight: bold;
+    margin-left: 5px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .lang-switcher button:hover {
+    background: #08f;
+    color: #fff;
+  }
+  .main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    border-bottom: 1px solid #0ff;
+  }
+  
+  .nav-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #0ff;
+    font-size: 18px;
+  }
+  
+  .nav-logo {
+    height: 32px;
+  }
+  
+  .nav-links a {
+    margin-left: 20px;
+    color: #ccc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  .nav-links a:hover {
+    color: #0ff;
+  }
+  .hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .hero-title {
+    font-size: 42px;
+    color: #0ff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    white-space: nowrap;
+  }
+  
+  .hero-sub {
+    margin-top: 10px;
+    font-size: 18px;
+    color: #ccc;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* 商品卡片升级 */
+.product-card {
+    background: transparent;
+    border: 2px solid rgba(0, 255, 255, 0.5);
+    color: #0ff;
+    font-weight: bold;
+    padding: 16px 24px;
+    border-radius: 12px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 12px rgba(0, 255, 255, 0.2);
+  }
+  
+  .product-card:hover {
+    transform: scale(1.05);
+    border-color: #0ff;
+    box-shadow: 0 0 18px rgba(0, 255, 255, 0.6), 0 0 40px rgba(0, 255, 255, 0.3);
+    background: rgba(0, 255, 255, 0.05);
+  }
+  
+  /* 动态边缘光圈 */
+  .product-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #0ff;
+    border-radius: 12px;
+    opacity: 0.2;
+    pointer-events: none;
+    animation: pulseBorder 2.5s infinite ease-in-out;
+  }
+  
+  @keyframes pulseBorder {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(1.05); }
+  }
+  #preloader {
+    position: fixed;
+    inset: 0;
+    background: #000;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.5s ease;
+  }
+  
+  .preloader-content {
+    text-align: center;
+    animation: fadeIn 1.2s ease-in-out;
+  }
+  
+  .preloader-content img {
+    width: 100px;
+    height: auto;
+    animation: rotateIn 1.8s ease-in-out;
+  }
+  
+  .loader-text {
+    margin-top: 16px;
+    color: #0ff;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+  
+  @keyframes rotateIn {
+    from { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+    to { opacity: 1; transform: rotate(0deg) scale(1); }
+  }
+  /* 🌈 背景霓虹波动层 */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 30% 30%, rgba(0, 255, 255, 0.1), transparent 60%),
+                radial-gradient(circle at 70% 70%, rgba(255, 0, 255, 0.08), transparent 60%),
+                linear-gradient(135deg, #0ff2 0%, #f0f2 100%);
+    background-size: 400% 400%;
+    animation: neonShift 15s ease infinite;
+    z-index: 0;
+    pointer-events: none;
+  }
+  
+  @keyframes neonShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  body {
+    background: #000;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+    padding: 40px 20px;
+    max-width: 960px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 32px;
+    color: #0ff;
+    margin-bottom: 20px;
+  }
+  
+  img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 16px rgba(0, 255, 255, 0.3);
+    margin-bottom: 20px;
+    transition: transform 0.4s ease;
+  }
+  img:hover {
+    transform: scale(1.03);
+  }
+  
+  .spec {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: inset 0 0 10px rgba(0,255,255,0.1);
+  }
+  
+  .spec p {
+    margin-bottom: 12px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  .spec strong {
+    color: #0ff;
+  }
+  
+  .back-btn {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 8px 16px;
+    background: #0ff;
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 8px;
+    transition: 0.3s ease;
+  }
+  
+  .back-btn:hover {
+    background: #08f;
+    color: white;
+  }
+  /* 导航栏滚动变色 */
+.main-nav {
+    position: sticky;
+    top: 0;
+    z-index: 998;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #0ff;
+    transition: background 0.3s ease;
+  }
+  
+  body.scrolled .main-nav {
+    background: rgba(0, 0, 0, 0.92);
+    box-shadow: 0 2px 12px rgba(0, 255, 255, 0.1);
+  }
+  
+  /* Hero 加雷达动态遮罩 */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(0,255,255,0.1) 0%, transparent 70%),
+                repeating-conic-gradient(from 0deg, rgba(0,255,255,0.1) 0deg 10deg, transparent 10deg 20deg);
+    animation: radarSweep 10s linear infinite;
+    pointer-events: none;
+    z-index: -1;
+  }
+  
+  @keyframes radarSweep {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  .flip-card {
+    background: transparent;
+    width: 220px;
+    height: 140px;
+    perspective: 1000px;
+  }
+  
+  .flip-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transform-style: preserve-3d;
+    transition: transform 0.8s ease;
+  }
+  
+  .flip-card:hover .flip-inner {
+    transform: rotateY(180deg);
+  }
+  
+  .flip-front, .flip-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #0ff;
+    box-shadow: 0 0 12px rgba(0,255,255,0.2);
+    background: #111;
+    border: 1px solid #0ff3;
+  }
+  
+  .flip-front {
+    font-size: 16px;
+  }
+  
+  .flip-back {
+    transform: rotateY(180deg);
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .flip-back a.btn-glow {
+    padding: 6px 12px;
+    background: #0ff;
+    color: #000;
+    border-radius: 6px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: 0.3s ease;
+  }
+  .flip-back a.btn-glow:hover {
+    background: #08f;
+    color: #fff;
+  }
+  /* 首页主标题 Glitch 效果 */
+.hero-title.glitch {
+    position: relative;
+    color: #0ff;
+    font-size: 42px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .hero-title.glitch::before,
+  .hero-title.glitch::after {
+    content: attr(data-text);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+    color: #0ff;
+    background: transparent;
+    clip: rect(0, 900px, 0, 0);
+  }
+  
+  .hero-title.glitch::before {
+    animation: glitchTop 2s infinite linear alternate-reverse;
+    color: #f0f;
+  }
+  .hero-title.glitch::after {
+    animation: glitchBottom 1.5s infinite linear alternate-reverse;
+    color: #0ff;
+  }
+  
+  @keyframes glitchTop {
+    0% { clip: rect(0, 9999px, 0, 0); }
+    5% { clip: rect(5px, 9999px, 40px, 0); transform: translate(-3px, -2px); }
+    100% { clip: rect(40px, 9999px, 70px, 0); transform: none; }
+  }
+  
+  @keyframes glitchBottom {
+    0% { clip: rect(0, 9999px, 0, 0); }
+    10% { clip: rect(60px, 9999px, 80px, 0); transform: translate(2px, 2px); }
+    100% { clip: rect(80px, 9999px, 100px, 0); transform: none; }
+  }
+  .hero-title.neon-scan {
+    font-size: 42px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    position: relative;
+    color: #0ff;
+    background: linear-gradient(90deg, #0ff, #fff, #0ff);
+    background-size: 80%;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: scanLight 3s linear infinite;
+  }
+  
+  @keyframes scanLight {
+    0% { background-position: -100% 0; }
+    50% { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+  }
+  .product-img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 0 12px rgba(0,255,255,0.2);
+  }
+  .review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .review-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 320px;
+    flex: 1 1 260px;
+    box-shadow: 0 0 12px rgba(0,255,255,0.1);
+    color: #fff;
+  }
+  .review-card .comment {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  .review-card .author {
+    font-size: 14px;
+    color: #aaa;
+  }
+  .btn-contact {
+    display: inline-block;
+    margin: 30px auto;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    color: black;
+    background: #0ff;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+    transition: 0.3s;
+  }
+  .btn-contact:hover {
+    background: #08f;
+    color: white;
+  }
+  .review-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .review-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    padding: 16px;
+    max-width: 320px;
+    flex: 1 1 260px;
+    box-shadow: 0 0 12px rgba(0,255,255,0.1);
+    color: #fff;
+  }
+  
+  .review-card .comment {
+    font-style: italic;
+    margin-bottom: 10px;
+  }
+  
+  .review-card .author {
+    font-size: 14px;
+    color: #aaa;
+  }
+  
+  .btn-contact {
+    display: inline-block;
+    margin: 30px auto;
+    padding: 12px 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    color: black;
+    background: #0ff;
+    text-decoration: none;
+    box-shadow: 0 0 10px rgba(0,255,255,0.3);
+    transition: 0.3s;
+  }
+  
+  .btn-contact:hover {
+    background: #08f;
+    color: white;
+  }
+  .valorant-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0,255,255,0.05), transparent 70%),
+                radial-gradient(circle at top right, rgba(0,255,255,0.03), transparent 70%),
+                radial-gradient(circle at bottom left, rgba(0,255,255,0.03), transparent 70%);
+    animation: pulseLight 6s ease-in-out infinite;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  @keyframes pulseLight {
+    0%, 100% {
+      filter: brightness(1) blur(0px);
+    }
+    50% {
+      filter: brightness(1.2) blur(4px);
+    }
+  }
+  
