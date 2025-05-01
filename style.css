@@ -738,3 +738,41 @@ body::before {
     }
   }
   
+
+/* === 📱 Responsive Layout for Mobile & Tablet === */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-sub {
+    font-size: 14px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .product-card {
+    width: 90% !important;
+    margin: 10px auto;
+    display: block;
+    text-align: center;
+  }
+
+  .product-img {
+    max-height: 180px;
+  }
+
+  .lang-switcher, .nav-links, .floating-buttons {
+    transform: scale(0.85);
+  }
+
+  h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .btn-glow {
+    width: 90%;
+    margin: 10px auto;
+  }
+}
