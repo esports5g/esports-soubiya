@@ -781,3 +781,35 @@ nav a.active {
   color: #00ffff;
   border-bottom: 2px solid #00ffff;
 }
+.partner-carousel {
+  display: flex;
+  overflow-x: auto;
+  gap: 30px;
+  padding: 10px 0;
+  justify-content: center;
+  scroll-snap-type: x mandatory;
+}
+.partner-carousel img {
+  height: 60px;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  filter: drop-shadow(0 0 6px rgba(0,255,255,0.2));
+  transition: transform 0.3s ease;
+}
+.partner-carousel img:hover {
+  transform: scale(1.1);
+}
+.partner-carousel img {
+  height: 60px;
+  width: auto;
+  max-width: 160px;
+  object-fit: contain;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  filter: drop-shadow(0 0 6px rgba(0,255,255,0.2));
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+.partner-carousel img:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 10px rgba(0,255,255,0.6));
+}

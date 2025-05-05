@@ -82,3 +82,21 @@ window.addEventListener("load", () => {
 window.addEventListener("scroll", () => {
   document.body.classList.toggle("scrolled", window.scrollY > 40);
 });
+window.addEventListener("DOMContentLoaded", () => {
+  const carousel = document.querySelector(".partner-carousel");
+  if (!carousel) return;
+
+  let scrollAmount = 0;
+  const scrollStep = 1; // 每次移动的像素数
+  const scrollDelay = 20; // 移动间隔时间(ms)
+
+  function autoScroll() {
+    if (carousel.scrollLeft >= carousel.scrollWidth - carousel.clientWidth) {
+      carousel.scrollLeft = 0; // 到尾部则重头开始
+    } else {
+      carousel.scrollLeft += scrollStep;
+    }
+  }
+
+  setInterval(autoScroll, scrollDelay);
+});
