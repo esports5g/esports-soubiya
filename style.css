@@ -776,3 +776,8 @@ body::before {
     margin: 10px auto;
   }
 }
+nav a.active {
+  font-weight: bold;
+  color: #00ffff;
+  border-bottom: 2px solid #00ffff;
+}
