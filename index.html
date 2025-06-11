@@ -31,6 +31,10 @@
     </style>
 </head>
 <body>
+
+<!-- 商品分類フィルター -->
+
+
 <div class="valorant-bg"></div>
 <!-- 页面加载动画 -->
 <div id="preloader">
@@ -59,6 +63,7 @@
 </span>
 </div>
 </nav>
+
 <!-- 首页横幅 -->
 <header class="hero">
 <div class="hero-content" data-aos="fade-up">
@@ -70,7 +75,10 @@
 <section data-aos="fade-up" id="about-shop">
 <h2>eスポーツ装備屋とは</h2>
 <p>
-      新宿・百人町に位置する「eスポーツ装備屋」は、プロレベルのゲーミングPCを専門に取り扱う販売・体験ショップです。
+      eスポーツ装備屋とは  
+新宿・百人町に位置する「eスポーツ装備屋」は、プロレベルのゲーミングPCを専門に取り扱う販売・体験型ショップです。   
+さらに、当店では厳選された中古製品も多数取り揃えており、最高の品質を最低価格でご提供することをお約束します。
+
       <br/>
       同ビル4Fには、直営の「ESPORTSCAFE 5G」を運営し、店内展示機での体験や即日購入も可能です。
     </p>
@@ -78,14 +86,27 @@
 </section>
 <!-- 商品推荐 -->
 <section data-aos="fade-up" id="recommended">
-<h2>おすすめゲーミングPC</h2>
+<h2>商品一覧</h2>
+
+<div class="category-filter" style="text-align:center; margin: 20px 0;">
+  <a href="category_all.html"><button>すべて表示</button></a>
+  <a href="category_new_gamepc.html"><button>新品ゲーム用PC</button></a>
+  <a href="category_new_parts.html"><button>新品PCパーツ</button></a>
+  <a href="category_new_peripheral.html"><button>新品周辺機器</button></a>
+  <a href="category_used_gamepc.html"><button>中古ゲーム用PC</button></a>
+  <a href="category_used_office.html"><button>中古事務用PC</button></a>
+  <a href="category_used_parts.html"><button>中古PCパーツ</button></a>
+  <a href="category_used_peripheral.html"><button>中古周辺機器</button></a>
+    <a href="category_pc_repair.html"><button>PC修理</button></a>
+</div>
+
 <div class="product-scroll">
-<div class="product-card">
+<div class="product-card" data-category="新品ゲーム用PC">
 <img alt="ゲーミングPC1" class="product-img" src="assets/product-1.jpg"/>
 <p>i9-14900K + RTX4080S<br/>32GB DDR5 / 1TB SSD</p>
 <a class="btn-glow" href="product1.html">詳しく見る</a>
 </div>
-<div class="product-card">
+<div class="product-card" data-category="新品ゲーム用PC">
 <img alt="ゲーミングPC2" class="product-img" src="assets/product-2.jpg"/>
 <p>i7-12700 + RTX3070<br/>32GB DDR4 / 1TB SSD</p>
 <a class="btn-glow" href="product2.html">詳しく見る</a>
@@ -185,16 +206,6 @@
 <p class="author">– 大久保・常連ゲーマー</p>
 </div>
 </div>
-<section data-aos="fade-up" id="partners">
-  <h2>協力ブランド</h2>
-  <div class="partner-carousel">
-    <img src="assets/partner-intel.png" alt="Intel" />
-    <img src="assets/partner-nvidia.png" alt="NVIDIA" />
-    <img src="assets/partner-asrock.png" alt="ASRock" />
-    <!-- 可继续追加 -->
-  </div>
-</section>
-
 <footer style="background: transparent; text-align: center; padding: 20px 0; color: #ccc;">
 <p>© 2025 eスポーツ装備屋</p>
 <div class="socials">

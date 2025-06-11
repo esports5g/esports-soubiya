@@ -781,35 +781,21 @@ nav a.active {
   color: #00ffff;
   border-bottom: 2px solid #00ffff;
 }
-.partner-carousel {
-  display: flex;
-  overflow-x: auto;
-  gap: 30px;
-  padding: 10px 0;
-  justify-content: center;
-  scroll-snap-type: x mandatory;
+.category-filter a button {
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid #00ffff;
+  color: #fff;
+  padding: 8px 16px;
+  margin: 6px;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px #00ffff33;
 }
-.partner-carousel img {
-  height: 60px;
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  filter: drop-shadow(0 0 6px rgba(0,255,255,0.2));
-  transition: transform 0.3s ease;
-}
-.partner-carousel img:hover {
-  transform: scale(1.1);
-}
-.partner-carousel img {
-  height: 60px;
-  width: auto;
-  max-width: 160px;
-  object-fit: contain;
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  filter: drop-shadow(0 0 6px rgba(0,255,255,0.2));
-  transition: transform 0.3s ease, filter 0.3s ease;
-}
-.partner-carousel img:hover {
-  transform: scale(1.2);
-  filter: drop-shadow(0 0 10px rgba(0,255,255,0.6));
+
+.category-filter a button:hover {
+  background: rgba(0, 255, 255, 0.15);
+  transform: scale(1.05);
+  box-shadow: 0 0 20px #00ffff99;
 }
