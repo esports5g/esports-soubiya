@@ -29,12 +29,49 @@
       margin-bottom: 0;
     }
     </style>
+<style>
+.language-switch { display: flex; gap: 6px; }
+.language-switch button,
+.language-switch a {
+  min-width: 40px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #222;
+  text-align: center;
+  font-weight: bold;
+  transition: background .2s, color .2s;
+  box-sizing: border-box;
+}
+.language-switch button.active,
+.language-switch a.active {
+  background: #05d;
+  color: #fff;
+  border: 1.5px solid #05d;
+}
+</style>
+<div id="google_translate_element" style="position:fixed;top:15px;right:18px;z-index:99999;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'ja', includedLanguages: 'ja,zh-CN,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+    'google_translate_element'
+  );
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+.goog-te-banner-frame.skiptranslate {display:none!important;}
+body { top:0px!important; }
+#google_translate_element { font-size:15px; }
+.language-switch { display:none!important; }
+</style>
 </head>
 <body>
-
 <!-- 商品分類フィルター -->
-
-
 <div class="valorant-bg"></div>
 <!-- 页面加载动画 -->
 <div id="preloader">
@@ -63,7 +100,6 @@
 </span>
 </div>
 </nav>
-
 <!-- 首页横幅 -->
 <header class="hero">
 <div class="hero-content" data-aos="fade-up">
@@ -84,21 +120,16 @@
     </p>
 <a class="btn-glow" href="https://www.esportscafe5g.com/" style="margin-top: 12px; display: inline-block;" target="_blank">▶ ESPORTSCAFE 5G を見る</a>
 </section>
-<!-- 商品推荐 -->
 <section data-aos="fade-up" id="recommended">
-<h2>商品一覧</h2>
-
-<div class="category-filter" style="text-align:center; margin: 20px 0;">
-  <a href="category_all.html"><button>すべて表示</button></a>
-  <a href="category_new_gamepc.html"><button>新品ゲーム用PC</button></a>
-  <a href="category_new_parts.html"><button>新品PCパーツ</button></a>
-  <a href="category_new_peripheral.html"><button>新品周辺機器</button></a>
-  <a href="category_used_gamepc.html"><button>中古ゲーム用PC</button></a>
-  <a href="category_used_office.html"><button>中古事務用PC</button></a>
-  <a href="category_used_parts.html"><button>中古PCパーツ</button></a>
-  <a href="category_used_peripheral.html"><button>中古周辺機器</button></a>
-    <a href="category_pc_repair.html"><button>PC修理</button></a>
-</div>
+  <h2>サービス一览</h2>
+  <ul class="service-list">
+    <li>新品・中古ゲーミングPC販売</li>
+    <li>新品・中古PCパーツ・周辺機器販売</li>
+    <li>ゲーミングPCカスタム組立・アップグレード</li>
+    <li>パソコン修理・メンテナンス</li>
+    <li>構成相談・無料見積もり</li>
+  </ul>
+</section>
 
 <div class="product-scroll">
 <div class="product-card" data-category="新品ゲーム用PC">
@@ -127,12 +158,11 @@
 <section data-aos="fade-up" id="contact">
 <h2>お問い合わせ</h2>
 <p>
-      営業時間：9:00～19:00
-      <br/>
-      電話番号・メールアドレス・定休日：後日追加
-      <br/>
-<strong>所在地：</strong> 東京都新宿区百人町2-4-2 ヤマキビル502（新大久保駅徒歩1分 / 4F ESPORTSCAFE 5G運営会社）
-    </p>
+  営業時間：9:00～19:00<br/><span class="notranslate">
+  電話番号：080-7146-4150</span><br/>
+  メールアドレス：<a class="notranslate" href="mailto:esoubiya502@gmail.com"><span class="notranslate notranslate">esoubiya502@gmail.com</span></a><br/>
+  定休日：毎週金・土<br/>
+</p>
 <div class="map-box" style="margin-top: 20px;">
 <iframe allowfullscreen="" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.835222472212!2d139.6991927!3d35.7030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd829ae9a1b%3A0x343b2de8b3613e90!2z44CSMTY5LTAwNzIg5p2x5Lqs6YO95paw5a6_5Yy65paw5a6_77yT5LiB55uu77yV4oiS77yZIOaWsOWuv-eahOW6lw!5e0!3m2!1sja!2sjp!4v1714886790056!5m2!1sja!2sjp" style="border:0; border-radius:12px;" width="100%">
 </iframe>
@@ -182,7 +212,6 @@
 <p style="margin-bottom: 20px;">
     構成相談・即日購入・見積もりだけでも歓迎です！お気軽にご来店・ご相談ください。
   </p>
-<a class="btn-contact" href="https://lin.ee/xxxxxxx" style="font-size: 1.2em;" target="_blank">📩 LINEで今すぐ相談する</a>
 </section>
 <!-- 客户好评 -->
 <section data-aos="fade-up" id="reviews">
@@ -215,18 +244,7 @@
 </div>
 </footer>
 <!-- 浮动按钮 -->
-<div class="floating-buttons">
-<button onclick="toggleWechat()" title="WeChat"><i class="fab fa-weixin"></i></button>
-<a href="https://www.instagram.com/" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-<a href="tel:0000000000" title="電話"><i class="fas fa-phone"></i></a>
-</div>
 <!-- 微信二维码弹窗 -->
-<div class="wechat-popup" id="wechat-popup" onclick="toggleWechat()">
-<div class="wechat-box">
-<p>微信でお問い合わせ</p>
-<img alt="WeChat QR" src="assets/wechat-qrcode.png"/>
-</div>
-</div>
 <!-- 返回顶部按钮 -->
 <button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
 <i class="fas fa-arrow-up"></i>
@@ -235,5 +253,64 @@
 <script src="script.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
 <script>AOS.init({ once: true });</script>
-</section></body>
+</section>
+<!-- 浮动按钮 -->
+<style>
+.floating-buttons {position:fixed;right:18px;bottom:30px;z-index:9999;display:flex;flex-direction:column;gap:18px;}
+.floating-buttons a, .floating-buttons button {background:#fff;border-radius:50%;width:56px;height:56px;box-shadow:0 2px 8px rgba(0,0,0,0.22);display:flex;align-items:center;justify-content:center;font-size:26px;border:none;cursor:pointer;transition:box-shadow 0.2s;}
+.floating-buttons a:hover, .floating-buttons button:hover {box-shadow:0 4px 16px rgba(0,160,255,0.35);}
+.wechat-popup {display:none;position:fixed;right:90px;bottom:40px;z-index:10000;background:rgba(0,0,0,0.33);}
+.wechat-popup.active {display:block;}
+.wechat-box {background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.22);text-align:center;}
+.wechat-box p {margin:0 0 8px;font-size:1.05em;}
+</style>
+<script>
+function toggleWechat() {
+  var w = document.getElementById('wechat-popup');
+  w.classList.toggle('active');
+}
+</script>
+<!-- 浮动联系方式：全部直接显示，无弹窗 -->
+<style>
+.floating-contact-wrap {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  padding: 16px 24px;
+  font-size: 17px;
+  align-items: flex-start;
+}
+.floating-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+.floating-contact-row img {
+  width: 26px; height: 26px; display: inline-block; vertical-align: middle;
+}
+.floating-contact-row a { color: #222; text-decoration: underline; }
+</style>
+<div class="floating-contact-wrap notranslate">
+<div class="floating-contact-row">
+<img alt="LINE" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg"/>
+<a href="https://line.me/ti/p/~soubiya5g" target="_blank" title="LINEで追加"><span class="notranslate notranslate">soubiya5g</span></a>
+</div>
+<div class="floating-contact-row">
+<img alt="WeChat" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg"/>
+<span class="notranslate" style="user-select:all;"><span class="notranslate notranslate">Esports5G</span></span>
+</div>
+<div class="floating-contact-row">
+<img alt="X" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"/>
+<a href="https://x.com/Esoubiya" target="_blank" title="X(Twitter)"><span class="notranslate notranslate">@Esoubiya</span></a>
+</div>
+</div>
+</body>
 </html>

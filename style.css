@@ -799,3 +799,21 @@ nav a.active {
   transform: scale(1.05);
   box-shadow: 0 0 20px #00ffff99;
 }
+.service-list {
+  margin: 32px 0 10px 0;
+  padding-left: 0;
+  list-style: none;
+  font-size: 1.17em;
+  color: #0ff;
+  text-align: center;
+}
+.service-list li {
+  margin: 12px 0;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,255,255,0.09);
+  letter-spacing: 0.04em;
+  font-weight: 500;
+}
+.service-list li:last-child {
+  border-bottom: none;
+}
