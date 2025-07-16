@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>eスポーツ装備屋</title>
+<link href="style.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+<style>html{scroll-behavior:smooth;}
+    .flow-steps {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .flow-step {
+      background: rgba(255,255,255,0.05);
+      padding: 20px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .flow-step h3 {
+      margin-top: 0;
+      color: #00ffff;
+    }
+    .flow-step p {
+      margin-bottom: 0;
+    }
+    </style>
+<style>
+.language-switch { display: flex; gap: 6px; }
+.language-switch button,
+.language-switch a {
+  min-width: 40px;
+  height: 32px;
+  padding: 0 10px;
+  font-size: 15px;
+  border-radius: 5px;
+  background: #fff;
+  border: 1px solid #aaa;
+  color: #222;
+  text-align: center;
+  font-weight: bold;
+  transition: background .2s, color .2s;
+  box-sizing: border-box;
+}
+.language-switch button.active,
+.language-switch a.active {
+  background: #05d;
+  color: #fff;
+  border: 1.5px solid #05d;
+}
+</style>
+<div id="google_translate_element" style="position:fixed;top:15px;right:18px;z-index:99999;"></div>
+<script type="text/javascript">
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement(
+    {pageLanguage: 'ja', includedLanguages: 'ja,zh-CN,en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE},
+    'google_translate_element'
+  );
+}
+</script>
+<script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+.goog-te-banner-frame.skiptranslate {display:none!important;}
+body { top:0px!important; }
+#google_translate_element { font-size:15px; }
+.language-switch { display:none!important; }
+</style>
+</head>
+<body>
+<!-- 商品分類フィルター -->
+<div class="valorant-bg"></div>
+<!-- 页面加载动画 -->
+<div id="preloader">
+<div class="preloader-content">
+<img alt="ロゴ" src="assets/logo.png"/>
+<div class="loader-text">Loading...</div>
+</div>
+</div>
+<div id="particles-js"></div>
+<!-- 吸顶导航栏 -->
+<nav class="main-nav">
+  <div class="nav-left">
+    <img alt="logo" class="nav-logo" src="assets/logo.png"/>
+    <span class="nav-title" data-lang-en="E-Sports Gears" data-lang-ja="eスポーツ装備屋" data-lang-zh="电竞装备屋">eスポーツ装備屋</span>
+  </div>
+  <div class="nav-links">
+    <a class="nav-link" data-i18n="nav_about" data-lang-en="About" data-lang-ja="会社紹介" data-lang-zh="公司介绍" href="#about-shop">会社紹介</a>
+    <a class="nav-link" data-i18n="nav_products" data-lang-en="Products" data-lang-ja="商品" data-lang-zh="商品" href="#recommended">商品</a>
+    <a class="nav-link" data-i18n="nav_features" data-lang-en="Features" data-lang-ja="強み" data-lang-zh="优势" href="#experience">強み</a>
+    <a class="nav-link" data-i18n="nav_faq" data-lang-en="FAQ" data-lang-ja="よくある質問" data-lang-zh="常见问题" href="#faq-section">よくある質問</a>
+    <a class="nav-link" data-i18n="nav_contact" data-lang-en="Contact" data-lang-ja="お問い合わせ" data-lang-zh="联系方式" href="#contact">お問い合わせ</a>
+  </div>
+  <!-- Google Translate选择栏，已内嵌 -->
+  <div id="google_translate_element" style="margin-left:18px;"></div>
+</nav>
+<!-- 首页横幅 -->
+<header class="hero">
+<div class="hero-content" data-aos="fade-up">
+<h1 class="hero-title neon-scan" id="typed-title"></h1>
+<p class="hero-sub">最高峰のゲーミング体験を、あなたに。</p>
+</div>
+</header>
+<!-- 店铺介绍 -->
+<section data-aos="fade-up" id="about-shop">
+<h2>eスポーツ装備屋とは</h2>
+<p>
+      eスポーツ装備屋とは  
+新宿・百人町に位置する「eスポーツ装備屋」は、プロレベルのゲーミングPCを専門に取り扱う販売・体験型ショップです。   
+さらに、当店では厳選された中古製品も多数取り揃えており、最高の品質を最低価格でご提供することをお約束します。
+
+      <br/>
+      同ビル4Fには、直営の「ESPORTSCAFE 5G」を運営し、店内展示機での体験や即日購入も可能です。
+    </p>
+<a class="btn-glow" href="https://www.esportscafe5g.com/" style="margin-top: 12px; display: inline-block;" target="_blank">▶ ESPORTSCAFE 5G を見る</a>
+</section>
+<section data-aos="fade-up" id="recommended">
+  <h2>サービス一览</h2>
+  <ul class="service-list">
+    <li>新品・中古ゲーミングPC販売</li>
+    <li>新品・中古PCパーツ・周辺機器販売</li>
+    <li>ゲーミングPCカスタム組立・アップグレード</li>
+    <li>パソコン修理・メンテナンス</li>
+    <li>構成相談・無料見積もり</li>
+  </ul>
+</section>
+
+<div class="product-scroll">
+<div class="product-card" data-category="新品ゲーム用PC">
+<img alt="ゲーミングPC1" class="product-img" src="assets/product-1.jpg"/>
+<p>i9-14900K + RTX4080S<br/>32GB DDR5 / 1TB SSD</p>
+<a class="btn-glow" href="product1.html">詳しく見る</a>
+</div>
+<div class="product-card" data-category="新品ゲーム用PC">
+<img alt="ゲーミングPC2" class="product-img" src="assets/product-2.jpg"/>
+<p>i7-12700 + RTX3070<br/>32GB DDR4 / 1TB SSD</p>
+<a class="btn-glow" href="product2.html">詳しく見る</a>
+</div>
+</div>
+</section>
+<!-- 店内体验 -->
+<section data-aos="fade-up" id="experience">
+<h2>店内で実機体験</h2>
+<p>
+      240Hz / 540Hz モニターにて最新FPSゲームをプレイ可能。
+      <br/>
+      購入前に実機を「試す・見る・感じる」ことができるのは当店だけ。
+    </p>
+<a class="btn-glow" href="https://www.esportscafe5g.com/" style="margin-top: 12px; display: inline-block;" target="_blank">▶ ESPORTSCAFE 5G を見る</a>
+</section>
+<!-- 联系我们 -->
+<section data-aos="fade-up" id="contact">
+<h2>お問い合わせ</h2>
+<p>
+  〒169-0073 東京都新宿区百人町２丁目４−２ ビルやまき 502号室
+  営業時間：11:00～20:00<br/><span class="notranslate">
+  電話番号：080-7146-4150</span><br/>
+  メールアドレス：<a class="notranslate" href="mailto:esoubiya502@gmail.com"><span class="notranslate notranslate">esoubiya502@gmail.com</span></a><br/>
+  定休日：毎週日曜日・月曜日<br/>
+</p>
+<div class="map-box" style="margin-top: 20px;">
+<iframe allowfullscreen="" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.835222472212!2d139.6991927!3d35.7030045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188cd829ae9a1b%3A0x343b2de8b3613e90!2z44CSMTY5LTAwNzIg5p2x5Lqs6YO95paw5a6_5Yy65paw5a6_77yT5LiB55uu77yV4oiS77yZIOaWsOWuv-eahOW6lw!5e0!3m2!1sja!2sjp!4v1714886790056!5m2!1sja!2sjp" style="border:0; border-radius:12px;" width="100%">
+</iframe>
+</div>
+</section>
+<!-- よくある質問 -->
+<section data-aos="fade-up" id="faq-section">
+<h2>よくある質問</h2>
+<div class="faq-list">
+<div class="faq-item">
+<h3>Q. パソコンはその場で購入できますか？</h3>
+<p>A. はい、展示品の中で在庫がある商品は当日持ち帰り可能です。</p>
+</div>
+<div class="faq-item">
+<h3>Q. オンライン注文はできますか？</h3>
+<p>A. 現在は店頭販売のみ対応していますが、今後オンライン販売も準備中です。</p>
+</div>
+<div class="faq-item">
+<h3>Q. カスタムPCの相談は可能ですか？</h3>
+<p>A. はい、ご予算やご希望に合わせた構成提案が可能です。</p>
+</div>
+</div>
+</section>
+<section data-aos="fade-up" id="flow">
+<h2>ご利用の流れ</h2>
+<div class="flow-steps">
+<div class="flow-step">
+<h3>① ご来店・ヒアリング</h3>
+<p>スタッフが用途やご予算を丁寧にヒアリングします。</p>
+</div>
+<div class="flow-step">
+<h3>② ご提案・見積もり</h3>
+<p>最適な構成や製品をご提案し、無料でお見積もりします。</p>
+</div>
+<div class="flow-step">
+<h3>③ ご購入・お支払い</h3>
+<p>その場で購入・お支払い。即日お持ち帰りも可能です。</p>
+</div>
+<div class="flow-step">
+<h3>④ アフターサポート</h3>
+<p>購入後の設定・修理・アップグレードにも対応しています。</p>
+</div>
+</div>
+</section>
+<section data-aos="fade-up" id="cta" style="text-align: center; margin-top: 60px;">
+<h2 style="font-size: 1.8em;">今すぐ相談・来店予約を</h2>
+<p style="margin-bottom: 20px;">
+    構成相談・即日購入・見積もりだけでも歓迎です！お気軽にご来店・ご相談ください。
+  </p>
+</section>
+<!-- 客户好评 -->
+<section data-aos="fade-up" id="reviews">
+<h2>導入事例・お客様の声</h2>
+<p>
+      地元のゲーマーや配信者から信頼される「装備屋」。
+      <br/>
+      最新構成を使ったセットアップ例など、今後も紹介していきます。
+    </p>
+<div class="review-list">
+<div class="review-card">
+<p class="comment">「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」</p>
+<p class="author">– 東京在住・A様</p>
+</div>
+<div class="review-card">
+<p class="comment">「スタッフが構成の相談に乗ってくれて安心して購入できました。」</p>
+<p class="author">– 神奈川・高校生プレイヤー</p>
+</div>
+<div class="review-card">
+<p class="comment">「そのまま上のカフェで実際にプレイできるのが最高。」</p>
+<p class="author">– 大久保・常連ゲーマー</p>
+</div>
+</div>
+<footer style="background: transparent; text-align: center; padding: 20px 0; color: #ccc;">
+<p>© 2025 eスポーツ装備屋</p>
+<div class="socials">
+<a href="#"><i class="fab fa-twitter"></i></a>
+<a href="#"><i class="fab fa-instagram"></i></a>
+<a href="#"><i class="fab fa-weixin"></i></a>
+</div>
+</footer>
+<!-- 浮动按钮 -->
+<!-- 微信二维码弹窗 -->
+<!-- 返回顶部按钮 -->
+<button id="topBtn" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })">
+<i class="fas fa-arrow-up"></i>
+</button>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>AOS.init({ once: true });</script>
+</section>
+<!-- 浮动按钮 -->
+<style>
+.floating-buttons {position:fixed;right:18px;bottom:30px;z-index:9999;display:flex;flex-direction:column;gap:18px;}
+.floating-buttons a, .floating-buttons button {background:#fff;border-radius:50%;width:56px;height:56px;box-shadow:0 2px 8px rgba(0,0,0,0.22);display:flex;align-items:center;justify-content:center;font-size:26px;border:none;cursor:pointer;transition:box-shadow 0.2s;}
+.floating-buttons a:hover, .floating-buttons button:hover {box-shadow:0 4px 16px rgba(0,160,255,0.35);}
+.wechat-popup {display:none;position:fixed;right:90px;bottom:40px;z-index:10000;background:rgba(0,0,0,0.33);}
+.wechat-popup.active {display:block;}
+.wechat-box {background:#fff;padding:24px 32px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,0.22);text-align:center;}
+.wechat-box p {margin:0 0 8px;font-size:1.05em;}
+</style>
+<script>
+function toggleWechat() {
+  var w = document.getElementById('wechat-popup');
+  w.classList.toggle('active');
+}
+</script>
+<!-- 浮动联系方式：全部直接显示，无弹窗 -->
+<style>
+.floating-contact-wrap {
+  position: fixed;
+  right: 20px;
+  bottom: 40px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background: rgba(255,255,255,0.92);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+  padding: 16px 24px;
+  font-size: 17px;
+  align-items: flex-start;
+}
+.floating-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+}
+.floating-contact-row img {
+  width: 26px; height: 26px; display: inline-block; vertical-align: middle;
+}
+.floating-contact-row a { color: #222; text-decoration: underline; }
+</style>
+<div class="floating-contact-wrap notranslate">
+<div class="floating-contact-row">
+<img alt="LINE" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/line.svg"/>
+<a href="https://line.me/ti/p/~soubiya5g" target="_blank" title="LINEで追加"><span class="notranslate notranslate">soubiya5g</span></a>
+</div>
+<div class="floating-contact-row">
+<img alt="WeChat" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/wechat.svg"/>
+<span class="notranslate" style="user-select:all;"><span class="notranslate notranslate">Esports5G</span></span>
+</div>
+<div class="floating-contact-row">
+<img alt="X" src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/x.svg"/>
+<a href="https://x.com/Esoubiya" target="_blank" title="X(Twitter)"><span class="notranslate notranslate">@Esoubiya</span></a>
+</div>
+</div>
+</body>
+</html>
