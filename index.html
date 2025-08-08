@@ -7,15 +7,19 @@
   <meta name="description" content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" />
   <meta name="theme-color" content="#030712" />
   <link rel="icon" href="assets/logo.png" />
+  <link rel="canonical" href="https://esports-soubiya.com/">
   <link rel="manifest" href="manifest.webmanifest">
   <meta property="og:title" content="eスポーツ装備屋｜ESPORTS SOUBIYA" />
   <meta property="og:description" content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://esports-soubiya.com/" />
   <meta property="og:image" content="assets/store-3.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -29,35 +33,30 @@
   <script src="https://unpkg.com/lenis@1.1.15/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
   <style>
     :root { --bg: #030712; --panel: rgba(2,6,23,.6); }
-    body { background: radial-gradient(1200px 600px at 10% 0, rgba(8,145,178,.28), transparent),
-                      radial-gradient(800px 800px at 90% 20%, rgba(2,132,199,.22), transparent),
-                      #030712; }
+    body { background:
+      radial-gradient(1200px 600px at 10% 0, rgba(8,145,178,.28), transparent),
+      radial-gradient(800px 800px at 90% 20%, rgba(2,132,199,.22), transparent),
+      #030712; }
     .glass { backdrop-filter: blur(14px); background: var(--panel); border: 1px solid rgba(255,255,255,.07); }
     .hero-cut { clip-path: polygon(0 0,100% 0,100% 92%,0 100%); }
-    .btn-mag:hover { transform: translateY(-2px); }
     .tilt { transform-style: preserve-3d; transition: transform .2s ease, box-shadow .2s ease; }
     .tilt:hover { box-shadow: 0 20px 70px rgba(6,182,212,.2); }
-    .lang-btn { opacity:.7 }
+    .lang-btn { opacity:.75 }
     .lang-btn.active { opacity:1; box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset; }
     .shimmer { position:relative; overflow:hidden }
     .shimmer::after{ content:''; position:absolute; inset:-200% -50%; transform:rotate(20deg); background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); animation:shimmer 4s linear infinite; }
     @keyframes shimmer{ 0%{transform:translateX(-60%) rotate(20deg)} 100%{transform:translateX(60%) rotate(20deg)} }
     #lightbox { position: fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:1000 }
     #lightbox img { max-width:92vw; max-height:86vh; border-radius:1rem; box-shadow:0 10px 40px rgba(0,0,0,.6) }
-    #fx-canvas { position: fixed; inset:0; z-index:-1; }
     #menuBtn { display:inline-flex }
     #mobileMenu { position: fixed; inset:0; background:rgba(2,6,23,.96); display:none; z-index:60; }
     #mobileMenu a { display:block; padding:1rem; font-size:1.125rem }
     #toTop { position:fixed; right:1rem; bottom:4.5rem; z-index:50; display:none }
     #stickyCTA{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:.5rem; padding:.5rem .75rem; backdrop-filter:blur(8px); background:rgba(2,6,23,.7); border-top:1px solid rgba(255,255,255,.08); z-index:45 }
     #stickyCTA a{ flex:1; text-align:center }
-    #netwrap { position:relative; }
-    #netcanvas { position:absolute; inset:0; width:100%; height:100%; z-index:-1; opacity:.5 }
-    .quote::before{ content:'“'; margin-right:.25rem; color:#67e8f9; }
-    .quote::after{ content:'”'; margin-left:.25rem; color:#67e8f9; }
-    h1{ font-size:clamp(2rem, 5vw, 3.5rem) }
     @media (max-width:640px){ .hero-cut{clip-path:none} header .h-16{height:56px} }
     @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
   </style>
@@ -69,7 +68,7 @@
   "@type":"LocalBusiness",
   "name":"eスポーツ装備屋",
   "image":"assets/logo.png",
-  "url":"https://YOUR_PAGES_URL/",
+  "url":"https://esports-soubiya.com/",
   "telephone":"+81-80-7146-4150",
   "address":{
     "@type":"PostalAddress",
@@ -83,7 +82,6 @@
 }
 </script>
 
-<canvas id="fx-canvas" aria-hidden="true"></canvas>
 <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-black/60 focus:text-white focus:p-2 rounded" href="#content">Skip to content</a>
 
 <header class="fixed top-0 inset-x-0 z-50 bg-slate-950/50 backdrop-blur-md border-b border-white/10">
@@ -101,14 +99,17 @@
       <a href="#faq" data-i18n="nav.faq" class="hover:text-brand-500">FAQ</a>
     </nav>
     <div class="flex items-center gap-2">
+      <!-- 修复后的语言按钮（桌面） -->
       <div id="langSwitch" class="hidden sm:flex items-center gap-1 text-xs">
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="ja">日本語</button>
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="zh">中文</button>
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="ja">日本語</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="zh">中文</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
       </div>
       <button id="menuBtn" class="md:hidden rounded-md px-2 py-1 bg-white/10" aria-label="menu">☰</button>
     </div>
   </div>
+
+  <!-- Mobile menu -->
   <div id="mobileMenu" role="dialog" aria-modal="true">
     <div class="p-4 flex items-center justify-between border-b border-white/10">
       <div class="flex items-center gap-3">
@@ -124,10 +125,11 @@
       <a href="#testimonials" data-i18n="nav.testimonials">お客様の声</a>
       <a href="#contact" data-i18n="nav.access">アクセス</a>
       <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <!-- 修复后的语言按钮（移动端） -->
       <div class="mt-4 text-sm text-slate-300" id="mLang">
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="ja">日本語</button>
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="zh">中文</button>
-        <button class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="ja">日本語</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="zh">中文</button>
+        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
       </div>
     </nav>
   </div>
@@ -135,7 +137,7 @@
 
 <section id="top" class="relative pt-28 sm:pt-32 pb-16 sm:pb-24 hero-cut overflow-hidden">
   <div class="absolute inset-0 -z-10 will-change-transform" id="heroBg">
-    <img src="assets/store-1.jpg" class="w-full h-full object-cover opacity-20" alt="bg"/>
+    <img src="assets/store-1.jpg" class="w-full h-full object-cover opacity-25" alt="bg"/>
   </div>
   <div id="content" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="grid md:grid-cols-1 gap-8 items-center">
@@ -240,16 +242,13 @@
         <p class="text-xs text-slate-400 mt-2" data-i18n="exp.note">（同公司運営のカフェです / Operated by the same company）</p>
       </div>
       <div class="glass rounded-2xl overflow-hidden tilt">
-        <iframe src="https://www.google.com/maps?q=東京都新宿区百人町2-4-2&output=embed" style="border:0;width:100%;height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps?q=東京都新宿区百人町2-4-2&output=embed" style="border:0;width:100%;height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="map"></iframe>
       </div>
     </div>
   </div>
 </section>
 
 <section id="testimonials" class="relative py-16 sm:py-24" aria-label="testimonials">
-  <div id="netwrap" class="absolute inset-0">
-    <canvas id="netcanvas"></canvas>
-  </div>
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
     <h2 class="text-3xl md:text-4xl font-bold text-center mb-2 shimmer" data-i18n="testi.title">導入事例・お客様の声</h2>
     <p class="text-center text-slate-300/90 mb-10" data-i18n="testi.p">地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。</p>
@@ -321,27 +320,130 @@
 </div>
 
 <script>
+  // Smooth scroll
   const lenis = new Lenis(); function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+
+  // Header & cards reveal
   gsap.from('header',{ y:-40, opacity:0, duration:.6, ease:'power3.out' });
   gsap.utils.toArray('[data-fx="card"], .tilt, #gallery img, #benefits .glass, #builds .glass').forEach((el,i)=>{
     gsap.from(el,{ opacity:0, y:20, duration:.6, delay:i*0.04, scrollTrigger:{ trigger:el, start:'top 85%' } });
   });
+
+  // Parallax for hero & gallery
   gsap.to('#heroBg', { yPercent: -12, ease:'none', scrollTrigger:{ trigger:'#top', start:'top top', end:'bottom top', scrub:true } });
   document.querySelectorAll('.parallax').forEach(img => { gsap.to(img, { y: -30, ease:'none', scrollTrigger:{ trigger:img, start:'top bottom', end:'bottom top', scrub:true } }); });
+
+  // Tilt
   function attachTilt(el){ if ('ontouchstart' in window) return; const r=15; el.addEventListener('mousemove', (e)=>{ const rect=el.getBoundingClientRect(); const x=(e.clientX-rect.left)/rect.width*2-1; const y=(e.clientY-rect.top)/rect.height*2-1; el.style.transform = `rotateX(${(-y*r).toFixed(2)}deg) rotateY(${(x*r).toFixed(2)}deg)`; }); el.addEventListener('mouseleave', ()=>{ el.style.transform='rotateX(0) rotateY(0)'; }); }
   document.querySelectorAll('.tilt').forEach(attachTilt);
-  document.querySelectorAll('.ripple').forEach(btn=>{ btn.style.position='relative'; btn.style.overflow='hidden'; btn.addEventListener('click', function(e){ const r=document.createElement('span'); const d=Math.max(this.clientWidth,this.clientHeight); r.style.cssText=`position:absolute;border-radius:9999px;inset:auto;pointer-events:none;width:${d}px;height:${d}px;background:rgba(255,255,255,.25);transform:translate(-50%,-50%) scale(0);left:${e.offsetX}px;top:${e.offsetY}px;animation:rip .5s ease-out`; this.appendChild(r); r.addEventListener('animationend',()=>r.remove()); }); }); const style=document.createElement('style'); style.textContent='@keyframes rip{to{transform:translate(-50%,-50%) scale(1);opacity:0}}'; document.head.appendChild(style);
-  const lb=document.getElementById('lightbox'); const lbImg=lb.querySelector('img'); document.querySelectorAll('.lightboxable').forEach(img=>{ img.addEventListener('click',()=>{ lbImg.src=img.src; lb.style.display='flex'; }); }); lb.addEventListener('click',()=>{ lb.style.display='none'; lbImg.src=''; });
-  const canvas=document.getElementById('fx-canvas'); const ctx=canvas.getContext('2d'); let w,h,particles=[]; function resize(){ w=canvas.width=innerWidth; h=canvas.height=innerHeight; } window.addEventListener('resize', resize); resize(); function initParticles(){ particles = Array.from({length: Math.min(180, Math.floor(w*h/15000))}, () => ({ x: Math.random()*w, y: Math.random()*h, vx:(Math.random()-0.5)*0.25, vy:(Math.random()-0.5)*0.25, r: Math.random()*1.8+0.4 })); } initParticles(); function draw(){ ctx.clearRect(0,0,w,h); ctx.fillStyle='rgba(6,182,212,0.10)'; for(const p of particles){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>w) p.vx*=-1; if(p.y<0||p.y>h) p.vy*=-1; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); } requestAnimationFrame(draw); } draw();
-  const netc = document.getElementById('netcanvas'); const netwrap = document.getElementById('netwrap'); function sizeNet(){ netc.width = netwrap.clientWidth; netc.height = netwrap.clientHeight; } const nctx = netc.getContext('2d'); sizeNet(); addEventListener('resize', sizeNet); let nodes = Array.from({length:80},()=>({x:Math.random()*netc.width,y:Math.random()*netc.height,vx:(Math.random()-.5)*.6,vy:(Math.random()-.5)*.6})); function netDraw(){ nctx.clearRect(0,0,netc.width,netc.height); nctx.fillStyle='rgba(103,232,249,.6)'; nctx.strokeStyle='rgba(103,232,249,.25)'; for(const p of nodes){ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>netc.width) p.vx*=-1; if(p.y<0||p.y>netc.height) p.vy*=-1; nctx.beginPath(); nctx.arc(p.x,p.y,1.2,0,Math.PI*2); nctx.fill(); } for(let i=0;i<nodes.length;i++){ for(let j=i+1;j<nodes.length;j++){ const a=nodes[i], b=nodes[j]; const dx=a.x-b.x, dy=a.y-b.y; const d=Math.hypot(dx,dy); if(d<140){ nctx.globalAlpha = 1 - d/140; nctx.beginPath(); nctx.moveTo(a.x,a.y); nctx.lineTo(b.x,b.y); nctx.stroke(); nctx.globalAlpha=1; } } } requestAnimationFrame(netDraw); } netDraw();
-  const dict = {ja:{"nav.services":"サービス","nav.gallery":"ギャラリー","nav.access":"アクセス","nav.faq":"FAQ","nav.testimonials":"お客様の声","nav.builds":"セットアップ","hero.tagline":"ESPORTS SOUBIYA","hero.heading":"最高峰のゲーミング体験を、<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>あなたに。</span>","hero.p":"プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。","hero.btn.services":"サービスを見る","hero.btn.access":"アクセス","benefits.0.t":"即日お渡し","benefits.0.p":"在庫品はその場で受け取り可能。","benefits.1.t":"無料診断","benefits.1.p":"不調チェック・アップグレード相談。","benefits.2.t":"安心保証","benefits.2.p":"初期不良に丁寧に対応。","benefits.3.t":"体験重視","benefits.3.p":"直営カフェで実機プレイ。","services.title":"サービス","services.p":"販売・カスタム・修理・体験をワンストップで。","services.items.0":"新品・中古ゲーミングPC販売","services.items.1":"PCパーツ・周辺機器販売","services.items.2":"カスタム組立・アップグレード","services.items.3":"修理・メンテナンス","services.items.4":"構成相談・無料見積もり","builds.title":"おすすめセットアップ","builds.note":"価格は参考帯。詳細は店頭でご相談ください。","builds.e.title":"Entry","builds.e.price":"¥120,000〜","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入門〜主流FPSを高fpsで","builds.p.title":"Pro","builds.p.price":"¥220,000〜","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"1440p高リフレッシュ + クリエイティブ","builds.u.title":"Ultra","builds.u.price":"¥380,000〜","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K/高fps、配信・動画編集も余裕","gallery.title":"店内ギャラリー","exp.badge":"当社直営 / Company-owned","exp.title":"ESPORTSCAFE 5G で実機体験","exp.p":"eスポーツ装備屋が運営する <span class='font-semibold'>ESPORTSCAFE 5G</span> にて、最新FPSを <span class='font-semibold'>240Hz / 540Hz</span> モニターで試遊できます。","exp.btn":"ESPORTSCAFE 5G を見る","exp.note":"（同公司運営のカフェです / Operated by the same company）","testi.title":"導入事例・お客様の声","testi.p":"地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。","testi.q1":"「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」","testi.q1n":"— 東京在住・A様","testi.q2":"「スタッフが構成の相談に乗ってくれて安心して購入できました。」","testi.q2n":"— 神奈川・高校生プレイヤー","testi.q3":"「そのまま上のカフェで実際にプレイできるのが最高。」","testi.q3n":"— 大久保・常連ゲーマー","cta.h":"今日から最高の環境に。","cta.p":"在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。","cta.btn":"アクセス・連絡先","faq.title":"よくある質問","faq.q1":"その場で購入できますか？","faq.a1":"展示品で在庫がある商品は当日お持ち帰り可能です。","faq.q2":"オンライン注文はできますか？","faq.a2":"現状は店頭販売のみ。オンライン販売を準備中です。","faq.q3":"カスタムPCの相談は？","faq.a3":"ご予算・用途に合わせた構成提案を行います。","contact.title":"アクセス & 連絡先","contact.addressL":"住所：","contact.hours":"営業時間：9:00〜19:00（定休：日・月）","contact.phoneL":"電話：","contact.emailL":"Email：","footer.contact":"問い合わせ","footer.services":"サービス"},zh:{"nav.services":"服务","nav.gallery":"图库","nav.access":"地址","nav.faq":"常见问题","nav.testimonials":"用户口碑","nav.builds":"配置推荐","hero.tagline":"ESPORTS SOUBIYA","hero.heading":"把<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>顶级游戏体验</span>带给你","hero.p":"我们专注于高性能游戏平台的销售与体验。","hero.btn.services":"查看服务","hero.btn.access":"交通与联系","benefits.0.t":"当天可提","benefits.0.p":"有库存的展示机可当场带走。","benefits.1.t":"免费诊断","benefits.1.p":"故障检查与升级建议。","benefits.2.t":"放心保障","benefits.2.p":"对初期故障认真处理。","benefits.3.t":"现场体验","benefits.3.p":"自营咖啡现场试玩。","services.title":"服务","services.p":"一站式：销售 / 定制升级 / 维修 / 体验。","services.items.0":"新/二手电竞主机销售","services.items.1":"配件与外设销售","services.items.2":"定制组装与升级","services.items.3":"维修与维护","services.items.4":"配置咨询与免费报价","builds.title":"推荐配置","builds.note":"价格为参考区间，具体以店内为准。","builds.e.title":"入门款 Entry","builds.e.price":"¥120,000 起","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"主流 FPS 高帧率","builds.p.title":"进阶款 Pro","builds.p.price":"¥220,000 起","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"1440p 高刷 + 轻创作","builds.u.title":"旗舰款 Ultra","builds.u.price":"¥380,000 起","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / NVMe 高速盘","builds.u.use":"4K/高帧 + 直播/剪辑","gallery.title":"店内实景","exp.badge":"自营 / Company-owned","exp.title":"在 ESPORTSCAFE 5G 现场体验","exp.p":"在我们同公司运营的 <span class='font-semibold'>ESPORTSCAFE 5G</span>，可在 <span class='font-semibold'>240Hz / 540Hz</span> 显示器上体验最新 FPS。","exp.btn":"前往 ESPORTSCAFE 5G","exp.note":"（本店同公司运营的电竞咖啡）","testi.title":"案例与用户评价","testi.p":"深受本地玩家与主播信赖。我们将持续分享最新配置与落地案例。","testi.q1":"“540Hz 显示器的游戏体验超出想象！性能和服务都很稳。”","testi.q1n":"— 东京 · A先生","testi.q2":"“店员帮我确认配置，买得很安心。”","testi.q2n":"— 神奈川 · 高中生玩家","testi.q3":"“楼上的咖啡可以直接试玩，太方便了。”","testi.q3n":"— 大久保 · 常客玩家","cta.h":"今天就升级你的装备","cta.p":"有库存的展示机支持当天提货；定制单也可加速处理。","cta.btn":"查看地址与联系","faq.title":"常见问题","faq.q1":"能当天带走吗？","faq.a1":"有现货的展示机可当天提货。","faq.q2":"是否支持网购？","faq.a2":"目前仅限到店购买，网购筹备中。","faq.q3":"可以做配置咨询吗？","faq.a3":"根据预算与用途给出适配方案。","contact.title":"地址与联系方式","contact.addressL":"地址：","contact.hours":"营业时间：9:00–19:00（周日/周一休息）","contact.phoneL":"电话：","contact.emailL":"邮箱：","footer.contact":"联系","footer.services":"服务"},en:{"nav.services":"Services","nav.gallery":"Gallery","nav.access":"Access","nav.faq":"FAQ","nav.testimonials":"Testimonials","nav.builds":"Builds","hero.tagline":"ESPORTS SOUBIYA","hero.heading":"Premium <span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>gaming experience</span>, for you.","hero.p":"Retail & hands-on store specialized in high-performance gaming PCs.","hero.btn.services":"View Services","hero.btn.access":"Access","benefits.0.t":"Same-day Pickup","benefits.0.p":"Take in-stock units home today.","benefits.1.t":"Free Diagnostics","benefits.1.p":"Troubleshooting & upgrade advice.","benefits.2.t":"Worry-free Warranty","benefits.2.p":"We handle DOA with care.","benefits.3.t":"Hands-on First","benefits.3.p":"Play on real rigs at our cafe.","services.title":"Services","services.p":"One stop: Sales / Custom Builds / Repair / Experience.","services.items.0":"New & Used Gaming PCs","services.items.1":"PC Parts & Peripherals","services.items.2":"Custom Builds & Upgrades","services.items.3":"Repair & Maintenance","services.items.4":"Build Advice & Free Quote","builds.title":"Recommended Builds","builds.note":"Prices are indicative. Ask in-store for details.","builds.e.title":"Entry","builds.e.price":"From ¥120,000","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"Mainstream FPS at high FPS","builds.p.title":"Pro","builds.p.price":"From ¥220,000","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"1440p high refresh + creation","builds.u.title":"Ultra","builds.u.price":"From ¥380,000","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / Fast NVMe","builds.u.use":"4K/high FPS + streaming/editing","gallery.title":"In-store Gallery","exp.badge":"Company-owned","exp.title":"Hands-on at ESPORTSCAFE 5G","exp.p":"At our sister venue <span class='font-semibold'>ESPORTSCAFE 5G</span>, try the latest FPS on <span class='font-semibold'>240Hz / 540Hz</span> monitors.","exp.btn":"Visit ESPORTSCAFE 5G","exp.note":"(Operated by the same company)","testi.title":"Case Studies & Voices","testi.p":"Trusted by local gamers and streamers. Here are some voices from our customers.","testi.q1":"“540Hz gameplay blew my mind — performance and support were rock solid.”","testi.q1n":"— Tokyo · A-san","testi.q2":"“Staff helped with the build plan so I could buy with confidence.”","testi.q2n":"— Kanagawa · High school player","testi.q3":"“Love that I can play right upstairs at the cafe.”","testi.q3n":"— Okubo · Regular gamer","cta.h":"Upgrade your setup today","cta.p":"In-stock display units available same-day. Custom builds handled fast.","cta.btn":"Access & Contact","faq.title":"FAQ","faq.q1":"Can I take it home the same day?","faq.a1":"If an exhibit unit is in stock, yes.","faq.q2":"Online purchase available?","faq.a2":"Currently in-store only; online shop in preparation.","faq.q3":"Do you offer build advice?","faq.a3":"We propose configurations tailored to your needs and budget.","contact.title":"Access & Contact","contact.addressL":"Address:","contact.hours":"Hours: 9:00–19:00 (Sun/Mon closed)","contact.phoneL":"Tel:","contact.emailL":"Email:","footer.contact":"Contact","footer.services":"Services"}};
-  const els=[...document.querySelectorAll('[data-i18n]')];
-  function applyI18n(lang){ const d=dict[lang]||dict.ja; els.forEach(el=>{ const v=d[el.dataset.i18n]; if(typeof v==='string') el.innerHTML=v; }); document.documentElement.lang=lang; localStorage.setItem('lang',lang); document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang)); }
-  const saved=localStorage.getItem('lang'); const guess=(navigator.language||'ja').slice(0,2); const initLang=saved||(['ja','zh','en'].includes(guess)?guess:'ja'); applyI18n(initLang);
-  ;[...document.querySelectorAll('#langSwitch button, #mLang button')].forEach(btn=>btn.addEventListener('click',()=>applyI18n(btn.dataset.lang)));
-  const mm=document.getElementById('mobileMenu'); document.getElementById('menuBtn').addEventListener('click',()=>{ mm.style.display='block'; gsap.fromTo(mm,{opacity:0},{opacity:1,duration:.2}); }); document.getElementById('menuClose').addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); }); mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); }));
+
+  // Ripple
+  document.querySelectorAll('.ripple').forEach(btn=>{
+    btn.style.position='relative'; btn.style.overflow='hidden';
+    btn.addEventListener('click', function(e){
+      const r=document.createElement('span'); const d=Math.max(this.clientWidth,this.clientHeight);
+      r.style.cssText=`position:absolute;border-radius:9999px;inset:auto;pointer-events:none;width:${d}px;height:${d}px;background:rgba(255,255,255,.25);transform:translate(-50%,-50%) scale(0);left:${e.offsetX}px;top:${e.offsetY}px;animation:rip .5s ease-out`;
+      this.appendChild(r); setTimeout(()=>r.remove(),520);
+    }, {passive:true});
+  });
+  const s=document.createElement('style'); s.textContent='@keyframes rip{to{transform:translate(-50%,-50%) scale(2);opacity:0}}'; document.head.appendChild(s);
+
+  // Simple lightbox
+  const lb=document.getElementById('lightbox'); const lbImg=lb.querySelector('img');
+  document.querySelectorAll('.lightboxable').forEach(img=>{ img.addEventListener('click',()=>{ lbImg.src=img.src; lb.style.display='flex'; }); });
+  lb.addEventListener('click',()=>{ lb.style.display='none'; lbImg.src=''; });
+
+  // Mobile menu
+  const mm=document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click',()=>{ mm.style.display='block'; gsap.fromTo(mm,{opacity:0},{opacity:1,duration:.2}); });
+  document.getElementById('menuClose').addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); });
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); }));
+
+  // Back to top
   const toTop=document.getElementById('toTop'); window.addEventListener('scroll',()=>{ toTop.style.display=window.scrollY>600?'block':'none'; },{passive:true}); toTop.addEventListener('click',()=> lenis.scrollTo(0));
+
+  // Year
   document.getElementById('year').textContent=new Date().getFullYear();
-  let deferredPrompt; const installBtn=document.createElement('button'); installBtn.textContent='Install App'; installBtn.className='hidden sm:inline-flex rounded-md px-2 py-1 bg-white/10 ml-2'; document.querySelector('header .flex.items-center.gap-2').appendChild(installBtn); window.addEventListener('beforeinstallprompt',(e)=>{ e.preventDefault(); deferredPrompt=e; installBtn.classList.remove('hidden'); installBtn.onclick=async()=>{ installBtn.disabled=true; await deferredPrompt.prompt(); deferredPrompt=null; }; }); if('serviceWorker' in navigator){ window.addEventListener('load',()=> navigator.serviceWorker.register('./sw.js')); }
+
+  // ================= i18n（修复版） =================
+  const dict = {
+    ja: {
+      "nav.services":"サービス","nav.gallery":"ギャラリー","nav.access":"アクセス","nav.faq":"FAQ","nav.testimonials":"お客様の声","nav.builds":"セットアップ",
+      "hero.tagline":"ESPORTS SOUBIYA",
+      "hero.heading":"最高峰のゲーミング体験を、<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>あなたに。</span>",
+      "hero.p":"プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。",
+      "hero.btn.services":"サービスを見る","hero.btn.access":"アクセス",
+      "benefits.0.t":"即日お渡し","benefits.0.p":"在庫品はその場で受け取り可能。","benefits.1.t":"無料診断","benefits.1.p":"不調チェック・アップグレード相談。","benefits.2.t":"安心保証","benefits.2.p":"初期不良に丁寧に対応。","benefits.3.t":"体験重視","benefits.3.p":"直営カフェで実機プレイ。",
+      "services.title":"サービス","services.p":"販売・カスタム・修理・体験をワンストップで。","services.items.0":"新品・中古ゲーミングPC販売","services.items.1":"PCパーツ・周辺機器販売","services.items.2":"カスタム組立・アップグレード","services.items.3":"修理・メンテナンス","services.items.4":"構成相談・無料見積もり",
+      "builds.title":"おすすめセットアップ","builds.note":"価格は参考帯。詳細は店頭でご相談ください。","builds.e.title":"Entry","builds.e.price":"¥120,000〜","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入門〜主流FPSを高fpsで","builds.p.title":"Pro","builds.p.price":"¥220,000〜","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"1440p高リフレッシュ + クリエイティブ","builds.u.title":"Ultra","builds.u.price":"¥380,000〜","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K/高fps、配信・動画編集も余裕",
+      "gallery.title":"店内ギャラリー",
+      "exp.badge":"当社直営 / Company-owned","exp.title":"ESPORTSCAFE 5G で実機体験","exp.p":"eスポーツ装備屋が運営する <span class='font-semibold'>ESPORTSCAFE 5G</span> にて、最新FPSを <span class='font-semibold'>240Hz / 540Hz</span> モニターで試遊できます。","exp.btn":"ESPORTSCAFE 5G を見る","exp.note":"（同公司運営のカフェです / Operated by the same company）",
+      "testi.title":"導入事例・お客様の声","testi.p":"地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。","testi.q1":"「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」","testi.q1n":"— 東京在住・A様","testi.q2":"「スタッフが構成の相談に乗ってくれて安心して購入できました。」","testi.q2n":"— 神奈川・高校生プレイヤー","testi.q3":"「そのまま上のカフェで実際にプレイできるのが最高。」","testi.q3n":"— 大久保・常連ゲーマー",
+      "cta.h":"今日から最高の環境に。","cta.p":"在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。","cta.btn":"アクセス・連絡先",
+      "faq.title":"よくある質問","faq.q1":"その場で購入できますか？","faq.a1":"展示品で在庫がある商品は当日お持ち帰り可能です。","faq.q2":"オンライン注文はできますか？","faq.a2":"現状は店頭販売のみ。オンライン販売を準備中です。","faq.q3":"カスタムPCの相談は？","faq.a3":"ご予算・用途に合わせた構成提案を行います。",
+      "contact.title":"アクセス & 連絡先","contact.addressL":"住所：","contact.hours":"営業時間：9:00〜19:00（定休：日・月）","contact.phoneL":"電話：","contact.emailL":"Email：",
+      "footer.contact":"問い合わせ","footer.services":"サービス"
+    },
+    zh: {
+      "nav.services":"服务","nav.gallery":"图库","nav.access":"地址","nav.faq":"常见问题","nav.testimonials":"客户评价","nav.builds":"配置推荐",
+      "hero.tagline":"ESPORTS SOUBIYA","hero.heading":"把<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>顶级游戏体验</span>带给你","hero.p":"我们专注于高性能游戏平台的销售与体验。","hero.btn.services":"查看服务","hero.btn.access":"查看地址",
+      "benefits.0.t":"当天可提","benefits.0.p":"有库存的展示机可当场带走。","benefits.1.t":"免费诊断","benefits.1.p":"故障检查与升级建议。","benefits.2.t":"放心保障","benefits.2.p":"对初期故障认真处理。","benefits.3.t":"现场体验","benefits.3.p":"自营咖啡现场试玩。",
+      "services.title":"服务","services.p":"销售 / 定制 / 维修 / 体验一站式。","services.items.0":"新/二手电竞主机销售","services.items.1":"配件与外设销售","services.items.2":"定制组装与升级","services.items.3":"维修与维护","services.items.4":"配置咨询与免费报价",
+      "builds.title":"推荐配置","builds.note":"价格为参考区间，详情到店咨询。","builds.e.title":"Entry","builds.e.price":"¥120,000 起","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入门到主流 FPS 高帧率","builds.p.title":"Pro","builds.p.price":"¥220,000 起","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"1440p 高频 + 创作","builds.u.title":"Ultra","builds.u.price":"¥380,000 起","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K/高帧，直播/剪辑也轻松",
+      "gallery.title":"店内实景",
+      "exp.badge":"自营 / Company-owned","exp.title":"到 ESPORTSCAFE 5G 实机体验","exp.p":"在我们运营的 <span class='font-semibold'>ESPORTSCAFE 5G</span>，用 <span class='font-semibold'>240Hz / 540Hz</span> 显示器试玩最新 FPS。","exp.btn":"访问 ESPORTSCAFE 5G","exp.note":"（同公司运营的咖啡）",
+      "testi.title":"客户评价","testi.p":"深受本地玩家与主播信赖的‘装備屋’。以下是近期配置与反馈。","testi.q1":"“540Hz 显示器体验超出想象！性能与服务都很满意。”","testi.q1n":"— 东京 A 先生","testi.q2":"“店员一起聊配置，买得很安心。”","testi.q2n":"— 神奈川 高中生玩家","testi.q3":"“楼上的咖啡能直接玩到实机，太爽了。”","testi.q3n":"— 大久保 常客",
+      "cta.h":"今天就升级你的环境。","cta.p":"现货展示机可当日带走，定制也能很快完成。","cta.btn":"查看地址与联系方式",
+      "faq.title":"常见问题","faq.q1":"能当场购买吗？","faq.a1":"有现货的展示机可以当天带走。","faq.q2":"支持网购吗？","faq.a2":"目前仅店内销售，网购在准备中。","faq.q3":"定制主机怎么咨询？","faq.a3":"告诉我们预算与用途，我们会给出配置建议。",
+      "contact.title":"地址与联系方式","contact.addressL":"地址：","contact.hours":"营业时间：9:00–19:00（周日/周一休息）","contact.phoneL":"电话：","contact.emailL":"邮箱：",
+      "footer.contact":"联系","footer.services":"服务"
+    },
+    en: {
+      "nav.services":"Services","nav.gallery":"Gallery","nav.access":"Access","nav.faq":"FAQ","nav.testimonials":"Testimonials","nav.builds":"Builds",
+      "hero.tagline":"ESPORTS SOUBIYA",
+      "hero.heading":"Premium <span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>gaming experience</span>, for you.",
+      "hero.p":"Retail & hands-on store specialized in high-performance gaming PCs.",
+      "hero.btn.services":"View services","hero.btn.access":"Get access",
+      "benefits.0.t":"Same-day Pickup","benefits.0.p":"Take in-stock units home today.","benefits.1.t":"Free Diagnostics","benefits.1.p":"Troubleshooting & upgrade advice.","benefits.2.t":"Worry-free Warranty","benefits.2.p":"We handle DOA with care.","benefits.3.t":"Hands-on First","benefits.3.p":"Play on real rigs at our cafe.",
+      "services.title":"Services","services.p":"Sales, custom builds, repair and in-store demo—one-stop.",
+      "services.items.0":"New & Used Gaming PCs","services.items.1":"PC Parts & Peripherals","services.items.2":"Custom Builds & Upgrades","services.items.3":"Repair & Maintenance","services.items.4":"Consultation & Free Quote",
+      "builds.title":"Recommended Builds","builds.note":"Prices are indicative; visit store for details.","builds.e.title":"Entry","builds.e.price":"From ¥120,000","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"Entry to mainstream FPS at high fps","builds.p.title":"Pro","builds.p.price":"From ¥220,000","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"1440p high refresh + creative","builds.u.title":"Ultra","builds.u.price":"From ¥380,000","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / fast NVMe","builds.u.use":"4K/high-fps; streaming & editing with ease",
+      "gallery.title":"In-store Gallery",
+      "exp.badge":"Company-owned","exp.title":"Try it at ESPORTSCAFE 5G","exp.p":"Hands-on at our <span class='font-semibold'>ESPORTSCAFE 5G</span> using <span class='font-semibold'>240Hz / 540Hz</span> monitors.","exp.btn":"Visit ESPORTSCAFE 5G","exp.note":"(Operated by the same company)",
+      "testi.title":"Testimonials","testi.p":"Trusted by local gamers and streamers. Here are recent setups and feedback.","testi.q1":"“540Hz experience blew my mind! Great performance and service.”","testi.q1n":"— Tokyo, Mr. A","testi.q2":"“Staff helped me choose the right build.”","testi.q2n":"— Kanagawa, student","testi.q3":"“Being able to play right upstairs at the cafe is awesome.”","testi.q3n":"— Okubo, regular",
+      "cta.h":"Upgrade today.","cta.p":"In-stock demo units can go home same day; custom leads are short.","cta.btn":"Access & contact",
+      "faq.title":"FAQ","faq.q1":"Can I buy on the spot?","faq.a1":"Yes—if in stock, you can take it home the same day.","faq.q2":"Online orders?","faq.a2":"Store pickup only for now; online is in the works.","faq.q3":"Custom PC consultation?","faq.a3":"Tell us budget and use cases; we’ll propose a build.",
+      "contact.title":"Access & Contact","contact.addressL":"Address:","contact.hours":"Hours: 9:00–19:00 (Sun/Mon closed)","contact.phoneL":"Tel:","contact.emailL":"Email:",
+      "footer.contact":"Contact","footer.services":"Services"
+    }
+  };
+  const els=[...document.querySelectorAll('[data-i18n]')];
+
+  function applyI18n(lang){
+    const d = dict[lang] || dict.ja;
+    els.forEach(el=>{ const v=d[el.dataset.i18n]; if(typeof v==='string') el.innerHTML=v; });
+    document.documentElement.lang=lang;
+    localStorage.setItem('lang',lang);
+    // 同步激活态（桌面+移动端）
+    document.querySelectorAll('[data-lang]').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang===lang);
+    });
+  }
+  // 初始化语言（本地存储优先）
+  (function(){
+    const saved=localStorage.getItem('lang');
+    const guess=(navigator.language||'ja').slice(0,2);
+    const initLang=saved||(['ja','zh','en'].includes(guess)?guess:'ja');
+    applyI18n(initLang);
+  })();
+  // 事件委托：任何 data-lang 按钮都可触发
+  document.addEventListener('click', (e)=>{
+    const t=e.target.closest('[data-lang]');
+    if(!t) return;
+    e.preventDefault();
+    applyI18n(t.dataset.lang);
+  });
+  // ================= i18n END =================
 </script>
-</body></html>
+</body>
+</html>
