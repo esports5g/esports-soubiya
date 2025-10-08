@@ -151,7 +151,6 @@ body::after{
 /* Keep header/links readable */
 header a, nav a{ color: #eef6ff; }
 </style>
-
 <style id="x-click-fix">
 a[href*="x.com"], a[href*="twitter.com"]{
   position: relative; z-index: 20;
@@ -160,6 +159,44 @@ a[href*="x.com"], a[href*="twitter.com"]{
 }
 .glass::before, .glass::after{ pointer-events: none !important; }
 a[href*="x.com"] *{ pointer-events: auto !important; }
+</style>
+
+<style id="section-divider-fix">
+section.has-divider{ border-top: none !important; position: relative; }
+section.has-divider::before, section.has-divider::after{ display: none !important; }
+.section-divider-line{
+  height:1px; width:100%; max-width:1280px; margin:0 auto;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
+}
+section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
+</style>
+
+<style id="future-fx">
+/* Scroll reveal */
+.reveal-init{ opacity:0; transform: translateY(16px) scale(.98); }
+.reveal-in{ opacity:1; transform: translateY(0) scale(1); transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+/* Card tilt */
+.tilt{ will-change: transform; transition: transform .18s ease, box-shadow .18s ease; transform-style: preserve-3d; }
+.tilt:hover{ box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+/* Magnetic buttons */
+.magnet{ transition: transform .15s ease-out; will-change: transform; }
+/* Nav underline */
+.nav-ink a{ position: relative; }
+.nav-ink a::after{
+  content:''; position:absolute; left:10%; right:10%; bottom:-6px; height:2px;
+  background: linear-gradient(90deg, rgba(0,229,255,.0), rgba(0,229,255,.7), rgba(255,58,242,.0));
+  transform: scaleX(0); transform-origin: center; transition: transform .25s ease;
+}
+.nav-ink a:hover::after{ transform: scaleX(1); }
+/* Neon edges slow hue shift */
+@keyframes hueSlow{ from{ filter: hue-rotate(0deg); } to{ filter: hue-rotate(360deg);} }
+.glass::before{ animation: hueSlow 18s linear infinite; }
+/* Canvas background */
+#fx-space{
+  position: fixed; inset:0; z-index:-2; pointer-events:none; opacity:.55;
+  filter: blur(.2px);
+}
+@media (max-width:640px){ #fx-space{ opacity:.28; } }
 </style>
 
 </head>
@@ -276,7 +313,7 @@ a[href*="x.com"] *{ pointer-events: auto !important; }
 </div>
 </div>
 </section>
-<section class="py-10 sm:py-14 bg-slate-900/40 border-y border-white/5" id="builds">
+<section class="py-10 sm:py-14 bg-slate-900/40 border-y border-white/5 has-divider" id="builds"><div aria-hidden="true" class="section-divider-line"></div>
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 <h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="builds.title">おすすめセットアップ</h2>
 <p class="text-slate-300/90 mb-8" data-i18n="builds.note">価格は参考帯。詳細は店頭でご相談ください。</p>
@@ -385,7 +422,7 @@ a[href*="x.com"] *{ pointer-events: auto !important; }
 <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
 <span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">LINE: @soubiya5g</span>
 <span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">WeChat: Esports5G</span>
-<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15" href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank" target="_blank" rel="noopener noreferrer" href="https://x.com/Esoubiya" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><a href="https://x.com/Esoubiya" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">X（Twitter）</a></a>
+<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15" href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank"><a href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank">X（Twitter）</a></a>
 </div>
 </div>
 </div>
@@ -531,5 +568,98 @@ a[href*="x.com"] *{ pointer-events: auto !important; }
   });
   // ================= i18n END =================
 </script>
+
+<script id="future-fx-js">
+// Scroll reveal
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('reveal-in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.glass, section h2, section h3, .ripple').forEach(el=>{
+    el.classList.add('reveal-init'); io.observe(el);
+  });
+})();
+// Card tilt (parallax)
+(function(){
+  const max=10; // deg
+  document.querySelectorAll('.glass').forEach(card=>{
+    card.classList.add('tilt');
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left)/r.width - .5;
+      const py = (e.clientY - r.top)/r.height - .5;
+      card.style.transform = `rotateY(${px*max}deg) rotateX(${-py*max}deg)`;
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+  });
+})();
+// Magnetic buttons
+(function(){
+  const radius = 80; // px
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  document.querySelectorAll('.ripple').forEach(btn=>{
+    btn.classList.add('magnet');
+    let tx=0, ty=0, raf=null;
+    function anim(){
+      const x = lerp(parseFloat(btn.dataset.x)||0, tx, .18);
+      const y = lerp(parseFloat(btn.dataset.y)||0, ty, .18);
+      btn.dataset.x = x; btn.dataset.y = y;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+      if(Math.hypot(tx-x, ty-y) > .1) raf=requestAnimationFrame(anim);
+    }
+    btn.addEventListener('mousemove', (e)=>{
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      const dx = e.clientX - cx, dy = e.clientY - cy;
+      const dist = Math.hypot(dx,dy);
+      if(dist < radius){ tx = dx*.2; ty = dy*.2; if(!raf) raf=requestAnimationFrame(anim); }
+    });
+    ['mouseleave','blur'].forEach(ev=> btn.addEventListener(ev, ()=>{ tx=0; ty=0; if(!raf) raf=requestAnimationFrame(anim); }));
+  });
+})();
+// Animated starfield/particles (very light)
+(function(){
+  const c = document.createElement('canvas');
+  c.id='fx-space'; document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let w=0,h=0, dpr=1, pts=[];
+  function resize(){
+    dpr = Math.min(2, window.devicePixelRatio||1);
+    w = c.width = innerWidth*dpr; h = c.height = innerHeight*dpr;
+    c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px';
+    pts = Array.from({length: Math.round((innerWidth*innerHeight)/12000) }, ()=>({
+      x: Math.random()*w, y: Math.random()*h,
+      vx: (Math.random()-.5)*.06*dpr, vy:(Math.random()-.5)*.06*dpr,
+      r: (Math.random()*1.2+0.3)*dpr, a: Math.random()*.6+.2
+    }));
+  }
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of pts){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0) p.x=w; if(p.x>w) p.x=0;
+      if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);
+      g.addColorStop(0,`rgba(0,229,255,${p.a})`);
+      g.addColorStop(1,`rgba(255,58,242,0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('resize', resize, {passive:true});
+  resize(); tick();
+})();
+// Nav underline class hookup (optional: add .nav-ink to nav if exists)
+(function(){
+  const nav = document.querySelector('nav');
+  if(nav && !nav.classList.contains('nav-ink')) nav.classList.add('nav-ink');
+})();
+</script>
+
 </body>
 </html>
