@@ -1,67 +1,169 @@
-<!doctype html>
+<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <title>eスポーツ装備屋｜ESPORTS SOUBIYA</title>
-  <meta name="description" content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" />
-  <meta name="theme-color" content="#030712" />
-  <link rel="icon" href="assets/logo.png" />
-  <link rel="canonical" href="https://esports-soubiya.com/">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta property="og:title" content="eスポーツ装備屋｜ESPORTS SOUBIYA" />
-  <meta property="og:description" content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://esports-soubiya.com/" />
-  <meta property="og:image" content="assets/store-3.jpg" />
-  <meta name="twitter:card" content="summary_large_image" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>eスポーツ装備屋｜ESPORTS SOUBIYA</title>
+<meta content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="assets/logo.png" rel="icon"/>
+<link href="https://esports-soubiya.com/" rel="canonical"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="eスポーツ装備屋｜ESPORTS SOUBIYA" property="og:title"/>
+<meta content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://esports-soubiya.com/" property="og:url"/>
+<meta content="assets/store-3.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
     tailwind.config = {
       theme: { extend: {
         fontFamily: { sans: ['Inter','Noto Sans JP','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial','sans-serif'] },
-        colors: { brand: { 500:'#06b6d4', 600:'#0891b2', 700:'#0e7490' } },
-        boxShadow: { glow: '0 0 0 1px rgba(255,255,255,.06), 0 12px 50px rgba(6,182,212,.25)', card: '0 4px 30px rgba(2,6,23,.45) inset, 0 10px 35px rgba(6,182,212,.15)' }
+        colors: { brand: { 500:'#f59e0b', 600:'#f97316', 700:'#c2410c' } },
+        boxShadow: { glow: '0 0 0 1px rgba(0,0,0,.06), 0 12px 50px rgba(245,158,11,.25)', card: '0 4px 30px rgba(255,255,255,.8) inset, 0 10px 35px rgba(245,158,11,.15)' }
       }}
     }
   </script>
-  <script src="https://unpkg.com/lenis@1.1.15/dist/lenis.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
-  <style>
-    :root { --bg: #030712; --panel: rgba(2,6,23,.6); }
+<script src="https://unpkg.com/lenis@1.1.15/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+    :root { --bg: #0b0a08; --panel: rgba(255,255,255,.85); }
     body { background:
-      radial-gradient(1200px 600px at 10% 0, rgba(8,145,178,.28), transparent),
-      radial-gradient(800px 800px at 90% 20%, rgba(2,132,199,.22), transparent),
-      #030712; }
-    .glass { backdrop-filter: blur(14px); background: var(--panel); border: 1px solid rgba(255,255,255,.07); }
+      radial-gradient(1200px 600px at 10% 0, rgba(249,115,22,.28), transparent),
+      radial-gradient(800px 800px at 90% 20%, rgba(234,88,12,.22), transparent),
+      #0b0a08; }
+    .glass { backdrop-filter: none; background: var(--panel); border: 1px solid rgba(0,0,0,.07); }
     .hero-cut { clip-path: polygon(0 0,100% 0,100% 92%,0 100%); }
     .tilt { transform-style: preserve-3d; transition: transform .2s ease, box-shadow .2s ease; }
-    .tilt:hover { box-shadow: 0 20px 70px rgba(6,182,212,.2); }
+    .tilt:hover { box-shadow: 0 11.00px 38.50px rgba(245, 158, 11, .2); }
     .lang-btn { opacity:.75 }
-    .lang-btn.active { opacity:1; box-shadow: 0 0 0 1px rgba(255,255,255,.2) inset; }
+    .lang-btn.active { opacity:1; box-shadow: 0 0 0 0.55px rgba(0, 0, 0, .12) inset; }
     .shimmer { position:relative; overflow:hidden }
-    .shimmer::after{ content:''; position:absolute; inset:-200% -50%; transform:rotate(20deg); background:linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent); animation:shimmer 4s linear infinite; }
+    .shimmer::after{ content:''; position:absolute; inset:-200% -50%; transform:rotate(20deg); background:linear-gradient(90deg, transparent, rgba(0,0,0,.08), transparent); animation:shimmer 4s linear infinite; }
     @keyframes shimmer{ 0%{transform:translateX(-60%) rotate(20deg)} 100%{transform:translateX(60%) rotate(20deg)} }
     #lightbox { position: fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:1000 }
-    #lightbox img { max-width:92vw; max-height:86vh; border-radius:1rem; box-shadow:0 10px 40px rgba(0,0,0,.6) }
-    #menuBtn { display:inline-flex }
-    #mobileMenu { position: fixed; inset:0; background:rgba(2,6,23,.96); display:none; z-index:60; }
+    #lightbox img { max-width:92vw; max-height:86vh; border-radius:1rem; box-shadow:0 5.50px 22.00px rgba(0, 0, 0, .6) } #menuBtn { display:inline-flex } #mobileMenu { position: fixed; inset:0; background:rgba(255,255,255,.98); display:none; z-index:60; }
     #mobileMenu a { display:block; padding:1rem; font-size:1.125rem }
     #toTop { position:fixed; right:1rem; bottom:4.5rem; z-index:50; display:none }
-    #stickyCTA{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:.5rem; padding:.5rem .75rem; backdrop-filter:blur(8px); background:rgba(2,6,23,.7); border-top:1px solid rgba(255,255,255,.08); z-index:45 }
+    #stickyCTA{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:.5rem; padding:.5rem .75rem; backdrop-filter: none; background:rgba(255,255,255,.9); border-top:1px solid rgba(0,0,0,.08); z-index:45 }
     #stickyCTA a{ flex:1; text-align:center }
     @media (max-width:640px){ .hero-cut{clip-path:none} header .h-16{height:56px} }
     @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
   </style>
+<style id="esports-theme">
+:root{
+  --brand-cyan:#00e5ff;
+  --brand-magenta:#ff3af2;
+  --brand-violet:#8a2be2;
+  --brand-accent:#00ffc6;
+  --surface:#121733; /* brighter than #0b0e1a */
+  --card:#171d35;    /* slightly lighter card */
+  --text:#eef6ff;    /* a bit brighter text */
+}
+/* Background: subtle moving gradient (increased brightness) */
+body{
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -10%, rgba(0,229,255,.18), transparent 60%),
+    radial-gradient(1200px 800px at 110% 10%, rgba(255,58,242,.14), transparent 60%),
+    radial-gradient(1200px 800px at 50% 120%, rgba(138,43,226,.12), transparent 60%),
+    var(--surface);
+  background-attachment: fixed;
+}
+/* Header slightly lighter */
+header{
+  background: linear-gradient(180deg, rgba(18,23,51,.88), rgba(18,23,51,.72));
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+  backdrop-filter: blur(6px);
+}
+header .font-extrabold{ color: var(--text); }
+/* Headings glow */
+.hero-title, h1, h2{
+  position:relative;
+  text-shadow: 0 0 24px rgba(0,229,255,.28), 0 0 36px rgba(255,58,242,.18);
+}
+/* Buttons: neon outline + gentle glow */
+.ripple, .lang-btn, a[class*="px-5"][class*="py-3"]{
+  position:relative;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 8px 18px rgba(0,0,0,.30);
+  color: var(--text);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.ripple::after{
+  content:''; position:absolute; inset:-2px;
+  background: linear-gradient(135deg, var(--brand-cyan), var(--brand-magenta), var(--brand-violet));
+  filter: blur(12px); opacity:.0; z-index:-1; border-radius: inherit; transition: opacity .2s ease;
+}
+.ripple:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.28);
+  box-shadow: 0 12px 22px rgba(0,0,0,.36), 0 0 24px rgba(0,229,255,.18);
+}
+.ripple:hover::after{ opacity:.38; }
+/* Cards (glass) */
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,.32);
+}
+.glass::before{
+  content:''; position:absolute; inset: -1px; border-radius: inherit; padding:1px;
+  background: linear-gradient(120deg, rgba(0,229,255,.0), rgba(0,229,255,.55), rgba(255,58,242,.0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: edge 6s linear infinite;
+}
+@keyframes edge{ 0%{ filter:hue-rotate(0deg) } 100%{ filter:hue-rotate(360deg) } }
+/* Links */
+a:hover{ color: var(--brand-cyan); }
+/* Lightbox */
+#lightbox{ background: rgba(0,0,0,.85) !important; }
+</style>
+<style id="esports-aurora">
+/* --- Aurora dynamic background, slightly brighter --- */
+body::before, body::after{
+  content:''; position:fixed; inset:-20%; pointer-events:none; z-index:-1;
+  background:
+    radial-gradient(60% 40% at 20% 10%, rgba(0,229,255,.24), transparent 60%),
+    radial-gradient(50% 35% at 85% 20%, rgba(255,58,242,.20), transparent 60%),
+    radial-gradient(55% 45% at 50% 90%, rgba(138,43,226,.16), transparent 60%);
+  filter: blur(38px);
+  animation: auroraMove 16s ease-in-out infinite alternate;
+}
+body::after{
+  animation-duration: 22s;
+  transform: scale(1.1);
+  opacity:.95;
+}
+@keyframes auroraMove{
+  0%{ transform: translate3d(0,0,0) scale(1); filter: blur(40px); }
+  100%{ transform: translate3d(0,-2%,0) scale(1.05); filter: blur(34px); }
+}
+
+/* Keep header/links readable */
+header a, nav a{ color: #eef6ff; }
+</style>
+
+<style id="x-click-fix">
+a[href*="x.com"], a[href*="twitter.com"]{
+  position: relative; z-index: 20;
+  pointer-events: auto !important;
+  text-decoration: none;
+}
+.glass::before, .glass::after{ pointer-events: none !important; }
+a[href*="x.com"] *{ pointer-events: auto !important; }
+</style>
+
 </head>
-<body class="text-slate-100 font-sans selection:bg-brand-600/30">
+<body class="bg-[#121733] text-slate-100 font-sans selection:bg-brand-600/30">
 <script type="application/ld+json">
 {
   "@context":"https://schema.org",
@@ -81,244 +183,228 @@
   "sameAs":["https://x.com/Esoubiya","https://www.esportscafe5g.com/"]
 }
 </script>
-
 <a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-black/60 focus:text-white focus:p-2 rounded" href="#content">Skip to content</a>
-
-<header class="fixed top-0 inset-x-0 z-50 bg-slate-950/50 backdrop-blur-md border-b border-white/10">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-    <a href="#top" class="flex items-center gap-3" aria-label="home">
-      <img src="assets/logo.png" class="h-8 w-8 rounded-lg shadow-glow" alt="logo"/>
-      <span class="font-extrabold tracking-wide">eスポーツ装備屋</span>
-    </a>
-    <nav class="hidden md:flex items-center gap-8 text-sm" aria-label="primary">
-      <a href="#services" data-i18n="nav.services" class="hover:text-brand-500">サービス</a>
-      <a href="#builds" data-i18n="nav.builds" class="hover:text-brand-500">セットアップ</a>
-      <a href="#gallery" data-i18n="nav.gallery" class="hover:text-brand-500">ギャラリー</a>
-      <a href="#testimonials" data-i18n="nav.testimonials" class="hover:text-brand-500">お客様の声</a>
-      <a href="#contact" data-i18n="nav.access" class="hover:text-brand-500">アクセス</a>
-      <a href="#faq" data-i18n="nav.faq" class="hover:text-brand-500">FAQ</a>
-    </nav>
-    <div class="flex items-center gap-2">
-      <!-- 修复后的语言按钮（桌面） -->
-      <div id="langSwitch" class="hidden sm:flex items-center gap-1 text-xs">
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="ja">日本語</button>
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="zh">中文</button>
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
-      </div>
-      <button id="menuBtn" class="md:hidden rounded-md px-2 py-1 bg-white/10" aria-label="menu">☰</button>
-    </div>
-  </div>
-
-  <!-- Mobile menu -->
-  <div id="mobileMenu" role="dialog" aria-modal="true">
-    <div class="p-4 flex items-center justify-between border-b border-white/10">
-      <div class="flex items-center gap-3">
-        <img src="assets/logo.png" class="h-8 w-8 rounded-lg" alt="logo"/>
-        <span class="font-semibold">eスポーツ装備屋</span>
-      </div>
-      <button id="menuClose" class="rounded-md px-3 py-1 bg-white/10" aria-label="close menu">✕</button>
-    </div>
-    <nav class="p-4">
-      <a href="#services" data-i18n="nav.services">サービス</a>
-      <a href="#builds" data-i18n="nav.builds">セットアップ</a>
-      <a href="#gallery" data-i18n="nav.gallery">ギャラリー</a>
-      <a href="#testimonials" data-i18n="nav.testimonials">お客様の声</a>
-      <a href="#contact" data-i18n="nav.access">アクセス</a>
-      <a href="#faq" data-i18n="nav.faq">FAQ</a>
-      <!-- 修复后的语言按钮（移动端） -->
-      <div class="mt-4 text-sm text-slate-300" id="mLang">
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="ja">日本語</button>
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10 mr-2" data-lang="zh">中文</button>
-        <button type="button" class="lang-btn rounded-md px-2 py-1 bg-white/10" data-lang="en">EN</button>
-      </div>
-    </nav>
-  </div>
+<header class="fixed top-0 inset-x-0 z-50 bg-[#121733]/70 border-b border-white/10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a aria-label="home" class="flex items-center gap-3" href="#top">
+<img alt="logo" class="h-8 w-8 rounded-lg shadow" src="assets/logo.png"/>
+<span class="font-extrabold tracking-wide">eスポーツ装備屋</span>
+</a>
+<nav aria-label="primary" class="hidden md:flex items-center gap-8 text-sm">
+<a class="hover:text-brand-500" data-i18n="nav.services" href="#services">サービス</a>
+<a class="hover:text-brand-500" data-i18n="nav.builds" href="#builds">セットアップ</a>
+<a class="hover:text-brand-500" data-i18n="nav.gallery" href="#gallery">ギャラリー</a>
+<a class="hover:text-brand-500" data-i18n="nav.testimonials" href="#testimonials">お客様の声</a>
+<a class="hover:text-brand-500" data-i18n="nav.access" href="#contact">アクセス</a>
+<a class="hover:text-brand-500" data-i18n="nav.faq" href="#faq">FAQ</a>
+</nav>
+<div class="flex items-center gap-2">
+<!-- 修复后的语言按钮（桌面） -->
+<div class="hidden sm:flex items-center gap-1 text-xs" id="langSwitch">
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="ja" type="button">日本語</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="zh" type="button">中文</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="en" type="button">EN</button>
+</div>
+<button aria-label="menu" class="md:hidden rounded-md px-2 py-1 bg-[#121733]/70/10" id="menuBtn">☰</button>
+</div>
+</div>
+<!-- Mobile menu -->
+<div aria-modal="true" id="mobileMenu" role="dialog">
+<div class="p-4 flex items-center justify-between border-b border-white/10">
+<div class="flex items-center gap-3">
+<img alt="logo" class="h-8 w-8 rounded-lg" src="assets/logo.png"/>
+<span class="font-semibold">eスポーツ装備屋</span>
+</div>
+<button aria-label="close menu" class="rounded-md px-3 py-1 bg-[#121733]/70/10" id="menuClose">✕</button>
+</div>
+<nav class="p-4">
+<a data-i18n="nav.services" href="#services">サービス</a>
+<a data-i18n="nav.builds" href="#builds">セットアップ</a>
+<a data-i18n="nav.gallery" href="#gallery">ギャラリー</a>
+<a data-i18n="nav.testimonials" href="#testimonials">お客様の声</a>
+<a data-i18n="nav.access" href="#contact">アクセス</a>
+<a data-i18n="nav.faq" href="#faq">FAQ</a>
+<!-- 修复后的语言按钮（移动端） -->
+<div class="mt-4 text-sm text-slate-300" id="mLang">
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10 mr-2" data-lang="ja" type="button">日本語</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10 mr-2" data-lang="zh" type="button">中文</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="en" type="button">EN</button>
+</div>
+</nav>
+</div>
 </header>
-
-<section id="top" class="relative pt-28 sm:pt-32 pb-16 sm:pb-24 hero-cut overflow-hidden">
-  <div class="absolute inset-0 -z-10 will-change-transform" id="heroBg">
-    <img src="assets/store-1.jpg" class="w-full h-full object-cover opacity-25" alt="bg"/>
-  </div>
-  <div id="content" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-1 gap-8 items-center">
-      <div class="space-y-6">
-        <p class="text-brand-500 font-semibold" data-i18n="hero.tagline">ESPORTS SOUBIYA</p>
-        <h1 class="font-extrabold leading-tight" data-i18n="hero.heading">
+<section class="relative pt-28 sm:pt-32 pb-16 sm:pb-24 hero-cut overflow-hidden" id="top">
+<div class="absolute inset-0 -z-10 will-change-transform" id="heroBg">
+<img alt="bg" class="w-full h-full object-cover opacity-25" src="assets/store-1.jpg"/>
+</div>
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="content">
+<div class="grid md:grid-cols-1 gap-8 items-center">
+<div class="space-y-6">
+<p class="text-brand-500 font-semibold" data-i18n="hero.tagline">ESPORTS SOUBIYA</p>
+<h1 class="font-extrabold leading-tight" data-i18n="hero.heading">
           最高峰のゲーミング体験を、<span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700">あなたに。</span>
-        </h1>
-        <p class="text-slate-300/90 max-w-xl" data-i18n="hero.p">プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。</p>
-        <div class="flex gap-3">
-          <a href="#services" class="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/15 ripple" data-i18n="hero.btn.services">サービスを見る</a>
-          <a href="#contact" class="rounded-lg px-4 py-2 bg-white/10 hover:bg-white/15 ripple" data-i18n="hero.btn.access">アクセス</a>
-        </div>
-      </div>
-    </div>
-  </div>
+</h1>
+<p class="text-slate-300/90 max-w-xl" data-i18n="hero.p">プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。</p>
+<div class="flex gap-3">
+<a class="rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="hero.btn.services" href="#services">サービスを見る</a>
+<a class="rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="hero.btn.access" href="#contact">アクセス</a>
+</div>
+</div>
+</div>
+</div>
 </section>
-
-<section id="benefits" class="py-10 sm:py-14">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-4 gap-4 sm:gap-6">
-      <div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.0.t">即日お渡し</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.0.p">在庫品はその場で受け取り可能。</p></div>
-      <div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.1.t">無料診断</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.1.p">不調チェック・アップグレード相談。</p></div>
-      <div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.2.t">安心保証</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.2.p">初期不良に丁寧に対応。</p></div>
-      <div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.3.t">体験重視</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.3.p">直営カフェで実機プレイ。</p></div>
-    </div>
-  </div>
+<section class="py-10 sm:py-14" id="benefits">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.0.t">即日お渡し</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.0.p">在庫品はその場で受け取り可能。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.1.t">無料診断</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.1.p">不調チェック・アップグレード相談。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.2.t">安心保証</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.2.p">初期不良に丁寧に対応。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.3.t">体験重視</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.3.p">直営カフェで実機プレイ。</p></div>
+</div>
+</div>
 </section>
-
-<section id="services" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="services.title">サービス</h2>
-    <p class="text-slate-300/90 mb-8 sm:mb-10 max-w-3xl" data-i18n="services.p">販売・カスタム・修理・体験をワンストップで。</p>
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.0">新品・中古ゲーミングPC販売</h3></div>
-      <div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.1">PCパーツ・周辺機器販売</h3></div>
-      <div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.2">カスタム組立・アップグレード</h3></div>
-      <div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.3">修理・メンテナンス</h3></div>
-      <div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.4">構成相談・無料見積もり</h3></div>
-    </div>
-  </div>
+<section class="py-16 sm:py-24" id="services">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="services.title">サービス</h2>
+<p class="text-slate-300/90 mb-8 sm:mb-10 max-w-3xl" data-i18n="services.p">販売・カスタム・修理・体験をワンストップで。</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.0">新品・中古ゲーミングPC販売</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.1">PCパーツ・周辺機器販売</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.2">カスタム組立・アップグレード</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.3">修理・メンテナンス</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.4">構成相談・無料見積もり</h3></div>
+</div>
+</div>
 </section>
-
-<section id="builds" class="py-10 sm:py-14 bg-slate-900/40 border-y border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="builds.title">おすすめセットアップ</h2>
-    <p class="text-slate-300/90 mb-8" data-i18n="builds.note">価格は参考帯。詳細は店頭でご相談ください。</p>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-      <div class="glass rounded-2xl p-6 tilt">
-        <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.e.title">Entry</h3><span class="badge" data-i18n="builds.e.price">¥100,000〜</span></div>
-        <ul class="text-sm text-slate-300/90 list-disc pl-5">
-          <li data-i18n="builds.e.cpu">Intel Core i5 / Ryzen 5</li>
-          <li data-i18n="builds.e.gpu">GeForce RTX 4060</li>
-          <li data-i18n="builds.e.mem">16GB / 1TB SSD</li>
-          <li data-i18n="builds.e.use">入門〜主流FPSを高fpsで</li>
-        </ul>
-      </div>
-      <div class="glass rounded-2xl p-6 tilt ring-1 ring-brand-600/40">
-        <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.p.title">Pro</h3><span class="badge" data-i18n="builds.p.price">¥200,000〜</span></div>
-        <ul class="text-sm text-slate-300/90 list-disc pl-5">
-          <li data-i18n="builds.p.cpu">Intel Core i7 / Ryzen 7</li>
-          <li data-i18n="builds.p.gpu">GeForce RTX 4070 / 4070 Ti</li>
-          <li data-i18n="builds.p.mem">32GB / 1~2TB SSD</li>
-          <li data-i18n="builds.p.use">1440p高リフレッシュ + クリエイティブ</li>
-        </ul>
-      </div>
-      <div class="glass rounded-2xl p-6 tilt">
-        <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.u.title">Ultra</h3><span class="badge" data-i18n="builds.u.price">¥300,000〜</span></div>
-        <ul class="text-sm text-slate-300/90 list-disc pl-5">
-          <li data-i18n="builds.u.cpu">Intel Core i9 / Ryzen 9</li>
-          <li data-i18n="builds.u.gpu">GeForce RTX 4080 / 4090</li>
-          <li data-i18n="builds.u.mem">64GB / 高速NVMe</li>
-          <li data-i18n="builds.u.use">4K/高fps、配信・動画編集も余裕</li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<section class="py-10 sm:py-14 bg-slate-900/40 border-y border-white/5" id="builds">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="builds.title">おすすめセットアップ</h2>
+<p class="text-slate-300/90 mb-8" data-i18n="builds.note">価格は参考帯。詳細は店頭でご相談ください。</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-6 tilt">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.e.title">Entry</h3><span class="badge" data-i18n="builds.e.price">¥100,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.e.cpu">Intel Core i5 / Ryzen 5</li>
+<li data-i18n="builds.e.gpu">GeForce RTX 4060</li>
+<li data-i18n="builds.e.mem">16GB / 1TB SSD</li>
+<li data-i18n="builds.e.use">入門〜主流FPSを高fpsで</li>
+</ul>
+</div>
+<div class="glass rounded-2xl p-6 tilt ring-1 ring-brand-600/40">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.p.title">Pro</h3><span class="badge" data-i18n="builds.p.price">¥200,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.p.cpu">Intel Core i7 / Ryzen 7</li>
+<li data-i18n="builds.p.gpu">GeForce RTX 4070 / 4070 Ti</li>
+<li data-i18n="builds.p.mem">32GB / 1~2TB SSD</li>
+<li data-i18n="builds.p.use">1440p高リフレッシュ + クリエイティブ</li>
+</ul>
+</div>
+<div class="glass rounded-2xl p-6 tilt">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.u.title">Ultra</h3><span class="badge" data-i18n="builds.u.price">¥300,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.u.cpu">Intel Core i9 / Ryzen 9</li>
+<li data-i18n="builds.u.gpu">GeForce RTX 4080 / 4090</li>
+<li data-i18n="builds.u.mem">64GB / 高速NVMe</li>
+<li data-i18n="builds.u.use">4K/高fps、配信・動画編集も余裕</li>
+</ul>
+</div>
+</div>
+</div>
 </section>
-
-<section id="gallery" class="py-8 sm:py-10">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="gallery.title">店内ギャラリー</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-      <img src="assets/store-1.jpg" loading="lazy" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" alt="gallery 1">
-      <img src="assets/store-2.jpg" loading="lazy" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" alt="gallery 2">
-      <img src="assets/store-3.jpg" loading="lazy" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" alt="gallery 3">
-      <img src="assets/store-4.jpg" loading="lazy" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" alt="gallery 4">
-    </div>
-  </div>
+<section class="py-8 sm:py-10" id="gallery">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="gallery.title">店内ギャラリー</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+<img alt="gallery 1" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-1.jpg"/>
+<img alt="gallery 2" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-2.jpg"/>
+<img alt="gallery 3" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-3.jpg"/>
+<img alt="gallery 4" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-4.jpg"/>
+</div>
+</div>
 </section>
-
-<section id="experience" class="py-16 sm:py-24 bg-slate-900/50 border-y border-white/5">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-start">
-      <div>
-        <div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase rounded-full px-3 py-1 bg-brand-600/20 text-brand-300 ring-1 ring-brand-600/40" data-i18n="exp.badge">
+<section class="py-16 sm:py-24 bg-slate-900/50 border-y border-white/5" id="experience">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-start">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase rounded-full px-3 py-1 bg-brand-600/20 text-brand-300 ring-1 ring-brand-600/40" data-i18n="exp.badge">
           当社直営 / Company-owned
         </div>
-        <h2 class="text-3xl md:text-4xl font-bold mb-2 mt-3" data-i18n="exp.title">ESPORTSCAFE 5G で実機体験</h2>
-        <p class="text-slate-300/90" data-i18n="exp.p">eスポーツ装備屋が運営する <span class="font-semibold">ESPORTSCAFE 5G</span> にて、最新FPSを <span class="font-semibold">240Hz / 540Hz</span> モニターで試遊できます。</p>
-        <a href="https://www.esportscafe5g.com/" target="_blank" class="inline-flex mt-4 rounded-lg px-4 py-2 bg-white/10 hover:bg-white/15 ripple" data-i18n="exp.btn">ESPORTSCAFE 5G を見る</a>
-        <p class="text-xs text-slate-400 mt-2" data-i18n="exp.note">（同公司運営のカフェです / Operated by the same company）</p>
-      </div>
-      <div class="glass rounded-2xl overflow-hidden tilt">
-        <iframe src="https://www.google.com/maps?q=東京都新宿区百人町2-4-2&output=embed" style="border:0;width:100%;height:360px" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="map"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="testimonials" class="relative py-16 sm:py-24" aria-label="testimonials">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
-    <h2 class="text-3xl md:text-4xl font-bold text-center mb-2 shimmer" data-i18n="testi.title">導入事例・お客様の声</h2>
-    <p class="text-center text-slate-300/90 mb-10" data-i18n="testi.p">地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。</p>
-    <div class="grid md:grid-cols-3 gap-4 sm:gap-6">
-      <div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q1">「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q1n">— 東京在住・A様</div></div>
-      <div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q2">「スタッフが構成の相談に乗ってくれて安心して購入できました。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q2n">— 神奈川・高校生プレイヤー</div></div>
-      <div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q3">「そのまま上のカフェで実際にプレイできるのが最高。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q3n">— 大久保・常連ゲーマー</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="cta" class="py-12">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-brand-700/50 to-slate-900/70 ring-1 ring-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div>
-        <h3 class="text-2xl font-bold" data-i18n="cta.h">今日から最高の環境に。</h3>
-        <p class="text-slate-300/90" data-i18n="cta.p">在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。</p>
-      </div>
-      <a href="#contact" class="rounded-lg px-5 py-3 bg-white/10 hover:bg-white/15 ripple" data-i18n="cta.btn">アクセス・連絡先</a>
-    </div>
-  </div>
-</section>
-
-<section id="faq" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="faq.title">よくある質問</h2>
-    <div class="grid md:grid-cols-2 gap-4 sm:gap-6">
-      <details class="glass rounded-xl p-5" open><summary class="font-semibold cursor-pointer" data-i18n="faq.q1">その場で購入できますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a1">展示品で在庫がある商品は当日お持ち帰り可能です。</p></details>
-      <details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q2">オンライン注文はできますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a2">現状は店頭販売のみ。オンライン販売を準備中です。</p></details>
-      <details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q3">カスタムPCの相談は？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a3">ご予算・用途に合わせた構成提案を行います。</p></details>
-    </div>
-  </div>
-</section>
-
-<section id="contact" class="py-16 sm:py-24">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="max-w-3xl mx-auto glass rounded-2xl p-5 sm:p-6 tilt">
-        <h2 class="text-3xl md:text-4xl font-bold mb-3" data-i18n="contact.title">アクセス & 連絡先</h2>
-        <ul class="space-y-2 text-sm">
-          <li class="text-slate-300/90"><span data-i18n="contact.addressL">住所：</span><span>〒169-0073 東京都新宿区百人町2-4-2 ビルやまき 502号室</span></li>
-          <li class="text-slate-300/90" data-i18n="contact.hours">営業時間：9:00〜19:00（定休：日・月）</li>
-          <li class="text-slate-300/90"><span data-i18n="contact.phoneL">電話：</span><a class="hover:text-brand-500" href="tel:080-7146-4150">080-7146-4150</a></li>
-          <li class="text-slate-300/90"><span data-i18n="contact.emailL">Email：</span><a class="hover:text-brand-500" href="mailto:esoubiya502@gmail.com">esoubiya502@gmail.com</a></li>
-        </ul>
-        <div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
-          <span class="rounded-lg px-3 py-2 bg-white/10">LINE: @soubiya5g</span>
-          <span class="rounded-lg px-3 py-2 bg-white/10">WeChat: Esports5G</span>
-          <a href="https://x.com/Esoubiya" class="rounded-lg px-3 py-2 bg-white/10 hover:bg-white/15">X（Twitter）</a>
-        </div>
-      </div>
-  </div>
-</section>
-
-<footer class="py-10 border-t border-white/10">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
-    <div>eスポーツ装備屋 © <span id="year"></span></div>
-    <div class="text-slate-400">
-      <a href="#contact" class="hover:text-brand-500" data-i18n="footer.contact">問い合わせ</a>
-      · <a href="#services" class="hover:text-brand-500" data-i18n="footer.services">サービス</a>
-    </div>
-  </div>
-</footer>
-
-<div id="lightbox" aria-hidden="true"><img src="" alt=""></div>
-<button id="toTop" class="rounded-full px-4 py-2 bg-brand-600 shadow-glow" aria-label="Back to top">↑</button>
-<div id="stickyCTA" class="sm:hidden" role="group" aria-label="Quick actions">
-  <a href="#contact" class="rounded-lg px-3 py-2 bg-brand-600 text-white">連絡する</a>
-  <a href="https://www.esportscafe5g.com/" target="_blank" class="rounded-lg px-3 py-2 bg-white/10">ESPORTSCAFE 5G</a>
+<h2 class="text-3xl md:text-4xl font-bold mb-2 mt-3" data-i18n="exp.title">ESPORTSCAFE 5G で実機体験</h2>
+<p class="text-slate-300/90" data-i18n="exp.p">eスポーツ装備屋が運営する <span class="font-semibold">ESPORTSCAFE 5G</span> にて、最新FPSを <span class="font-semibold">240Hz / 540Hz</span> モニターで試遊できます。</p>
+<a class="inline-flex mt-4 rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="exp.btn" href="https://www.esportscafe5g.com/" target="_blank">ESPORTSCAFE 5G を見る</a>
+<p class="text-xs text-slate-400 mt-2" data-i18n="exp.note">（同公司運営のカフェです / Operated by the same company）</p>
 </div>
-
+<div class="glass rounded-2xl overflow-hidden tilt">
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=東京都新宿区百人町2-4-2&amp;output=embed" style="border:0;width:100%;height:360px" title="map"></iframe>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="testimonials" class="relative py-16 sm:py-24" id="testimonials">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-2 shimmer" data-i18n="testi.title">導入事例・お客様の声</h2>
+<p class="text-center text-slate-300/90 mb-10" data-i18n="testi.p">地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。</p>
+<div class="grid md:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q1">「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q1n">— 東京在住・A様</div></div>
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q2">「スタッフが構成の相談に乗ってくれて安心して購入できました。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q2n">— 神奈川・高校生プレイヤー</div></div>
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q3">「そのまま上のカフェで実際にプレイできるのが最高。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q3n">— 大久保・常連ゲーマー</div></div>
+</div>
+</div>
+</section>
+<section class="py-12" id="cta">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-brand-700/50 to-slate-900/70 ring-1 ring-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div>
+<h3 class="text-2xl font-bold" data-i18n="cta.h">今日から最高の環境に。</h3>
+<p class="text-slate-300/90" data-i18n="cta.p">在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。</p>
+</div>
+<a class="rounded-lg px-5 py-3 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="cta.btn" href="#contact">アクセス・連絡先</a>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24" id="faq">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="faq.title">よくある質問</h2>
+<div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+<details class="glass rounded-xl p-5" open=""><summary class="font-semibold cursor-pointer" data-i18n="faq.q1">その場で購入できますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a1">展示品で在庫がある商品は当日お持ち帰り可能です。</p></details>
+<details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q2">オンライン注文はできますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a2">現状は店頭販売のみ。オンライン販売を準備中です。</p></details>
+<details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q3">カスタムPCの相談は？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a3">ご予算・用途に合わせた構成提案を行います。</p></details>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24" id="contact">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl mx-auto glass rounded-2xl p-5 sm:p-6 tilt">
+<h2 class="text-3xl md:text-4xl font-bold mb-3" data-i18n="contact.title">アクセス &amp; 連絡先</h2>
+<ul class="space-y-2 text-sm">
+<li class="text-slate-300/90"><span data-i18n="contact.addressL">住所：</span><span>〒169-0073 東京都新宿区百人町2-4-2 ビルやまき 502号室</span></li>
+<li class="text-slate-300/90" data-i18n="contact.hours">営業時間：9:00〜19:00（定休：日・月）</li>
+<li class="text-slate-300/90"><span data-i18n="contact.phoneL">電話：</span><a class="hover:text-brand-500" href="tel:080-7146-4150">080-7146-4150</a></li>
+<li class="text-slate-300/90"><span data-i18n="contact.emailL">Email：</span><a class="hover:text-brand-500" href="mailto:esoubiya502@gmail.com">esoubiya502@gmail.com</a></li>
+</ul>
+<div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+<span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">LINE: @soubiya5g</span>
+<span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">WeChat: Esports5G</span>
+<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15" href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank" target="_blank" rel="noopener noreferrer" href="https://x.com/Esoubiya" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer"><a href="https://x.com/Esoubiya" target="_blank" rel="noopener noreferrer" target="_blank" rel="noopener noreferrer">X（Twitter）</a></a>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-10 border-t border-white/10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div>eスポーツ装備屋 © <span id="year"></span></div>
+<div class="text-slate-400">
+<a class="hover:text-brand-500" data-i18n="footer.contact" href="#contact">問い合わせ</a>
+      · <a class="hover:text-brand-500" data-i18n="footer.services" href="#services">サービス</a>
+</div>
+</div>
+</footer>
+<div aria-hidden="true" id="lightbox"><img alt="" src=""/></div>
+<button aria-label="Back to top" class="rounded-full px-4 py-2 bg-brand-600 shadow" id="toTop">↑</button>
+<div aria-label="Quick actions" class="sm:hidden" id="stickyCTA" role="group">
+<a class="rounded-lg px-3 py-2 bg-brand-600 text-white" href="#contact">連絡する</a>
+<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10" href="https://www.esportscafe5g.com/" target="_blank">ESPORTSCAFE 5G</a>
+</div>
 <script>
   // Smooth scroll
   const lenis = new Lenis(); function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
@@ -342,7 +428,7 @@
     btn.style.position='relative'; btn.style.overflow='hidden';
     btn.addEventListener('click', function(e){
       const r=document.createElement('span'); const d=Math.max(this.clientWidth,this.clientHeight);
-      r.style.cssText=`position:absolute;border-radius:9999px;inset:auto;pointer-events:none;width:${d}px;height:${d}px;background:rgba(255,255,255,.25);transform:translate(-50%,-50%) scale(0);left:${e.offsetX}px;top:${e.offsetY}px;animation:rip .5s ease-out`;
+      r.style.cssText=`position:absolute;border-radius:9999px;inset:auto;pointer-events:none;width:${d}px;height:${d}px;background:rgba(0,0,0,.15);transform:translate(-50%,-50%) scale(0);left:${e.offsetX}px;top:${e.offsetY}px;animation:rip .5s ease-out`;
       this.appendChild(r); setTimeout(()=>r.remove(),520);
     }, {passive:true});
   });
