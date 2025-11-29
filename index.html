@@ -4,14 +4,14 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
-<title>eスポーツ装備屋｜ESPORTS SOUBIYA</title>
-<meta content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" name="description"/>
+<title>eスポーツ装備屋｜ゲーミングPC・中古PC販売／スマホ・タブレット修理のトータルITショップ</title>
+<meta content="ゲーミングPC・中古PC販売、カスタム構築、iPhone・Android・iPadなどスマホ・タブレット修理まで一括対応するトータルITショップ。新宿・大久保エリアのeスポーツ装備屋ESPORTS SOUBIYA。" name="description"/>
 <meta content="#ffffff" name="theme-color"/>
 <link href="assets/logo.png" rel="icon"/>
 <link href="https://esports-soubiya.com/" rel="canonical"/>
 <link href="manifest.webmanifest" rel="manifest"/>
-<meta content="eスポーツ装備屋｜ESPORTS SOUBIYA" property="og:title"/>
-<meta content="ゲーミングPC販売・体験。直営の『ESPORTSCAFE 5G』で実機試遊可能。" property="og:description"/>
+<meta content="eスポーツ装備屋｜ゲーミングPC・中古PC販売／スマホ・タブレット修理" property="og:title"/>
+<meta content="ゲーミングPC・中古PC販売、カスタム構築、スマホ・タブレット修理まで、eスポーツ装備屋がワンストップでサポートします。" property="og:description"/>
 <meta content="website" property="og:type"/>
 <meta content="https://esports-soubiya.com/" property="og:url"/>
 <meta content="assets/store-3.jpg" property="og:image"/>
@@ -37,6 +37,7 @@
     body { background:
       radial-gradient(1200px 600px at 10% 0, rgba(249,115,22,.28), transparent),
       radial-gradient(800px 800px at 90% 20%, rgba(234,88,12,.22), transparent),
+      url('assets/bg-tech.png') center/cover fixed no-repeat,
       #0b0a08; }
     .glass { backdrop-filter: none; background: var(--panel); border: 1px solid rgba(0,0,0,.07); }
     .hero-cut { clip-path: polygon(0 0,100% 0,100% 92%,0 100%); }
@@ -322,7 +323,7 @@ section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
 <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.e.title">Entry</h3><span class="badge" data-i18n="builds.e.price">¥100,000〜</span></div>
 <ul class="text-sm text-slate-300/90 list-disc pl-5">
 <li data-i18n="builds.e.cpu">Intel Core i5 / Ryzen 5</li>
-<li data-i18n="builds.e.gpu">GeForce RTX 4060</li>
+<li data-i18n="builds.e.gpu">GeForce RTX 5060</li>
 <li data-i18n="builds.e.mem">16GB / 1TB SSD</li>
 <li data-i18n="builds.e.use">入門〜主流FPSを高fpsで</li>
 </ul>
@@ -331,7 +332,7 @@ section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
 <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.p.title">Pro</h3><span class="badge" data-i18n="builds.p.price">¥200,000〜</span></div>
 <ul class="text-sm text-slate-300/90 list-disc pl-5">
 <li data-i18n="builds.p.cpu">Intel Core i7 / Ryzen 7</li>
-<li data-i18n="builds.p.gpu">GeForce RTX 4070 / 4070 Ti</li>
+<li data-i18n="builds.p.gpu">GeForce RTX 5070 / 5070 Ti</li>
 <li data-i18n="builds.p.mem">32GB / 1~2TB SSD</li>
 <li data-i18n="builds.p.use">1440p高リフレッシュ + クリエイティブ</li>
 </ul>
@@ -340,7 +341,7 @@ section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
 <div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.u.title">Ultra</h3><span class="badge" data-i18n="builds.u.price">¥300,000〜</span></div>
 <ul class="text-sm text-slate-300/90 list-disc pl-5">
 <li data-i18n="builds.u.cpu">Intel Core i9 / Ryzen 9</li>
-<li data-i18n="builds.u.gpu">GeForce RTX 4080 / 4090</li>
+<li data-i18n="builds.u.gpu">GeForce RTX 5080 / 5090</li>
 <li data-i18n="builds.u.mem">64GB / 高速NVMe</li>
 <li data-i18n="builds.u.use">4K/高fps、配信・動画編集も余裕</li>
 </ul>
@@ -447,7 +448,8 @@ section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
   const lenis = new Lenis(); function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
 
   // Header & cards reveal
-  gsap.from('header',{ y:-40, opacity:0, duration:.6, ease:'power3.out' });
+  gsap.registerPlugin(ScrollTrigger);
+gsap.from('header',{ y:-40, opacity:0, duration:.6, ease:'power3.out' });
   gsap.utils.toArray('[data-fx="card"], .tilt, #gallery img, #benefits .glass, #builds .glass').forEach((el,i)=>{
     gsap.from(el,{ opacity:0, y:20, duration:.6, delay:i*0.04, scrollTrigger:{ trigger:el, start:'top 85%' } });
   });
@@ -488,55 +490,55 @@ section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
   // Year
   document.getElementById('year').textContent=new Date().getFullYear();
 
-  // ================= i18n（修复版） =================
+
   const dict = {
     ja: {
       "nav.services":"サービス","nav.gallery":"ギャラリー","nav.access":"アクセス","nav.faq":"FAQ","nav.testimonials":"お客様の声","nav.builds":"セットアップ",
-      "hero.tagline":"ESPORTS SOUBIYA",
-      "hero.heading":"最高峰のゲーミング体験を、<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>あなたに。</span>",
-      "hero.p":"プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。",
-      "hero.btn.services":"サービスを見る","hero.btn.access":"アクセス",
-      "benefits.0.t":"即日お渡し","benefits.0.p":"在庫品はその場で受け取り可能。","benefits.1.t":"無料診断","benefits.1.p":"不調チェック・アップグレード相談。","benefits.2.t":"安心保証","benefits.2.p":"初期不良に丁寧に対応。","benefits.3.t":"体験重視","benefits.3.p":"直営カフェで実機プレイ。",
-      "services.title":"サービス","services.p":"販売・カスタム・修理・体験をワンストップで。","services.items.0":"新品・中古ゲーミングPC販売","services.items.1":"PCパーツ・周辺機器販売","services.items.2":"カスタム組立・アップグレード","services.items.3":"修理・メンテナンス","services.items.4":"構成相談・無料見積もり",
-      "builds.title":"おすすめセットアップ","builds.note":"価格は参考帯。詳細は店頭でご相談ください。","builds.e.title":"Entry","builds.e.price":"¥120,000〜","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入門〜主流FPSを高fpsで","builds.p.title":"Pro","builds.p.price":"¥220,000〜","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"1440p高リフレッシュ + クリエイティブ","builds.u.title":"Ultra","builds.u.price":"¥380,000〜","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K/高fps、配信・動画編集も余裕",
-      "gallery.title":"店内ギャラリー",
-      "exp.badge":"当社直営 / Company-owned","exp.title":"ESPORTSCAFE 5G で実機体験","exp.p":"eスポーツ装備屋が運営する <span class='font-semibold'>ESPORTSCAFE 5G</span> にて、最新FPSを <span class='font-semibold'>240Hz / 540Hz</span> モニターで試遊できます。","exp.btn":"ESPORTSCAFE 5G を見る","exp.note":"（同公司運営のカフェです / Operated by the same company）",
-      "testi.title":"導入事例・お客様の声","testi.p":"地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。","testi.q1":"「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」","testi.q1n":"— 東京在住・A様","testi.q2":"「スタッフが構成の相談に乗ってくれて安心して購入できました。」","testi.q2n":"— 神奈川・高校生プレイヤー","testi.q3":"「そのまま上のカフェで実際にプレイできるのが最高。」","testi.q3n":"— 大久保・常連ゲーマー",
-      "cta.h":"今日から最高の環境に。","cta.p":"在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。","cta.btn":"アクセス・連絡先",
-      "faq.title":"よくある質問","faq.q1":"その場で購入できますか？","faq.a1":"展示品で在庫がある商品は当日お持ち帰り可能です。","faq.q2":"オンライン注文はできますか？","faq.a2":"現状は店頭販売のみ。オンライン販売を準備中です。","faq.q3":"カスタムPCの相談は？","faq.a3":"ご予算・用途に合わせた構成提案を行います。",
-      "contact.title":"アクセス & 連絡先","contact.addressL":"住所：","contact.hours":"営業時間：9:00〜19:00（定休：日・月）","contact.phoneL":"電話：","contact.emailL":"Email：",
-      "footer.contact":"問い合わせ","footer.services":"サービス"
+      "hero.tagline":"PC・スマホのトータル装備屋",
+      "hero.heading":"ゲーミングPCもスマホも、<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>ビジネス級のコンディションに。</span>",
+      "hero.p":"新品・中古のゲーミングPC販売・構築に加え、iPhone・Android・iPadなどスマートデバイスの即日修理にも対応する、ビジネスグレードのトータルITショップです。",
+      "hero.btn.services":"サービス一覧","hero.btn.access":"アクセス・お問い合わせ",
+      "benefits.0.t":"最短30分スマホ・タブレット修理","benefits.0.p":"バッテリー交換や画面割れなどのトラブルを、混雑状況により最短30分からスピード対応。データ保護にも配慮して作業します。","benefits.1.t":"新品・中古PCとカスタム構築","benefits.1.p":"ゲーミングからビジネスまで、新品・中古PCとカスタム構成を組み合わせて最適な一台をご提案します。","benefits.2.t":"PCもスマホもまとめて一括サポート","benefits.2.p":"PC販売やネットワーク環境づくりから、スマホ・タブレット修理まで、一店舗で複数デバイスを長期的にサポートします。","benefits.3.t":"ビジネス品質の検査とアフター","benefits.3.p":"中古PCも修理品も、動作チェックと保証内容を明確にご案内。導入後のアップグレードやご相談もいつでも受け付けています。",
+      "services.title":"サービス","services.p":"新品・中古PC販売、カスタム構築、スマホ・タブレット修理まで、トータルにお任せいただけるITサービスを提供しています。","services.items.0":"新品・中古ゲーミングPC / ビジネスPC販売","services.items.1":"フルカスタムPC構築・パーツ増設","services.items.2":"iPhone・Android・iPad修理（画面・バッテリーほか）","services.items.3":"データ移行・初期設定・ソフトウェア導入","services.items.4":"法人向け導入相談・無料見積もり",
+      "builds.title":"おすすめPCセットアップ","builds.note":"用途別に三つのPCモデルをご用意しています。スマホ・タブレット修理や複数台導入のご相談も、同時にお見積もりが可能です。","builds.e.title":"Entry / 初めての一台","builds.e.price":"¥120,000〜","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入門から主流オンラインゲームまで、動画視聴や学習用にも最適なスタンダード構成です。","builds.p.title":"Pro / 配信・クリエイティブ向け","builds.p.price":"¥220,000〜","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"高リフレッシュレートのFPS、配信や動画編集、サブモニターやスマホ連携まで快適にこなします。","builds.u.title":"Ultra / ビジネス&クリエイター","builds.u.price":"¥380,000〜","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K・高fps環境でゲームと制作を両立しつつ、多数デバイスを接続するヘビーユースにも対応するハイエンド構成です。",
+      "gallery.title":"店内・作業ギャラリー（PC&スマホ）",
+      "exp.badge":"当社直営 / Company-owned","exp.title":"ESPORTSCAFE 5Gで実機プレイ","exp.p":"同じ運営のeスポーツカフェESPORTSCAFE 5Gでは、当店で組んだゲーミングPCの実機プレイや、配信・スマホゲームの動作確認も可能です。PCとモバイルをまたいだ快適な環境づくりを、その場で体験できます。","exp.btn":"ESPORTSCAFE 5Gを見る","exp.note":"（同公司運営のカフェです / Operated by the same company）",
+      "testi.title":"導入事例・お客様の声","testi.p":"地元のゲーマーや配信者はもちろん、近隣企業や店舗のPC・スマホ環境づくりも任される装備屋。導入事例の一部をご紹介します。","testi.q1":"配信PCとスマホの両方をまとめて相談できて、配線からソフトの設定まで全部きれいに仕上げてくれました。","testi.q1n":"— 個人配信者のお客様","testi.q2":"店舗のレジ用PCとスタッフスマホの入れ替えも、データ移行まで含めて休日一日で完了してもらえました。","testi.q2n":"— 近隣飲食店オーナー様","testi.q3":"大会前日にスマホの画面を割ってしまいましたが、三十分ほどで直してくれて本当に助かりました。","testi.q3n":"— 高校生ゲーマーのお客様",
+      "cta.h":"今日から、PCもスマホもベストな状態に。","cta.p":"新品・中古PCの導入、ゲーミング環境の構築、iPhone・Android・iPadの即日修理まで、一度のご来店ですべて完結。まずはお気軽にお問い合わせください。","cta.btn":"アクセス・お問い合わせ",
+      "faq.title":"よくある質問","faq.q1":"PCやスマホはその場で購入・受け取りできますか？","faq.a1":"在庫のある新品・中古PCやモニター、周辺機器は、その場でご購入・お持ち帰りいただけます。スマホ端末本体の販売状況は日によって異なりますので、スタッフまでお尋ねください。","faq.q2":"スマホ・タブレットの修理時間はどれくらいですか？","faq.a2":"機種や症状、混雑状況によりますが、画面割れやバッテリー交換などの軽微な修理は最短三十分から、多くのケースで当日中にお渡しが可能です。","faq.q3":"法人向けの複数台導入やIT環境の相談もできますか？","faq.a3":"はい。店舗やオフィスのPC入れ替え、スタッフ用スマホ・タブレットの選定、ネットワーク環境の整備など、まとめてご提案・お見積もりいたします。まずはご予算や台数の目安をお聞かせください。",
+      "contact.title":"アクセス&連絡先（PC・スマホ総合受付）","contact.addressL":"住所：","contact.hours":"営業時間：11:00〜20:00（定休：日・月）","contact.phoneL":"電話：","contact.emailL":"Email：",
+      "footer.contact":"お問い合わせ","footer.services":"サービス一覧"
     },
     zh: {
       "nav.services":"服务","nav.gallery":"图库","nav.access":"地址","nav.faq":"常见问题","nav.testimonials":"客户评价","nav.builds":"配置推荐",
-      "hero.tagline":"ESPORTS SOUBIYA","hero.heading":"把<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>顶级游戏体验</span>带给你","hero.p":"我们专注于高性能游戏平台的销售与体验。","hero.btn.services":"查看服务","hero.btn.access":"查看地址",
-      "benefits.0.t":"当天可提","benefits.0.p":"有库存的展示机可当场带走。","benefits.1.t":"免费诊断","benefits.1.p":"故障检查与升级建议。","benefits.2.t":"放心保障","benefits.2.p":"对初期故障认真处理。","benefits.3.t":"现场体验","benefits.3.p":"自营咖啡现场试玩。",
-      "services.title":"服务","services.p":"销售 / 定制 / 维修 / 体验一站式。","services.items.0":"新/二手电竞主机销售","services.items.1":"配件与外设销售","services.items.2":"定制组装与升级","services.items.3":"维修与维护","services.items.4":"配置咨询与免费报价",
-      "builds.title":"推荐配置","builds.note":"价格为参考区间，详情到店咨询。","builds.e.title":"Entry","builds.e.price":"¥120,000 起","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入门到主流 FPS 高帧率","builds.p.title":"Pro","builds.p.price":"¥220,000 起","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"1440p 高频 + 创作","builds.u.title":"Ultra","builds.u.price":"¥380,000 起","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K/高帧，直播/剪辑也轻松",
-      "gallery.title":"店内实景",
-      "exp.badge":"自营 / Company-owned","exp.title":"到 ESPORTSCAFE 5G 实机体验","exp.p":"在我们运营的 <span class='font-semibold'>ESPORTSCAFE 5G</span>，用 <span class='font-semibold'>240Hz / 540Hz</span> 显示器试玩最新 FPS。","exp.btn":"访问 ESPORTSCAFE 5G","exp.note":"（同公司运营的咖啡）",
-      "testi.title":"客户评价","testi.p":"深受本地玩家与主播信赖的‘装備屋’。以下是近期配置与反馈。","testi.q1":"“540Hz 显示器体验超出想象！性能与服务都很满意。”","testi.q1n":"— 东京 A 先生","testi.q2":"“店员一起聊配置，买得很安心。”","testi.q2n":"— 神奈川 高中生玩家","testi.q3":"“楼上的咖啡能直接玩到实机，太爽了。”","testi.q3n":"— 大久保 常客",
-      "cta.h":"今天就升级你的环境。","cta.p":"现货展示机可当日带走，定制也能很快完成。","cta.btn":"查看地址与联系方式",
-      "faq.title":"常见问题","faq.q1":"能当场购买吗？","faq.a1":"有现货的展示机可以当天带走。","faq.q2":"支持网购吗？","faq.a2":"目前仅店内销售，网购在准备中。","faq.q3":"定制主机怎么咨询？","faq.a3":"告诉我们预算与用途，我们会给出配置建议。",
-      "contact.title":"地址与联系方式","contact.addressL":"地址：","contact.hours":"营业时间：9:00–19:00（周日/周一休息）","contact.phoneL":"电话：","contact.emailL":"邮箱：",
-      "footer.contact":"联系","footer.services":"服务"
+      "hero.tagline":"电脑与手机一站式装備屋","hero.heading":"电竞主机与智能设备，<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>一次到位的专业方案。</span>","hero.p":"我们集电竞主机新品与中古销售、专业组装升级以及 iPhone、安卓手机、iPad 等设备的快速维修于一体，为个人与企业提供一站式 IT 解决方案。","hero.btn.services":"查看所有服务","hero.btn.access":"地址与联系",
+      "benefits.0.t":"最快30分钟手机 / 平板维修","benefits.0.p":"电池更换、碎屏、接口与按键等常见故障，可根据当天排队情况最快约30分钟完成，维修过程重视数据安全。","benefits.1.t":"新品 / 中古主机与定制组装","benefits.1.p":"覆盖电竞娱乐与商务办公需求，提供经过甄选的新机与中古主机，并可按预算进行定制组装与升级。","benefits.2.t":"多设备一站式管理","benefits.2.p":"电脑、手机与平板相关问题一次解决，适合既玩游戏又需要办公的个人，也适合需要统一管理设备的企业用户。","benefits.3.t":"商务级质检与售后","benefits.3.p":"无论是中古主机还是维修改善过的设备，均经过严格检测，并清晰说明保修与支持范围，售后咨询可随时联系。",
+      "services.title":"服务","services.p":"从电脑新品 / 中古销售、定制组装，到手机与平板维修，我们提供完整的一站式 IT 服务。","services.items.0":"电竞与商务电脑新品 / 中古销售","services.items.1":"整机定制组装与配件升级","services.items.2":"iPhone / 安卓 / iPad 维修（屏幕、电池等）","services.items.3":"数据迁移、系统安装与环境配置","services.items.4":"企业设备导入与方案咨询（免费报价）",
+      "builds.title":"推荐电脑配置","builds.note":"根据使用场景准备了三档参考配置，实际价格会随汇率与配件变动。手机 / 平板维修及多台设备导入可一并报价。","builds.e.title":"入门款 / 初级玩家","builds.e.price":"¥120,000 起","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"适合主流网游、日常学习与办公，也能流畅连接手机与平板。","builds.p.title":"进阶款 / 游戏 + 创作","builds.p.price":"¥220,000 起","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"高刷新率 FPS、直播与视频剪辑都能轻松应对，同时兼顾多屏与移动设备协同。","builds.u.title":"旗舰款 / 工作站级","builds.u.price":"¥380,000 起","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"面向4K、高帧数游戏以及重度创作与商务多任务，同时支撑多设备长期高负载运行。",
+      "gallery.title":"门店与维修实景图库（电脑与手机）",
+      "exp.badge":"直营电竞咖啡 / Company-owned","exp.title":"楼上 ESPORTSCAFE 5G 实机体验","exp.p":"同一集团运营的电竞咖啡 ESPORTSCAFE 5G 就在楼上，可以直接体验我们推荐的电脑配置，也能测试直播、手机联机与外设手感。","exp.btn":"查看 ESPORTSCAFE 5G","exp.note":"（同公司运营的咖啡 / Operated by the same company）",
+      "testi.title":"导入案例与客户评价","testi.p":"除了本地玩家与主播，我们还为周边公司与店铺提供电脑与移动设备的导入、维护与更新服务。以下是部分真实反馈。","testi.q1":"直播用电脑加上手机采集的问题一次说清楚，连线和软件都帮我调整好了。","testi.q1n":"— 个人主播 客户","testi.q2":"店里收银电脑和员工手机的更新，一天就帮我们搞定，还顺带完成数据搬家。","testi.q2n":"— 附近餐饮店 店主","testi.q3":"比赛前一天手机摔碎屏，他们半小时就修好，让我顺利参加线下赛。","testi.q3n":"— 高中生玩家 客户",
+      "cta.h":"从今天起，让电脑与手机都保持最佳状态。","cta.p":"无论是电竞与办公电脑的新品 / 中古导入，还是 iPhone / 安卓 / iPad 的当日维修，都可以在本店一次完成。欢迎来店、致电或通过 LINE、微信联系我们。","cta.btn":"地址与联系方式",
+      "faq.title":"常见问题","faq.q1":"电脑或手机可以当天直接带走吗？","faq.a1":"有库存的新品 / 中古主机以及外设可以现场购买、当天带走。手机整机库存会随时变化，请以店内实际为准并咨询工作人员。","faq.q2":"手机 / 平板维修一般需要多久？","faq.a2":"根据机型、故障程度以及当天排队情况不同，碎屏与电池更换类维修最快约30分钟，多数情况下可在当天取机。","faq.q3":"是否支持企业多台设备导入与 IT 环境咨询？","faq.a3":"可以。无论是门店收银与办公电脑的更新，还是员工手机 / 平板的统一配置，我们都可以提供整体方案与报价。欢迎告知预算和大致数量。",
+      "contact.title":"地址与联系方式（电脑 / 手机综合服务）","contact.addressL":"地址：","contact.hours":"营业时间：11:00–20:00（周日/周一休息）","contact.phoneL":"电话：","contact.emailL":"邮箱：",
+      "footer.contact":"联系咨询","footer.services":"服务一览"
     },
     en: {
       "nav.services":"Services","nav.gallery":"Gallery","nav.access":"Access","nav.faq":"FAQ","nav.testimonials":"Testimonials","nav.builds":"Builds",
-      "hero.tagline":"ESPORTS SOUBIYA",
-      "hero.heading":"Premium <span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>gaming experience</span>, for you.",
-      "hero.p":"Retail & hands-on store specialized in high-performance gaming PCs.",
-      "hero.btn.services":"View services","hero.btn.access":"Get access",
-      "benefits.0.t":"Same-day Pickup","benefits.0.p":"Take in-stock units home today.","benefits.1.t":"Free Diagnostics","benefits.1.p":"Troubleshooting & upgrade advice.","benefits.2.t":"Worry-free Warranty","benefits.2.p":"We handle DOA with care.","benefits.3.t":"Hands-on First","benefits.3.p":"Play on real rigs at our cafe.",
-      "services.title":"Services","services.p":"Sales, custom builds, repair and in-store demo—one-stop.",
-      "services.items.0":"New & Used Gaming PCs","services.items.1":"PC Parts & Peripherals","services.items.2":"Custom Builds & Upgrades","services.items.3":"Repair & Maintenance","services.items.4":"Consultation & Free Quote",
-      "builds.title":"Recommended Builds","builds.note":"Prices are indicative; visit store for details.","builds.e.title":"Entry","builds.e.price":"From ¥120,000","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 4060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"Entry to mainstream FPS at high fps","builds.p.title":"Pro","builds.p.price":"From ¥220,000","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 4070 / 4070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"1440p high refresh + creative","builds.u.title":"Ultra","builds.u.price":"From ¥380,000","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 4080 / 4090","builds.u.mem":"64GB / fast NVMe","builds.u.use":"4K/high-fps; streaming & editing with ease",
-      "gallery.title":"In-store Gallery",
-      "exp.badge":"Company-owned","exp.title":"Try it at ESPORTSCAFE 5G","exp.p":"Hands-on at our <span class='font-semibold'>ESPORTSCAFE 5G</span> using <span class='font-semibold'>240Hz / 540Hz</span> monitors.","exp.btn":"Visit ESPORTSCAFE 5G","exp.note":"(Operated by the same company)",
-      "testi.title":"Testimonials","testi.p":"Trusted by local gamers and streamers. Here are recent setups and feedback.","testi.q1":"“540Hz experience blew my mind! Great performance and service.”","testi.q1n":"— Tokyo, Mr. A","testi.q2":"“Staff helped me choose the right build.”","testi.q2n":"— Kanagawa, student","testi.q3":"“Being able to play right upstairs at the cafe is awesome.”","testi.q3n":"— Okubo, regular",
-      "cta.h":"Upgrade today.","cta.p":"In-stock demo units can go home same day; custom leads are short.","cta.btn":"Access & contact",
-      "faq.title":"FAQ","faq.q1":"Can I buy on the spot?","faq.a1":"Yes—if in stock, you can take it home the same day.","faq.q2":"Online orders?","faq.a2":"Store pickup only for now; online is in the works.","faq.q3":"Custom PC consultation?","faq.a3":"Tell us budget and use cases; we’ll propose a build.",
-      "contact.title":"Access & Contact","contact.addressL":"Address:","contact.hours":"Hours: 9:00–19:00 (Sun/Mon closed)","contact.phoneL":"Tel:","contact.emailL":"Email:",
+      "hero.tagline":"Total shop for PCs & smart devices",
+      "hero.heading":"Gaming PCs and smart devices, <span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>maintained at a business-grade level.</span>",
+      "hero.p":"From new and pre-owned gaming PCs with custom builds to fast repair for iPhone, Android, iPad and tablets, we provide a single, business-grade IT solution for both individuals and companies.",
+      "hero.btn.services":"View all services","hero.btn.access":"Access & contact",
+      "benefits.0.t":"Phone and tablet repairs in as little as 30 minutes","benefits.0.p":"Common issues like battery and screen replacement are handled on-site, often within about 30 minutes depending on workload, with careful attention to your data.","benefits.1.t":"New and pre-owned PCs with custom builds","benefits.1.p":"For gaming and business alike, we combine curated new and pre-owned PCs with custom builds designed around your budget.","benefits.2.t":"One-stop support for every device","benefits.2.p":"We take care of PCs, phones and tablets under one roof, ideal for both individual users and multi-device business environments.","benefits.3.t":"Business-grade testing and aftercare","benefits.3.p":"Every serviced device and pre-owned PC is tested thoroughly, with clear warranty terms and ongoing support whenever you need it.",
+      "services.title":"Services","services.p":"We offer end-to-end IT services—from new and pre-owned PC sales and custom builds to smartphone and tablet repair.",
+      "services.items.0":"New and pre-owned gaming or business PCs","services.items.1":"Custom-built rigs and hardware upgrades","services.items.2":"iPhone, Android and iPad repair (screens, batteries and more)","services.items.3":"Data transfer, OS setup and software installation","services.items.4":"Business rollout consulting and free estimates",
+      "builds.title":"Recommended PC setups","builds.note":"Three sample configurations by use case. Final pricing depends on parts and exchange rates. Phone and tablet repairs or multi-PC deployments can be quoted together.","builds.e.title":"Entry – first gaming and study PC","builds.e.price":"From ¥120,000","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"Ideal for popular online titles, school work and everyday media, with smooth connectivity to phones and tablets.","builds.p.title":"Pro – gaming, streaming and creation","builds.p.price":"From ¥220,000","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"Handles high-refresh FPS, streaming and video editing comfortably, with room for dual monitors and mobile integration.","builds.u.title":"Ultra – workstation and pro gaming","builds.u.price":"From ¥380,000","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / fast NVMe","builds.u.use":"Built for 4K, high-fps gaming and heavy creative workloads in multi-device, business-grade environments.",
+      "gallery.title":"Store and repair gallery (PC and phones)",
+      "exp.badge":"Company-owned e-sports cafe","exp.title":"Test your setup at ESPORTSCAFE 5G","exp.p":"Our sister e-sports cafe ESPORTSCAFE 5G is located upstairs, where you can try our recommended PC builds, check streaming performance and even test smartphone or tablet gaming on fast connections.","exp.btn":"View ESPORTSCAFE 5G","exp.note":"(Operated by the same company / 同公司運営のカフェです)",
+      "testi.title":"Case studies and customer voices","testi.p":"Trusted not only by local gamers and streamers, but also by nearby businesses who rely on us for their PCs and smart devices. Here are a few voices from our customers.","testi.q1":"I could discuss both my streaming PC and smartphone setup at once; they handled the wiring and all the software settings for me.","testi.q1n":"— Individual streamer","testi.q2":"They replaced our POS PCs and staff phones in a single day, including all the data migration.","testi.q2n":"— Local restaurant owner","testi.q3":"The day before a tournament I cracked my phone screen; they fixed it in about 30 minutes so I could still compete.","testi.q3n":"— High-school gamer",
+      "cta.h":"Keep every device at its best, starting today.","cta.p":"Whether you need a new or pre-owned PC, a fully tuned gaming setup, or same-day repair for your iPhone, Android or iPad, we handle it all in one place. Visit us or get in touch to talk about your devices.","cta.btn":"Access & contact",
+      "faq.title":"FAQ","faq.q1":"Can I buy a PC or device and take it home the same day?","faq.a1":"Yes. In-stock new and pre-owned PCs, monitors and peripherals can be purchased and taken home the same day. Phone handset availability varies, so please ask our staff in store.","faq.q2":"How long do phone or tablet repairs take?","faq.a2":"It depends on the model, issue and how busy we are, but common repairs like screen and battery replacement are often completed the same day, some in as little as about 30 minutes.","faq.q3":"Do you support multi-device or business deployments?","faq.a3":"Yes. We help plan and deploy PCs, phones and tablets for stores and offices, including network setup and basic security. Share your budget and approximate number of devices to get started.",
+      "contact.title":"Access and contact (PC and smart devices)","contact.addressL":"Address:","contact.hours":"Hours: 11:00–20:00 (Sun/Mon closed)","contact.phoneL":"Tel:","contact.emailL":"Email:",
       "footer.contact":"Contact","footer.services":"Services"
     }
   };
