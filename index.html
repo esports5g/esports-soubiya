@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+
+<html lang="ja">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>eスポーツ装備屋｜ゲーミングPC・中古PC販売／スマホ・タブレット修理のトータルITショップ</title>
+<meta content="ゲーミングPC・中古PC販売、カスタム構築、iPhone・Android・iPadなどスマホ・タブレット修理まで一括対応するトータルITショップ。新宿・大久保エリアのeスポーツ装備屋ESPORTS SOUBIYA。" name="description"/>
+<meta content="#ffffff" name="theme-color"/>
+<link href="assets/logo.png" rel="icon"/>
+<link href="https://esports-soubiya.com/" rel="canonical"/>
+<link href="manifest.webmanifest" rel="manifest"/>
+<meta content="eスポーツ装備屋｜ゲーミングPC・中古PC販売／スマホ・タブレット修理" property="og:title"/>
+<meta content="ゲーミングPC・中古PC販売、カスタム構築、スマホ・タブレット修理まで、eスポーツ装備屋がワンストップでサポートします。" property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://esports-soubiya.com/" property="og:url"/>
+<meta content="assets/store-3.jpg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: { extend: {
+        fontFamily: { sans: ['Inter','Noto Sans JP','system-ui','-apple-system','Segoe UI','Roboto','Helvetica','Arial','sans-serif'] },
+        colors: { brand: { 500:'#f59e0b', 600:'#f97316', 700:'#c2410c' } },
+        boxShadow: { glow: '0 0 0 1px rgba(0,0,0,.06), 0 12px 50px rgba(245,158,11,.25)', card: '0 4px 30px rgba(255,255,255,.8) inset, 0 10px 35px rgba(245,158,11,.15)' }
+      }}
+    }
+  </script>
+<script src="https://unpkg.com/lenis@1.1.15/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<style>
+    :root { --bg: #0b0a08; --panel: rgba(255,255,255,.85); }
+    body { background:
+      radial-gradient(1200px 600px at 10% 0, rgba(249,115,22,.28), transparent),
+      radial-gradient(800px 800px at 90% 20%, rgba(234,88,12,.22), transparent),
+      url('assets/bg-tech.png') center/cover fixed no-repeat,
+      #0b0a08; }
+    .glass { backdrop-filter: none; background: var(--panel); border: 1px solid rgba(0,0,0,.07); }
+    .hero-cut { clip-path: polygon(0 0,100% 0,100% 92%,0 100%); }
+    .tilt { transform-style: preserve-3d; transition: transform .2s ease, box-shadow .2s ease; }
+    .tilt:hover { box-shadow: 0 11.00px 38.50px rgba(245, 158, 11, .2); }
+    .lang-btn { opacity:.75 }
+    .lang-btn.active { opacity:1; box-shadow: 0 0 0 0.55px rgba(0, 0, 0, .12) inset; }
+    .shimmer { position:relative; overflow:hidden }
+    .shimmer::after{ content:''; position:absolute; inset:-200% -50%; transform:rotate(20deg); background:linear-gradient(90deg, transparent, rgba(0,0,0,.08), transparent); animation:shimmer 4s linear infinite; }
+    @keyframes shimmer{ 0%{transform:translateX(-60%) rotate(20deg)} 100%{transform:translateX(60%) rotate(20deg)} }
+    #lightbox { position: fixed; inset:0; background:rgba(0,0,0,.9); display:none; align-items:center; justify-content:center; z-index:1000 }
+    #lightbox img { max-width:92vw; max-height:86vh; border-radius:1rem; box-shadow:0 5.50px 22.00px rgba(0, 0, 0, .6) } #menuBtn { display:inline-flex } #mobileMenu { position: fixed; inset:0; background:rgba(255,255,255,.98); display:none; z-index:60; }
+    #mobileMenu a { display:block; padding:1rem; font-size:1.125rem }
+    #toTop { position:fixed; right:1rem; bottom:4.5rem; z-index:50; display:none }
+    #stickyCTA{ position:fixed; left:0; right:0; bottom:0; display:flex; gap:.5rem; padding:.5rem .75rem; backdrop-filter: none; background:rgba(255,255,255,.9); border-top:1px solid rgba(0,0,0,.08); z-index:45 }
+    #stickyCTA a{ flex:1; text-align:center }
+    @media (max-width:640px){ .hero-cut{clip-path:none} header .h-16{height:56px} }
+    @media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+  </style>
+<style id="esports-theme">
+:root{
+  --brand-cyan:#00e5ff;
+  --brand-magenta:#ff3af2;
+  --brand-violet:#8a2be2;
+  --brand-accent:#00ffc6;
+  --surface:#121733; /* brighter than #0b0e1a */
+  --card:#171d35;    /* slightly lighter card */
+  --text:#eef6ff;    /* a bit brighter text */
+}
+/* Background: subtle moving gradient (increased brightness) */
+body{
+  color:var(--text);
+  background:
+    radial-gradient(1200px 800px at 10% -10%, rgba(0,229,255,.18), transparent 60%),
+    radial-gradient(1200px 800px at 110% 10%, rgba(255,58,242,.14), transparent 60%),
+    radial-gradient(1200px 800px at 50% 120%, rgba(138,43,226,.12), transparent 60%),
+    var(--surface);
+  background-attachment: fixed;
+}
+/* Header slightly lighter */
+header{
+  background: linear-gradient(180deg, rgba(18,23,51,.88), rgba(18,23,51,.72));
+  border-bottom: 1px solid rgba(255,255,255,.10) !important;
+  backdrop-filter: blur(6px);
+}
+header .font-extrabold{ color: var(--text); }
+/* Headings glow */
+.hero-title, h1, h2{
+  position:relative;
+  text-shadow: 0 0 24px rgba(0,229,255,.28), 0 0 36px rgba(255,58,242,.18);
+}
+/* Buttons: neon outline + gentle glow */
+.ripple, .lang-btn, a[class*="px-5"][class*="py-3"]{
+  position:relative;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.14);
+  box-shadow: 0 8px 18px rgba(0,0,0,.30);
+  color: var(--text);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.ripple::after{
+  content:''; position:absolute; inset:-2px;
+  background: linear-gradient(135deg, var(--brand-cyan), var(--brand-magenta), var(--brand-violet));
+  filter: blur(12px); opacity:.0; z-index:-1; border-radius: inherit; transition: opacity .2s ease;
+}
+.ripple:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,.28);
+  box-shadow: 0 12px 22px rgba(0,0,0,.36), 0 0 24px rgba(0,229,255,.18);
+}
+.ripple:hover::after{ opacity:.38; }
+/* Cards (glass) */
+.glass{
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  border: 1px solid rgba(255,255,255,.10);
+  box-shadow: 0 10px 26px rgba(0,0,0,.32);
+}
+.glass::before{
+  content:''; position:absolute; inset: -1px; border-radius: inherit; padding:1px;
+  background: linear-gradient(120deg, rgba(0,229,255,.0), rgba(0,229,255,.55), rgba(255,58,242,.0));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: edge 6s linear infinite;
+}
+@keyframes edge{ 0%{ filter:hue-rotate(0deg) } 100%{ filter:hue-rotate(360deg) } }
+/* Links */
+a:hover{ color: var(--brand-cyan); }
+/* Lightbox */
+#lightbox{ background: rgba(0,0,0,.85) !important; }
+</style>
+<style id="esports-aurora">
+/* --- Aurora dynamic background, slightly brighter --- */
+body::before, body::after{
+  content:''; position:fixed; inset:-20%; pointer-events:none; z-index:-1;
+  background:
+    radial-gradient(60% 40% at 20% 10%, rgba(0,229,255,.24), transparent 60%),
+    radial-gradient(50% 35% at 85% 20%, rgba(255,58,242,.20), transparent 60%),
+    radial-gradient(55% 45% at 50% 90%, rgba(138,43,226,.16), transparent 60%);
+  filter: blur(38px);
+  animation: auroraMove 16s ease-in-out infinite alternate;
+}
+body::after{
+  animation-duration: 22s;
+  transform: scale(1.1);
+  opacity:.95;
+}
+@keyframes auroraMove{
+  0%{ transform: translate3d(0,0,0) scale(1); filter: blur(40px); }
+  100%{ transform: translate3d(0,-2%,0) scale(1.05); filter: blur(34px); }
+}
+
+/* Keep header/links readable */
+header a, nav a{ color: #eef6ff; }
+</style>
+<style id="x-click-fix">
+a[href*="x.com"], a[href*="twitter.com"]{
+  position: relative; z-index: 20;
+  pointer-events: auto !important;
+  text-decoration: none;
+}
+.glass::before, .glass::after{ pointer-events: none !important; }
+a[href*="x.com"] *{ pointer-events: auto !important; }
+</style>
+<style id="section-divider-fix">
+section.has-divider{ border-top: none !important; position: relative; }
+section.has-divider::before, section.has-divider::after{ display: none !important; }
+.section-divider-line{
+  height:1px; width:100%; max-width:1280px; margin:0 auto;
+  background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,.18), rgba(255,255,255,0));
+}
+section.has-divider > h2, section.has-divider > h3{ margin-top: 14px; }
+</style>
+<style id="future-fx">
+/* Scroll reveal */
+.reveal-init{ opacity:0; transform: translateY(16px) scale(.98); }
+.reveal-in{ opacity:1; transform: translateY(0) scale(1); transition: opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1); }
+/* Card tilt */
+.tilt{ will-change: transform; transition: transform .18s ease, box-shadow .18s ease; transform-style: preserve-3d; }
+.tilt:hover{ box-shadow: 0 18px 40px rgba(0,0,0,.35); }
+/* Magnetic buttons */
+.magnet{ transition: transform .15s ease-out; will-change: transform; }
+/* Nav underline */
+.nav-ink a{ position: relative; }
+.nav-ink a::after{
+  content:''; position:absolute; left:10%; right:10%; bottom:-6px; height:2px;
+  background: linear-gradient(90deg, rgba(0,229,255,.0), rgba(0,229,255,.7), rgba(255,58,242,.0));
+  transform: scaleX(0); transform-origin: center; transition: transform .25s ease;
+}
+.nav-ink a:hover::after{ transform: scaleX(1); }
+/* Neon edges slow hue shift */
+@keyframes hueSlow{ from{ filter: hue-rotate(0deg); } to{ filter: hue-rotate(360deg);} }
+.glass::before{ animation: hueSlow 18s linear infinite; }
+/* Canvas background */
+#fx-space{
+  position: fixed; inset:0; z-index:-2; pointer-events:none; opacity:.55;
+  filter: blur(.2px);
+}
+@media (max-width:640px){ #fx-space{ opacity:.28; } }
+</style>
+</head>
+<body class="bg-[#121733] text-slate-100 font-sans selection:bg-brand-600/30">
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"eスポーツ装備屋",
+  "image":"assets/logo.png",
+  "url":"https://esports-soubiya.com/",
+  "telephone":"+81-80-7146-4150",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"百人町2-4-2 ビルやまき 502",
+    "addressLocality":"新宿区",
+    "addressRegion":"東京都",
+    "postalCode":"169-0073",
+    "addressCountry":"JP"
+  },
+  "sameAs":["https://x.com/Esoubiya","https://www.esportscafe5g.com/"]
+}
+</script>
+<a class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:bg-black/60 focus:text-white focus:p-2 rounded" href="#content">Skip to content</a>
+<header class="fixed top-0 inset-x-0 z-50 bg-[#121733]/70 border-b border-white/10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+<a aria-label="home" class="flex items-center gap-3" href="#top">
+<img alt="logo" class="h-8 w-8 rounded-lg shadow" src="assets/logo.png"/>
+<span class="font-extrabold tracking-wide">eスポーツ装備屋</span>
+</a>
+<nav aria-label="primary" class="hidden md:flex items-center gap-8 text-sm">
+<a class="hover:text-brand-500" data-i18n="nav.services" href="#services">サービス</a>
+<a class="hover:text-brand-500" data-i18n="nav.builds" href="#builds">セットアップ</a>
+<a class="hover:text-brand-500" data-i18n="nav.gallery" href="#gallery">ギャラリー</a>
+<a class="hover:text-brand-500" data-i18n="nav.testimonials" href="#testimonials">お客様の声</a>
+<a class="hover:text-brand-500" data-i18n="nav.access" href="#contact">アクセス</a>
+<a class="hover:text-brand-500" data-i18n="nav.repairPrices" href="repair-prices.html">修理料金</a><a class="hover:text-brand-500" data-i18n="nav.faq" href="#faq">FAQ</a>
+</nav>
+<div class="flex items-center gap-2">
+<!-- 修复后的语言按钮（桌面） -->
+<div class="hidden sm:flex items-center gap-1 text-xs" id="langSwitch">
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="ja" type="button">日本語</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="zh" type="button">中文</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="en" type="button">EN</button>
+</div>
+<button aria-label="menu" class="md:hidden rounded-md px-2 py-1 bg-[#121733]/70/10" id="menuBtn">☰</button>
+</div>
+</div>
+<!-- Mobile menu -->
+<div aria-modal="true" id="mobileMenu" role="dialog">
+<div class="p-4 flex items-center justify-between border-b border-white/10">
+<div class="flex items-center gap-3">
+<img alt="logo" class="h-8 w-8 rounded-lg" src="assets/logo.png"/>
+<span class="font-semibold">eスポーツ装備屋</span>
+</div>
+<button aria-label="close menu" class="rounded-md px-3 py-1 bg-[#121733]/70/10" id="menuClose">✕</button>
+</div>
+<nav class="p-4">
+<a data-i18n="nav.services" href="#services">サービス</a>
+<a data-i18n="nav.builds" href="#builds">セットアップ</a>
+<a data-i18n="nav.gallery" href="#gallery">ギャラリー</a>
+<a data-i18n="nav.testimonials" href="#testimonials">お客様の声</a>
+<a data-i18n="nav.access" href="#contact">アクセス</a>
+<a class="block px-4 py-3 hover:bg-white/5" data-i18n="nav.repairPrices" href="repair-prices.html">修理料金</a><a data-i18n="nav.faq" href="#faq">FAQ</a>
+<!-- 修复后的语言按钮（移动端） -->
+<div class="mt-4 text-sm text-slate-300" id="mLang">
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10 mr-2" data-lang="ja" type="button">日本語</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10 mr-2" data-lang="zh" type="button">中文</button>
+<button class="lang-btn rounded-md px-2 py-1 bg-[#121733]/70/10" data-lang="en" type="button">EN</button>
+</div>
+</nav>
+</div>
+</header>
+<section class="relative pt-28 sm:pt-32 pb-16 sm:pb-24 hero-cut overflow-hidden" id="top">
+<div class="absolute inset-0 -z-10 will-change-transform" id="heroBg">
+<img alt="bg" class="w-full h-full object-cover opacity-25" src="assets/store-1.jpg"/>
+</div>
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" id="content">
+<div class="grid md:grid-cols-1 gap-8 items-center">
+<div class="space-y-6">
+<p class="text-brand-500 font-semibold" data-i18n="hero.tagline">ESPORTS SOUBIYA</p>
+<h1 class="font-extrabold leading-tight" data-i18n="hero.heading">
+          最高峰のゲーミング体験を、<span class="bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700">あなたに。</span>
+</h1>
+<p class="text-slate-300/90 max-w-xl" data-i18n="hero.p">プロレベルのゲーミングPCを専門に取り扱う、販売・体験型ショップ。</p>
+<div class="flex gap-3">
+<a class="rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="hero.btn.services" href="#services">サービスを見る</a>
+<a class="rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="hero.btn.access" href="#contact">アクセス</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="py-10 sm:py-14" id="benefits">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-4 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.0.t">即日お渡し</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.0.p">在庫品はその場で受け取り可能。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.1.t">無料診断</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.1.p">不調チェック・アップグレード相談。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.2.t">安心保証</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.2.p">初期不良に丁寧に対応。</p></div>
+<div class="glass rounded-2xl p-5 tilt"><h3 class="font-semibold" data-i18n="benefits.3.t">体験重視</h3><p class="text-sm text-slate-300/90" data-i18n="benefits.3.p">直営カフェで実機プレイ。</p></div>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24" id="services">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="services.title">サービス</h2>
+<p class="text-slate-300/90 mb-8 sm:mb-10 max-w-3xl" data-i18n="services.p">販売・カスタム・修理・体験をワンストップで。</p>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.0">新品・中古ゲーミングPC販売</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.1">PCパーツ・周辺機器販売</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.2">カスタム組立・アップグレード</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.3">修理・メンテナンス</h3></div>
+<div class="glass rounded-2xl p-5 sm:p-6 tilt" data-fx="card"><h3 class="font-semibold mb-2" data-i18n="services.items.4">構成相談・無料見積もり</h3></div>
+</div>
+</div>
+</section>
+<section class="py-10 sm:py-14 bg-slate-900/40 border-y border-white/5 has-divider" id="builds"><div aria-hidden="true" class="section-divider-line"></div>
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="builds.title">おすすめセットアップ</h2>
+<p class="text-slate-300/90 mb-8" data-i18n="builds.note">価格は参考帯。詳細は店頭でご相談ください。</p>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-6 tilt">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.e.title">Entry</h3><span class="badge" data-i18n="builds.e.price">¥100,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.e.cpu">Intel Core i5 / Ryzen 5</li>
+<li data-i18n="builds.e.gpu">GeForce RTX 5060</li>
+<li data-i18n="builds.e.mem">16GB / 1TB SSD</li>
+<li data-i18n="builds.e.use">入門〜主流FPSを高fpsで</li>
+</ul>
+</div>
+<div class="glass rounded-2xl p-6 tilt ring-1 ring-brand-600/40">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.p.title">Pro</h3><span class="badge" data-i18n="builds.p.price">¥200,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.p.cpu">Intel Core i7 / Ryzen 7</li>
+<li data-i18n="builds.p.gpu">GeForce RTX 5070 / 5070 Ti</li>
+<li data-i18n="builds.p.mem">32GB / 1~2TB SSD</li>
+<li data-i18n="builds.p.use">1440p高リフレッシュ + クリエイティブ</li>
+</ul>
+</div>
+<div class="glass rounded-2xl p-6 tilt">
+<div class="flex items-center justify-between mb-2"><h3 class="font-semibold" data-i18n="builds.u.title">Ultra</h3><span class="badge" data-i18n="builds.u.price">¥300,000〜</span></div>
+<ul class="text-sm text-slate-300/90 list-disc pl-5">
+<li data-i18n="builds.u.cpu">Intel Core i9 / Ryzen 9</li>
+<li data-i18n="builds.u.gpu">GeForce RTX 5080 / 5090</li>
+<li data-i18n="builds.u.mem">64GB / 高速NVMe</li>
+<li data-i18n="builds.u.use">4K/高fps、配信・動画編集も余裕</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="py-8 sm:py-10" id="gallery">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="gallery.title">店内ギャラリー</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+<img alt="gallery 1" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-1.jpg"/>
+<img alt="gallery 2" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-2.jpg"/>
+<img alt="gallery 3" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-3.jpg"/>
+<img alt="gallery 4" class="w-full h-56 sm:h-64 md:h-80 object-cover rounded-2xl glass lightboxable parallax" loading="lazy" src="assets/store-4.jpg"/>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24 bg-slate-900/50 border-y border-white/5" id="experience">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="grid md:grid-cols-2 gap-6 sm:gap-8 items-start">
+<div>
+<div class="inline-flex items-center gap-2 text-xs font-semibold tracking-wide uppercase rounded-full px-3 py-1 bg-brand-600/20 text-brand-300 ring-1 ring-brand-600/40" data-i18n="exp.badge">
+          当社直営 / Company-owned
+        </div>
+<h2 class="text-3xl md:text-4xl font-bold mb-2 mt-3" data-i18n="exp.title">ESPORTSCAFE 5G で実機体験</h2>
+<p class="text-slate-300/90" data-i18n="exp.p">eスポーツ装備屋が運営する <span class="font-semibold">ESPORTSCAFE 5G</span> にて、最新FPSを <span class="font-semibold">240Hz / 540Hz</span> モニターで試遊できます。</p>
+<a class="inline-flex mt-4 rounded-lg px-4 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="exp.btn" href="https://www.esportscafe5g.com/" target="_blank">ESPORTSCAFE 5G を見る</a>
+<p class="text-xs text-slate-400 mt-2" data-i18n="exp.note">（同公司運営のカフェです / Operated by the same company）</p>
+</div>
+<div class="glass rounded-2xl overflow-hidden tilt">
+<iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=東京都新宿区百人町2-4-2&amp;output=embed" style="border:0;width:100%;height:360px" title="map"></iframe>
+</div>
+</div>
+</div>
+</section>
+<section aria-label="testimonials" class="relative py-16 sm:py-24" id="testimonials">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative">
+<h2 class="text-3xl md:text-4xl font-bold text-center mb-2 shimmer" data-i18n="testi.title">導入事例・お客様の声</h2>
+<p class="text-center text-slate-300/90 mb-10" data-i18n="testi.p">地元のゲーマーや配信者から信頼される『装備屋』。最新構成のセットアップ事例を紹介します。</p>
+<div class="grid md:grid-cols-3 gap-4 sm:gap-6">
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q1">「540Hzモニターでのゲーム体験が想像以上！性能も対応も文句なしです。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q1n">— 東京在住・A様</div></div>
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q2">「スタッフが構成の相談に乗ってくれて安心して購入できました。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q2n">— 神奈川・高校生プレイヤー</div></div>
+<div class="glass rounded-2xl p-6 tilt"><p class="quote" data-i18n="testi.q3">「そのまま上のカフェで実際にプレイできるのが最高。」</p><div class="text-sm text-slate-400 mt-3" data-i18n="testi.q3n">— 大久保・常連ゲーマー</div></div>
+</div>
+</div>
+</section>
+<section class="py-12" id="cta">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="rounded-2xl p-6 sm:p-8 bg-gradient-to-r from-brand-700/50 to-slate-900/70 ring-1 ring-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+<div>
+<h3 class="text-2xl font-bold" data-i18n="cta.h">今日から最高の環境に。</h3>
+<p class="text-slate-300/90" data-i18n="cta.p">在庫の展示機は当日お持ち帰りOK。カスタムも最短で対応します。</p>
+</div>
+<a class="rounded-lg px-5 py-3 bg-[#121733]/70/10 hover:bg-[#121733]/70/15 ripple" data-i18n="cta.btn" href="#contact">アクセス・連絡先</a>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24" id="faq">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<h2 class="text-3xl md:text-4xl font-bold mb-6 shimmer" data-i18n="faq.title">よくある質問</h2>
+<div class="grid md:grid-cols-2 gap-4 sm:gap-6">
+<details class="glass rounded-xl p-5" open=""><summary class="font-semibold cursor-pointer" data-i18n="faq.q1">その場で購入できますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a1">展示品で在庫がある商品は当日お持ち帰り可能です。</p></details>
+<details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q2">オンライン注文はできますか？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a2">現状は店頭販売のみ。オンライン販売を準備中です。</p></details>
+<details class="glass rounded-xl p-5"><summary class="font-semibold cursor-pointer" data-i18n="faq.q3">カスタムPCの相談は？</summary><p class="text-slate-300/90 mt-2" data-i18n="faq.a3">ご予算・用途に合わせた構成提案を行います。</p></details>
+</div>
+</div>
+</section>
+<section class="py-16 sm:py-24" id="contact">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl mx-auto glass rounded-2xl p-5 sm:p-6 tilt">
+<h2 class="text-3xl md:text-4xl font-bold mb-3" data-i18n="contact.title">アクセス &amp; 連絡先</h2>
+<ul class="space-y-2 text-sm">
+<li class="text-slate-300/90"><span data-i18n="contact.addressL">住所：</span><span>〒169-0073 東京都新宿区百人町2-4-2 ビルやまき 502号室</span></li>
+<li class="text-slate-300/90" data-i18n="contact.hours">営業時間：9:00〜19:00（定休：日・月）</li>
+<li class="text-slate-300/90"><span data-i18n="contact.phoneL">電話：</span><a class="hover:text-brand-500" href="tel:080-7146-4150">080-7146-4150</a></li>
+<li class="text-slate-300/90"><span data-i18n="contact.emailL">Email：</span><a class="hover:text-brand-500" href="mailto:esoubiya502@gmail.com">esoubiya502@gmail.com</a></li>
+</ul>
+<div class="mt-4 flex flex-wrap items-center gap-3 text-sm">
+<span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">LINE: @soubiya5g</span>
+<span class="rounded-lg px-3 py-2 bg-[#121733]/70/10">WeChat: Esports5G</span>
+<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10 hover:bg-[#121733]/70/15" href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank"><a href="https://x.com/Esoubiya" rel="noopener noreferrer" target="_blank">X（Twitter）</a></a>
+</div>
+</div>
+</div>
+</section>
+<footer class="py-10 border-t border-white/10">
+<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-sm flex flex-col md:flex-row items-center justify-between gap-4">
+<div>eスポーツ装備屋 © <span id="year"></span></div>
+<div class="text-slate-400">
+<a class="hover:text-brand-500" data-i18n="footer.contact" href="#contact">問い合わせ</a>
+      · <a class="hover:text-brand-500" data-i18n="footer.services" href="#services">サービス</a>
+</div>
+</div>
+</footer>
+<div aria-hidden="true" id="lightbox"><img alt="" src=""/></div>
+<button aria-label="Back to top" class="rounded-full px-4 py-2 bg-brand-600 shadow" id="toTop">↑</button>
+<div aria-label="Quick actions" class="sm:hidden" id="stickyCTA" role="group">
+<a class="rounded-lg px-3 py-2 bg-brand-600 text-white" href="#contact">連絡する</a>
+<a class="rounded-lg px-3 py-2 bg-[#121733]/70/10" href="https://www.esportscafe5g.com/" target="_blank">ESPORTSCAFE 5G</a>
+</div>
+<script>
+  // Smooth scroll
+  const lenis = new Lenis(); function raf(t){ lenis.raf(t); requestAnimationFrame(raf); } requestAnimationFrame(raf);
+
+  // Header & cards reveal
+  gsap.registerPlugin(ScrollTrigger);
+gsap.from('header',{ y:-40, opacity:0, duration:.6, ease:'power3.out' });
+  gsap.utils.toArray('[data-fx="card"], .tilt, #gallery img, #benefits .glass, #builds .glass').forEach((el,i)=>{
+    gsap.from(el,{ opacity:0, y:20, duration:.6, delay:i*0.04, scrollTrigger:{ trigger:el, start:'top 85%' } });
+  });
+
+  // Parallax for hero & gallery
+  gsap.to('#heroBg', { yPercent: -12, ease:'none', scrollTrigger:{ trigger:'#top', start:'top top', end:'bottom top', scrub:true } });
+  document.querySelectorAll('.parallax').forEach(img => { gsap.to(img, { y: -30, ease:'none', scrollTrigger:{ trigger:img, start:'top bottom', end:'bottom top', scrub:true } }); });
+
+  // Tilt
+  function attachTilt(el){ if ('ontouchstart' in window) return; const r=15; el.addEventListener('mousemove', (e)=>{ const rect=el.getBoundingClientRect(); const x=(e.clientX-rect.left)/rect.width*2-1; const y=(e.clientY-rect.top)/rect.height*2-1; el.style.transform = `rotateX(${(-y*r).toFixed(2)}deg) rotateY(${(x*r).toFixed(2)}deg)`; }); el.addEventListener('mouseleave', ()=>{ el.style.transform='rotateX(0) rotateY(0)'; }); }
+  document.querySelectorAll('.tilt').forEach(attachTilt);
+
+  // Ripple
+  document.querySelectorAll('.ripple').forEach(btn=>{
+    btn.style.position='relative'; btn.style.overflow='hidden';
+    btn.addEventListener('click', function(e){
+      const r=document.createElement('span'); const d=Math.max(this.clientWidth,this.clientHeight);
+      r.style.cssText=`position:absolute;border-radius:9999px;inset:auto;pointer-events:none;width:${d}px;height:${d}px;background:rgba(0,0,0,.15);transform:translate(-50%,-50%) scale(0);left:${e.offsetX}px;top:${e.offsetY}px;animation:rip .5s ease-out`;
+      this.appendChild(r); setTimeout(()=>r.remove(),520);
+    }, {passive:true});
+  });
+  const s=document.createElement('style'); s.textContent='@keyframes rip{to{transform:translate(-50%,-50%) scale(2);opacity:0}}'; document.head.appendChild(s);
+
+  // Simple lightbox
+  const lb=document.getElementById('lightbox'); const lbImg=lb.querySelector('img');
+  document.querySelectorAll('.lightboxable').forEach(img=>{ img.addEventListener('click',()=>{ lbImg.src=img.src; lb.style.display='flex'; }); });
+  lb.addEventListener('click',()=>{ lb.style.display='none'; lbImg.src=''; });
+
+  // Mobile menu
+  const mm=document.getElementById('mobileMenu');
+  document.getElementById('menuBtn').addEventListener('click',()=>{ mm.style.display='block'; gsap.fromTo(mm,{opacity:0},{opacity:1,duration:.2}); });
+  document.getElementById('menuClose').addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); });
+  mm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{ gsap.to(mm,{opacity:0,duration:.2,onComplete:()=>mm.style.display='none'}); }));
+
+  // Back to top
+  const toTop=document.getElementById('toTop'); window.addEventListener('scroll',()=>{ toTop.style.display=window.scrollY>600?'block':'none'; },{passive:true}); toTop.addEventListener('click',()=> lenis.scrollTo(0));
+
+  // Year
+  document.getElementById('year').textContent=new Date().getFullYear();
+
+
+  const dict = {
+    ja: {
+      "nav.services":"サービス","nav.gallery":"ギャラリー","nav.access":"アクセス","nav.faq":"FAQ",
+      "nav.repairPrices":"修理料金","nav.testimonials":"お客様の声","nav.builds":"セットアップ",
+      "hero.tagline":"PC・スマホのトータル装備屋",
+      "hero.heading":"ゲーミングPCもスマホも、<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>ビジネス級のコンディションに。</span>",
+      "hero.p":"新品・中古のゲーミングPC販売・構築に加え、iPhone・Android・iPadなどスマートデバイスの即日修理にも対応する、ビジネスグレードのトータルITショップです。",
+      "hero.btn.services":"サービス一覧","hero.btn.access":"アクセス・お問い合わせ",
+      "benefits.0.t":"最短30分スマホ・タブレット修理","benefits.0.p":"バッテリー交換や画面割れなどのトラブルを、混雑状況により最短30分からスピード対応。データ保護にも配慮して作業します。","benefits.1.t":"新品・中古PCとカスタム構築","benefits.1.p":"ゲーミングからビジネスまで、新品・中古PCとカスタム構成を組み合わせて最適な一台をご提案します。","benefits.2.t":"PCもスマホもまとめて一括サポート","benefits.2.p":"PC販売やネットワーク環境づくりから、スマホ・タブレット修理まで、一店舗で複数デバイスを長期的にサポートします。","benefits.3.t":"ビジネス品質の検査とアフター","benefits.3.p":"中古PCも修理品も、動作チェックと保証内容を明確にご案内。導入後のアップグレードやご相談もいつでも受け付けています。",
+      "services.title":"サービス","services.p":"新品・中古PC販売、カスタム構築、スマホ・タブレット修理まで、トータルにお任せいただけるITサービスを提供しています。","services.items.0":"新品・中古ゲーミングPC / ビジネスPC販売","services.items.1":"フルカスタムPC構築・パーツ増設","services.items.2":"iPhone・Android・iPad修理（画面・バッテリーほか）","services.items.3":"データ移行・初期設定・ソフトウェア導入","services.items.4":"法人向け導入相談・無料見積もり",
+      "builds.title":"おすすめPCセットアップ","builds.note":"用途別に三つのPCモデルをご用意しています。スマホ・タブレット修理や複数台導入のご相談も、同時にお見積もりが可能です。","builds.e.title":"Entry / 初めての一台","builds.e.price":"¥120,000〜","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"入門から主流オンラインゲームまで、動画視聴や学習用にも最適なスタンダード構成です。","builds.p.title":"Pro / 配信・クリエイティブ向け","builds.p.price":"¥220,000〜","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"高リフレッシュレートのFPS、配信や動画編集、サブモニターやスマホ連携まで快適にこなします。","builds.u.title":"Ultra / ビジネス&クリエイター","builds.u.price":"¥380,000〜","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"4K・高fps環境でゲームと制作を両立しつつ、多数デバイスを接続するヘビーユースにも対応するハイエンド構成です。",
+      "gallery.title":"店内・作業ギャラリー（PC&スマホ）",
+      "exp.badge":"当社直営 / Company-owned","exp.title":"ESPORTSCAFE 5Gで実機プレイ","exp.p":"同じ運営のeスポーツカフェESPORTSCAFE 5Gでは、当店で組んだゲーミングPCの実機プレイや、配信・スマホゲームの動作確認も可能です。PCとモバイルをまたいだ快適な環境づくりを、その場で体験できます。","exp.btn":"ESPORTSCAFE 5Gを見る","exp.note":"（同公司運営のカフェです / Operated by the same company）",
+      "testi.title":"導入事例・お客様の声","testi.p":"地元のゲーマーや配信者はもちろん、近隣企業や店舗のPC・スマホ環境づくりも任される装備屋。導入事例の一部をご紹介します。","testi.q1":"配信PCとスマホの両方をまとめて相談できて、配線からソフトの設定まで全部きれいに仕上げてくれました。","testi.q1n":"— 個人配信者のお客様","testi.q2":"店舗のレジ用PCとスタッフスマホの入れ替えも、データ移行まで含めて休日一日で完了してもらえました。","testi.q2n":"— 近隣飲食店オーナー様","testi.q3":"大会前日にスマホの画面を割ってしまいましたが、三十分ほどで直してくれて本当に助かりました。","testi.q3n":"— 高校生ゲーマーのお客様",
+      "cta.h":"今日から、PCもスマホもベストな状態に。","cta.p":"新品・中古PCの導入、ゲーミング環境の構築、iPhone・Android・iPadの即日修理まで、一度のご来店ですべて完結。まずはお気軽にお問い合わせください。","cta.btn":"アクセス・お問い合わせ",
+      "faq.title":"よくある質問","faq.q1":"PCやスマホはその場で購入・受け取りできますか？","faq.a1":"在庫のある新品・中古PCやモニター、周辺機器は、その場でご購入・お持ち帰りいただけます。スマホ端末本体の販売状況は日によって異なりますので、スタッフまでお尋ねください。","faq.q2":"スマホ・タブレットの修理時間はどれくらいですか？","faq.a2":"機種や症状、混雑状況によりますが、画面割れやバッテリー交換などの軽微な修理は最短三十分から、多くのケースで当日中にお渡しが可能です。","faq.q3":"法人向けの複数台導入やIT環境の相談もできますか？","faq.a3":"はい。店舗やオフィスのPC入れ替え、スタッフ用スマホ・タブレットの選定、ネットワーク環境の整備など、まとめてご提案・お見積もりいたします。まずはご予算や台数の目安をお聞かせください。",
+      "contact.title":"アクセス&連絡先（PC・スマホ総合受付）","contact.addressL":"住所：","contact.hours":"営業時間：11:00〜20:00（定休：日・月）","contact.phoneL":"電話：","contact.emailL":"Email：",
+      "footer.contact":"お問い合わせ","footer.services":"サービス一覧"
+    },
+    zh: {
+      "nav.repairPrices":"维修价格",
+      "nav.services":"服务","nav.gallery":"图库","nav.access":"地址","nav.faq":"常见问题","nav.testimonials":"客户评价","nav.builds":"配置推荐",
+      "hero.tagline":"电脑与手机一站式装備屋","hero.heading":"电竞主机与智能设备，<span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>一次到位的专业方案。</span>","hero.p":"我们集电竞主机新品与中古销售、专业组装升级以及 iPhone、安卓手机、iPad 等设备的快速维修于一体，为个人与企业提供一站式 IT 解决方案。","hero.btn.services":"查看所有服务","hero.btn.access":"地址与联系",
+      "benefits.0.t":"最快30分钟手机 / 平板维修","benefits.0.p":"电池更换、碎屏、接口与按键等常见故障，可根据当天排队情况最快约30分钟完成，维修过程重视数据安全。","benefits.1.t":"新品 / 中古主机与定制组装","benefits.1.p":"覆盖电竞娱乐与商务办公需求，提供经过甄选的新机与中古主机，并可按预算进行定制组装与升级。","benefits.2.t":"多设备一站式管理","benefits.2.p":"电脑、手机与平板相关问题一次解决，适合既玩游戏又需要办公的个人，也适合需要统一管理设备的企业用户。","benefits.3.t":"商务级质检与售后","benefits.3.p":"无论是中古主机还是维修改善过的设备，均经过严格检测，并清晰说明保修与支持范围，售后咨询可随时联系。",
+      "services.title":"服务","services.p":"从电脑新品 / 中古销售、定制组装，到手机与平板维修，我们提供完整的一站式 IT 服务。","services.items.0":"电竞与商务电脑新品 / 中古销售","services.items.1":"整机定制组装与配件升级","services.items.2":"iPhone / 安卓 / iPad 维修（屏幕、电池等）","services.items.3":"数据迁移、系统安装与环境配置","services.items.4":"企业设备导入与方案咨询（免费报价）",
+      "builds.title":"推荐电脑配置","builds.note":"根据使用场景准备了三档参考配置，实际价格会随汇率与配件变动。手机 / 平板维修及多台设备导入可一并报价。","builds.e.title":"入门款 / 初级玩家","builds.e.price":"¥120,000 起","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"适合主流网游、日常学习与办公，也能流畅连接手机与平板。","builds.p.title":"进阶款 / 游戏 + 创作","builds.p.price":"¥220,000 起","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1~2TB SSD","builds.p.use":"高刷新率 FPS、直播与视频剪辑都能轻松应对，同时兼顾多屏与移动设备协同。","builds.u.title":"旗舰款 / 工作站级","builds.u.price":"¥380,000 起","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / 高速NVMe","builds.u.use":"面向4K、高帧数游戏以及重度创作与商务多任务，同时支撑多设备长期高负载运行。",
+      "gallery.title":"门店与维修实景图库（电脑与手机）",
+      "exp.badge":"直营电竞咖啡 / Company-owned","exp.title":"楼上 ESPORTSCAFE 5G 实机体验","exp.p":"同一集团运营的电竞咖啡 ESPORTSCAFE 5G 就在楼上，可以直接体验我们推荐的电脑配置，也能测试直播、手机联机与外设手感。","exp.btn":"查看 ESPORTSCAFE 5G","exp.note":"（同公司运营的咖啡 / Operated by the same company）",
+      "testi.title":"导入案例与客户评价","testi.p":"除了本地玩家与主播，我们还为周边公司与店铺提供电脑与移动设备的导入、维护与更新服务。以下是部分真实反馈。","testi.q1":"直播用电脑加上手机采集的问题一次说清楚，连线和软件都帮我调整好了。","testi.q1n":"— 个人主播 客户","testi.q2":"店里收银电脑和员工手机的更新，一天就帮我们搞定，还顺带完成数据搬家。","testi.q2n":"— 附近餐饮店 店主","testi.q3":"比赛前一天手机摔碎屏，他们半小时就修好，让我顺利参加线下赛。","testi.q3n":"— 高中生玩家 客户",
+      "cta.h":"从今天起，让电脑与手机都保持最佳状态。","cta.p":"无论是电竞与办公电脑的新品 / 中古导入，还是 iPhone / 安卓 / iPad 的当日维修，都可以在本店一次完成。欢迎来店、致电或通过 LINE、微信联系我们。","cta.btn":"地址与联系方式",
+      "faq.title":"常见问题","faq.q1":"电脑或手机可以当天直接带走吗？","faq.a1":"有库存的新品 / 中古主机以及外设可以现场购买、当天带走。手机整机库存会随时变化，请以店内实际为准并咨询工作人员。","faq.q2":"手机 / 平板维修一般需要多久？","faq.a2":"根据机型、故障程度以及当天排队情况不同，碎屏与电池更换类维修最快约30分钟，多数情况下可在当天取机。","faq.q3":"是否支持企业多台设备导入与 IT 环境咨询？","faq.a3":"可以。无论是门店收银与办公电脑的更新，还是员工手机 / 平板的统一配置，我们都可以提供整体方案与报价。欢迎告知预算和大致数量。",
+      "contact.title":"地址与联系方式（电脑 / 手机综合服务）","contact.addressL":"地址：","contact.hours":"营业时间：11:00–20:00（周日/周一休息）","contact.phoneL":"电话：","contact.emailL":"邮箱：",
+      "footer.contact":"联系咨询","footer.services":"服务一览"
+    },
+    en: {
+      "nav.services":"Services","nav.gallery":"Gallery","nav.access":"Access","nav.faq":"FAQ",
+      "nav.repairPrices":"Repair Prices","nav.testimonials":"Testimonials","nav.builds":"Builds",
+      "hero.tagline":"Total shop for PCs & smart devices",
+      "hero.heading":"Gaming PCs and smart devices, <span class='bg-clip-text text-transparent bg-gradient-to-r from-brand-500 to-brand-700'>maintained at a business-grade level.</span>",
+      "hero.p":"From new and pre-owned gaming PCs with custom builds to fast repair for iPhone, Android, iPad and tablets, we provide a single, business-grade IT solution for both individuals and companies.",
+      "hero.btn.services":"View all services","hero.btn.access":"Access & contact",
+      "benefits.0.t":"Phone and tablet repairs in as little as 30 minutes","benefits.0.p":"Common issues like battery and screen replacement are handled on-site, often within about 30 minutes depending on workload, with careful attention to your data.","benefits.1.t":"New and pre-owned PCs with custom builds","benefits.1.p":"For gaming and business alike, we combine curated new and pre-owned PCs with custom builds designed around your budget.","benefits.2.t":"One-stop support for every device","benefits.2.p":"We take care of PCs, phones and tablets under one roof, ideal for both individual users and multi-device business environments.","benefits.3.t":"Business-grade testing and aftercare","benefits.3.p":"Every serviced device and pre-owned PC is tested thoroughly, with clear warranty terms and ongoing support whenever you need it.",
+      "services.title":"Services","services.p":"We offer end-to-end IT services—from new and pre-owned PC sales and custom builds to smartphone and tablet repair.",
+      "services.items.0":"New and pre-owned gaming or business PCs","services.items.1":"Custom-built rigs and hardware upgrades","services.items.2":"iPhone, Android and iPad repair (screens, batteries and more)","services.items.3":"Data transfer, OS setup and software installation","services.items.4":"Business rollout consulting and free estimates",
+      "builds.title":"Recommended PC setups","builds.note":"Three sample configurations by use case. Final pricing depends on parts and exchange rates. Phone and tablet repairs or multi-PC deployments can be quoted together.","builds.e.title":"Entry – first gaming and study PC","builds.e.price":"From ¥120,000","builds.e.cpu":"Intel Core i5 / Ryzen 5","builds.e.gpu":"GeForce RTX 5060","builds.e.mem":"16GB / 1TB SSD","builds.e.use":"Ideal for popular online titles, school work and everyday media, with smooth connectivity to phones and tablets.","builds.p.title":"Pro – gaming, streaming and creation","builds.p.price":"From ¥220,000","builds.p.cpu":"Intel Core i7 / Ryzen 7","builds.p.gpu":"GeForce RTX 5070 / 5070 Ti","builds.p.mem":"32GB / 1–2TB SSD","builds.p.use":"Handles high-refresh FPS, streaming and video editing comfortably, with room for dual monitors and mobile integration.","builds.u.title":"Ultra – workstation and pro gaming","builds.u.price":"From ¥380,000","builds.u.cpu":"Intel Core i9 / Ryzen 9","builds.u.gpu":"GeForce RTX 5080 / 5090","builds.u.mem":"64GB / fast NVMe","builds.u.use":"Built for 4K, high-fps gaming and heavy creative workloads in multi-device, business-grade environments.",
+      "gallery.title":"Store and repair gallery (PC and phones)",
+      "exp.badge":"Company-owned e-sports cafe","exp.title":"Test your setup at ESPORTSCAFE 5G","exp.p":"Our sister e-sports cafe ESPORTSCAFE 5G is located upstairs, where you can try our recommended PC builds, check streaming performance and even test smartphone or tablet gaming on fast connections.","exp.btn":"View ESPORTSCAFE 5G","exp.note":"(Operated by the same company / 同公司運営のカフェです)",
+      "testi.title":"Case studies and customer voices","testi.p":"Trusted not only by local gamers and streamers, but also by nearby businesses who rely on us for their PCs and smart devices. Here are a few voices from our customers.","testi.q1":"I could discuss both my streaming PC and smartphone setup at once; they handled the wiring and all the software settings for me.","testi.q1n":"— Individual streamer","testi.q2":"They replaced our POS PCs and staff phones in a single day, including all the data migration.","testi.q2n":"— Local restaurant owner","testi.q3":"The day before a tournament I cracked my phone screen; they fixed it in about 30 minutes so I could still compete.","testi.q3n":"— High-school gamer",
+      "cta.h":"Keep every device at its best, starting today.","cta.p":"Whether you need a new or pre-owned PC, a fully tuned gaming setup, or same-day repair for your iPhone, Android or iPad, we handle it all in one place. Visit us or get in touch to talk about your devices.","cta.btn":"Access & contact",
+      "faq.title":"FAQ","faq.q1":"Can I buy a PC or device and take it home the same day?","faq.a1":"Yes. In-stock new and pre-owned PCs, monitors and peripherals can be purchased and taken home the same day. Phone handset availability varies, so please ask our staff in store.","faq.q2":"How long do phone or tablet repairs take?","faq.a2":"It depends on the model, issue and how busy we are, but common repairs like screen and battery replacement are often completed the same day, some in as little as about 30 minutes.","faq.q3":"Do you support multi-device or business deployments?","faq.a3":"Yes. We help plan and deploy PCs, phones and tablets for stores and offices, including network setup and basic security. Share your budget and approximate number of devices to get started.",
+      "contact.title":"Access and contact (PC and smart devices)","contact.addressL":"Address:","contact.hours":"Hours: 11:00–20:00 (Sun/Mon closed)","contact.phoneL":"Tel:","contact.emailL":"Email:",
+      "footer.contact":"Contact","footer.services":"Services"
+    }
+  };
+  const els=[...document.querySelectorAll('[data-i18n]')];
+
+  function applyI18n(lang){
+    const d = dict[lang] || dict.ja;
+    els.forEach(el=>{ const v=d[el.dataset.i18n]; if(typeof v==='string') el.innerHTML=v; });
+    document.documentElement.lang=lang;
+    localStorage.setItem('lang',lang);
+    // 同步激活态（桌面+移动端）
+    document.querySelectorAll('[data-lang]').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang===lang);
+    });
+  }
+  // 初始化语言（本地存储优先）
+  (function(){
+    const saved=localStorage.getItem('lang');
+    const guess=(navigator.language||'ja').slice(0,2);
+    const initLang=saved||(['ja','zh','en'].includes(guess)?guess:'ja');
+    applyI18n(initLang);
+  })();
+  // 事件委托：任何 data-lang 按钮都可触发
+  document.addEventListener('click', (e)=>{
+    const t=e.target.closest('[data-lang]');
+    if(!t) return;
+    e.preventDefault();
+    applyI18n(t.dataset.lang);
+  });
+  // ================= i18n END =================
+</script>
+<script id="future-fx-js">
+// Scroll reveal
+(function(){
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        e.target.classList.add('reveal-in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.glass, section h2, section h3, .ripple').forEach(el=>{
+    el.classList.add('reveal-init'); io.observe(el);
+  });
+})();
+// Card tilt (parallax)
+(function(){
+  const max=10; // deg
+  document.querySelectorAll('.glass').forEach(card=>{
+    card.classList.add('tilt');
+    card.addEventListener('mousemove', (e)=>{
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left)/r.width - .5;
+      const py = (e.clientY - r.top)/r.height - .5;
+      card.style.transform = `rotateY(${px*max}deg) rotateX(${-py*max}deg)`;
+    });
+    card.addEventListener('mouseleave', ()=>{ card.style.transform=''; });
+  });
+})();
+// Magnetic buttons
+(function(){
+  const radius = 80; // px
+  function lerp(a,b,t){ return a+(b-a)*t; }
+  document.querySelectorAll('.ripple').forEach(btn=>{
+    btn.classList.add('magnet');
+    let tx=0, ty=0, raf=null;
+    function anim(){
+      const x = lerp(parseFloat(btn.dataset.x)||0, tx, .18);
+      const y = lerp(parseFloat(btn.dataset.y)||0, ty, .18);
+      btn.dataset.x = x; btn.dataset.y = y;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+      if(Math.hypot(tx-x, ty-y) > .1) raf=requestAnimationFrame(anim);
+    }
+    btn.addEventListener('mousemove', (e)=>{
+      const r = btn.getBoundingClientRect();
+      const cx = r.left + r.width/2, cy = r.top + r.height/2;
+      const dx = e.clientX - cx, dy = e.clientY - cy;
+      const dist = Math.hypot(dx,dy);
+      if(dist < radius){ tx = dx*.2; ty = dy*.2; if(!raf) raf=requestAnimationFrame(anim); }
+    });
+    ['mouseleave','blur'].forEach(ev=> btn.addEventListener(ev, ()=>{ tx=0; ty=0; if(!raf) raf=requestAnimationFrame(anim); }));
+  });
+})();
+// Animated starfield/particles (very light)
+(function(){
+  const c = document.createElement('canvas');
+  c.id='fx-space'; document.body.appendChild(c);
+  const ctx = c.getContext('2d');
+  let w=0,h=0, dpr=1, pts=[];
+  function resize(){
+    dpr = Math.min(2, window.devicePixelRatio||1);
+    w = c.width = innerWidth*dpr; h = c.height = innerHeight*dpr;
+    c.style.width = innerWidth+'px'; c.style.height = innerHeight+'px';
+    pts = Array.from({length: Math.round((innerWidth*innerHeight)/12000) }, ()=>({
+      x: Math.random()*w, y: Math.random()*h,
+      vx: (Math.random()-.5)*.06*dpr, vy:(Math.random()-.5)*.06*dpr,
+      r: (Math.random()*1.2+0.3)*dpr, a: Math.random()*.6+.2
+    }));
+  }
+  function tick(){
+    ctx.clearRect(0,0,w,h);
+    for(const p of pts){
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0) p.x=w; if(p.x>w) p.x=0;
+      if(p.y<0) p.y=h; if(p.y>h) p.y=0;
+      const g = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.r*3);
+      g.addColorStop(0,`rgba(0,229,255,${p.a})`);
+      g.addColorStop(1,`rgba(255,58,242,0)`);
+      ctx.fillStyle=g; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,6.283); ctx.fill();
+    }
+    requestAnimationFrame(tick);
+  }
+  addEventListener('resize', resize, {passive:true});
+  resize(); tick();
+})();
+// Nav underline class hookup (optional: add .nav-ink to nav if exists)
+(function(){
+  const nav = document.querySelector('nav');
+  if(nav && !nav.classList.contains('nav-ink')) nav.classList.add('nav-ink');
+})();
+</script>
+</body>
+</html>
